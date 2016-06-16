@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odap Note</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/buttons.css" />
+<style>
+
+nav#logo {
+  display: inline;
+  position: relative;
+  left: 0%;
+}
+#mypage {
+  display: inline;
+  position: relative;
+  float: right;
+  top: 10px;
+}
+header {
+  border: 1px solid white;
+  margin: 0px auto;
+  width: 1280px;
+}
+#search-line { 
+  height: 5px;
+  background-color: gray;
+}
+#contents {
+  margin: 0px auto;
+  width: 1280px;
+}
+
+h2 {
+  color: gray;
+}
+#side {
+  color: #3588CC;
+  text-align: center;
+  font-size: 18px;
+  width:300px;
+  float: left;
+  position: relative;
+  display: inline;
+  margin: 0px ;
+}
+#className {
+    text-align: right;  
+}  
+#class {
+  width: 840px;
+  float: left;
+  display: inline;
+  margin-left: 20px;    
+}
+#myquestion {
+  width: 100px;    
+  float: right;
+  display: inline;
+  margin-top: 100px;
+}
+/*******************************************************************************/
+#wrapper {
+  display: inline;
+  position: relative;
+  width: 70%;
+  max-width: 800px;
+  min-width: 800px;
+  margin-top:100px;
+  margin-left:80px;  
+}
+
+#columns {
+  -webkit-column-count: 2;
+  -webkit-column-gap: 10px;
+  -webkit-column-fill: auto;
+  -moz-column-count: 3;
+  -moz-column-gap: 10px;
+  -moz-column-fill: auto;
+  column-count: 3;
+  column-gap: 15px;
+  column-fill: auto;
+ margin-top:100px;
+  
+}
+
+.pin {
+  display: inline-block;
+  background: #FEFEFE;
+  border: 2px solid #FAFAFA;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 0 2px 15px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  padding: 15px;
+  padding-bottom: 5px;
+  background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+  opacity: 1;
+  
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+
+.pin img {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+.pin p {
+  font: 12px/18px Arial, sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+@media (min-width: 960px) {
+  #columns {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1100px) {
+  #columns {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 4;
+  }
+}
+
+.pin:hover { 
+  opacity: 0.4;
+}  
+
+#myquestion{
+  top:170px;
+  margin-left:20px;
+  padding-left:20px;
+}
+#questionbtn {
+  background: white;
+  border: 0px;
+}
+/*****************************************************************************/
+  
+  #cont {
+    margin-left: 10px;
+  }
+  
+  #subbtn {
+    float: right;
+    margin-top: 15px;
+  }
+/***************************************************************************/
+
+.file-upload {
+  background-color: #ffffff;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 2px solid #6699ff;
+  position: relative;  
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: #66ccff;
+  opacity: 0.5;
+  border: 2px solid #6699ff;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #6699ff;
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  height: 30%;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-image {
+  width: 80px; 
+  height: 40px;
+  color: #fff;
+  background: #66ccff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 2px solid #6699ff;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 300;  
+}
+
+.remove-image:hover {
+  background: #6699ff;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+
+.button--round-s {
+  float: right;
+  margin: 2%;  
+ }
+
+#className {  
+  float: left;
+  margin-top: 3%;
+  margin-left: 5%;
+}
+
+
+</style>
+
+</head>
+<body>
+<header>
+      <nav id="logo">
+         <a href="mypage.html"><img src="img/Logo.png"></a>
+      </nav>
+      <div id="mypage" class="dropdown">
+        <img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
+          <li><a href="mypage.html">mypage</a></li>
+          <li><a href="profile.html">profile</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="front.html">logout</a></li>
+        </ul>
+      </div>
+</header><div id="search-line"></div>
+
+<div id="contents">
+  <section id="side">
+    <div id ="classlist"></div>
+    <section id="height"></section>
+    <div id="myinf"></div>    
+  </section>
+
+  <section id="class">
+    <article id="wrapper">
+    <div id="className"></div>
+      <nav id="columns"></nav>
+    </article>
+  </section>
+
+  <section id="myquestion">
+    <div id="addbtn2">
+      <button type="button" id="questionbtn" data-toggle="modal" data-target="#myModal">
+        <img src="img/question.png">
+      </button>
+    </div>
+  </section>
+</div>
+
+<!--------------------------------------Modal 적용--------------------------------------------------------------------->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Class Name</h4>
+      </div>
+      <div class="modal-body">
+       <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Question</label>
+          <center><input type="title" class="form-control" id="Qtitle" placeholder="제목을 입력해주세요."></center>
+        </div>
+        <div class="file-upload">
+<div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+    <div class="drag-text">
+      <h3>이미지를 선택하거나 드래그해주세요.</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <span class="image-title">Uploaded Image</span><br>
+      <button type="button" onclick="removeUpload()" class="remove-image"> 취소 </button>      
+    </div>
+  </div>
+</div>
+        <div id="cont">
+        <label for="exampleInputEmail1">Content</label>
+        <textarea class="form-control" rows="5" placeholder="질문 내용을 입력해주세요."></textarea>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// -JSON적용=======================================================================-
+$(function(){
+	$.getJSON("hanbee.json",function(data){
+		$("#className").append("<h2>"+data.CL[0].T+"</h2>");
+		$.each(data.myI,function(index,entry){
+			$("#myinf").append("<img src='"+entry["pic"]+"' class='img-circle' id='mypic'><br><br>");
+			$("#myinf").append("<h1>"+entry["name"]+"</h1>");
+			$("#myinf").append("email:"+entry["email"] + "<br>tel:" + entry["tel"] + "<br>job:" +entry["job"]);
+		});
+		$.each(data.Ques, function(index,entry) {
+			$("<div class='pin'>").html("<img src='" + entry["P"]+"'/>" + "<p>" 
+					+ entry["T"] + "</p><br>" + "<p>" + entry["C"] + "</p>").appendTo($("#columns"));
+		});
+		$.each(data.CL, function(index,entry){
+			$("<div id='cL'>").html("<button class='button button--winona button--border-thin button--round-s' data-text='"
+					+ entry["T"] +"'><span>"+ entry["T"]+"</span></button>").appendTo($("#classlist"));
+		});		
+	})
+}); 
+//=================================================================================
+  
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+$('.dropdown-toggle').dropdown()
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('.image-upload-wrap').hide();
+
+        $('.file-upload-image').attr('src', e.target.result);
+        $('.file-upload-content').show();
+
+        $('.image-title').html(input.files[0].name);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+
+    } else {
+      removeUpload();
+    }
+  }
+
+function removeUpload() {
+    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+    $('.file-upload-content').hide();
+    $('.image-upload-wrap').show();
+  }
+  $('.image-upload-wrap').bind('dragover', function () {
+      $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function () {
+      $('.image-upload-wrap').removeClass('image-dropping');
+  });
+
+</script>
+
+</body>
+</html>
