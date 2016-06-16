@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.QuestionDao">
+  
+  <insert id="insert" parameterType="Question">
+    insert into QUESTION(CNO,QTIT,QCNT,QCD,QST,QPIC,MNO)
+    values(#{cno},#{qtit},#{qcnt},now(),#{qst},#{qpic},#{mno})
+  </insert>
+  
+  <update id="update" parameterType="Question">
+    update QUESTION set
+      QTIT=#{qtit}, 
+      QCNT=#{qcnt}, 
+      CDT=now(),
+      QST= #{qst},
+      QPIC = #{qpic}
+    where QNO=#{qno}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from QUESTION 
+    where QNO=#{qno}
+  </delete>
+
+  <select id="selectList" resultType="Question" parameterType="map">
+    select QNO, QTIT, QCNT, QCD, QST, QPIC, MNO 
+    from QUESTION
+    order by QNO DESC   
+  </select>
+  
+  <select id="selectOne" resultType="Question" parameterType="int">
+    select QNO, QTIT, QCNT, QCD, QST, QPIC, MNO  
+    from QUESTION
+    where QNO=#{qno}
+  </select>
+  
+  <select id="countAll" resultType="int">
+    select count(*) 
+    from QUESTION
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
