@@ -216,6 +216,16 @@ table {
   </div>
 </div>
 <script>
+loadBoardList();
+
+function loadBoardList() {
+  $.getJSON("../ajax/question/list.do", function(result) {   
+	  $.each(result.question,function(i,d){
+	        $("tbody").append("<tr class="+d["cl"]+"><td>"+d["no"]+"</td><td>"+d["title"]+"</td><td>"+d["date"]+"</td></tr>");
+	      });
+  });
+}
+
 $(function(){
   $.ajax({
     url:"mypage.json",
