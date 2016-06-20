@@ -434,28 +434,20 @@ figure {
         <form id="classlist">
           <button class="btn btn-default">클래스 추가</button>
           <button class="btn btn-default">클래스 삭제</button><br><br>          
-          <ul id="sortable">
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Java</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Math</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Windows</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Android</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Swift</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>English</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>C#</li>
+          <ul id="sortable">            
           </ul>
         </form>
         <form id="newClass">
           <h2>Create New Class</h2><br>
-          <input type="text" class="form-control" placeholder="클래스명">
-          <input type="text" class="form-control" placeholder="과목">
-          <input type="text" class="form-control" placeholder="암호">
-          <textarea class="form-control" rows="5" placeholder="설명"></textarea><br><br>
+          <input id="Cname" type="text" class="form-control" placeholder="클래스명" name="cnm">          
+          <input id="Csub" type="text" class="form-control" placeholder="과목" name="csub">
+          <textarea id="Cdes" class="form-control" rows="5" placeholder="설명" name="cdes"></textarea><br><br>
           
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary">저장</button>
+        <button type="button" class="btn btn-primary" id="newClassSave">저장</button>
       </div>
     </div>
   </div>
@@ -491,7 +483,9 @@ function loadClassList() {
 	  $.getJSON("../ajax/class/list.do?", function(result) {  
 		  $.each(result, function(i,d){   
 		        $("#classbtns").append("<a href='java.html'><button class='button button--winona button--border-thin button--round-s' data-text='enter'><span>"+result.cnm+"</span></button></a>");
-		      });
+		        $("#sortable").append("<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+d.cnm+"</li>");
+		        
+		  });
 	})
 }
 
@@ -499,7 +493,7 @@ function loadMyInfo() {
 	 var Mno = 1;
 	 $.getJSON("../ajax/member/detail.do?no="+Mno, function(result) {    		  
 		  $("#mypic").append("<br><img src="+result.mpic+" class='img-circle'><br><br>");
-      $("#myinfo").append("Name : " + result.mnm + "<br>E-mail : " + result.mid + "<br>Tel : " + result.mtel + "<br>Job : " + result.mjob + "<br>office : " + result.madr);
+      $("#myinfo").append("Name : " + result.mnm + "<br>E-mail : " + result.mem + "<br>Tel : " + result.mtel + "<br>Job : " + result.mjob + "<br>office : " + result.madr);
    });
 }
 
@@ -558,7 +552,29 @@ $('#myModal').on('shown.bs.modal', function () {
 /*--------------------------------------- modal end ------------------------------------------*/
 
 
+<<<<<<< .mine
 
+
+=======
+>>>>>>> .r24
+/*----------------------------------class add ---------------------------------------------------*/
+$("#newClassSave").click(function(event) {
+	 $.post("../ajax/class/add.do", {		  
+		      mno: 1,
+		      cnm: $("#Cname").val(), 
+		      csub: $("#Csub").val(),
+		      cdes: $("#Cdes").val()
+		    }, function(result) {
+		      if (result.status == "success") {
+		        location.href = "mypage_han.html";
+		        } else {
+		        window.alert("등록 실패입니다!");
+		      }
+		    }, "json"
+		    );
+		  });
+
+/*----------------------------------class add end---------------------------------------------------*/
 
 </script>
 </body>
