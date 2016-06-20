@@ -375,9 +375,8 @@ figure {
 </header>
 <div id="search-line"></div>
 <section id="contents">
- <section id="me">
-    <br>
-    <img src="img/girl.png" class="img-circle"><br><br>
+ <section id="me">    
+  <div id="mypic"></div>
     <section id="myinfo"></section>
     <br>
     <input type="text" id="search" placeholder="Search"><a href="search.html"><button type="button" class="btn btn-default btn-xs"><img src="img/search.png"></button></a><br>
@@ -489,17 +488,20 @@ function loadQuestionList() {
 
 
 function loadClassList() {	 
-	  $.getJSON("../ajax/class/list.do?", function(result) {    		  
+	  $.getJSON("../ajax/class/list.do?", function(result) {  
+		  $.each(result, function(i,d){   
 		        $("#classbtns").append("<a href='java.html'><button class='button button--winona button--border-thin button--round-s' data-text='enter'><span>"+d.cnm+"</span></button></a>");
 		      });
-	}
+	})
+}
 
 function loadMyInfo() {
-var Mno = 1;
+	 var Mno = 1;
 	 $.getJSON("../ajax/member/detail.do?no="+Mno, function(result) {    		  
-              $("#myinfo").append("Name : " + result.mnm + "<br>E-mail : " + result.mid + "<br>Tel : " + result.mtel + "<br>Job : " + result.mjob + "<br>office : " + result.madr);
-          });
-	 }
+		  $("#mypic").append("<br><img src="+result.mpic+" class='img-circle'><br><br>");
+      $("#myinfo").append("Name : " + result.mnm + "<br>E-mail : " + result.mid + "<br>Tel : " + result.mtel + "<br>Job : " + result.mjob + "<br>office : " + result.madr);
+   });
+}
 
 	  $(function(){
 		  $.getJSON("mypage.json",function(result){   
