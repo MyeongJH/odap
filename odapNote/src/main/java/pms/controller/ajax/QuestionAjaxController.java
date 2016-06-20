@@ -1,4 +1,4 @@
-package pms.controller;
+package pms.controller.ajax;
 
 import java.io.IOException;
 import java.util.HashMap;

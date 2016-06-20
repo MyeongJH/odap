@@ -6,8 +6,8 @@
 <mapper namespace="pms.dao.MemberDao">
   
   <insert id="insert" parameterType="Member">
-    insert into MEMBER(MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL)
-    values(#{mid},#{mpw},#{mnm},#{mtel},#{madr},#{mjob},#{mpg},#{mpic},#{mcl})
+    insert into MEMBER(MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL,MEM)
+    values(#{mid},#{mpw},#{mnm},#{mtel},#{madr},#{mjob},#{mpg},#{mpic},#{mcl},#{mem})
   </insert>
   
   <update id="update" parameterType="Member">
@@ -19,7 +19,8 @@
       MJOB=#{mjob},
       MPG=#{mpg},
       MPIC=#{mpic},
-      MCL=#{mcl}
+      MCL=#{mcl},
+      MEM=#{mem}
     where MNO=#{mno}
   </update>
   
@@ -29,13 +30,13 @@
   </delete>
 
   <select id="selectList" resultType="Member" parameterType="map">
-    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL
+    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL,MEM
     from MEMBER
     order by MNO ASC   
   </select>
   
   <select id="selectOne" resultType="Member" parameterType="int">
-    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL
+    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL,MEM
     from MEMBER
     where MNO=#{mno}
   </select>

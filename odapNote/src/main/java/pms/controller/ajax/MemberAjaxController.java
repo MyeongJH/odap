@@ -24,10 +24,11 @@ public class MemberAjaxController {
   
   @RequestMapping(value="add", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String add(String id, String pw, String name, String tel, String adress, String job, String hompage, String pic, String clazz) throws ServletException, IOException {
+  public String add(String id, String pw, String name, String tel, String adress, String job, String hompage, String pic, String clazz, String mem) throws ServletException, IOException {
 
     Member member = new Member();
     member.setMid(id);
+    member.setMem(mem);
     member.setMpw(pw);
     member.setMnm(name);
     member.setMtel(tel);
@@ -83,7 +84,7 @@ public class MemberAjaxController {
       method=RequestMethod.POST,
       produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String update(int no, String id, String pw, String name, String tel, String adress, String job, String hompage, String pic, String clazz) throws ServletException, IOException {
+  public String update(int no, String id, String pw, String name, String tel, String adress, String job, String hompage, String pic, String clazz,String mem) throws ServletException, IOException {
     
     Member member = new Member();
     member.setMno(no);
@@ -96,6 +97,7 @@ public class MemberAjaxController {
     member.setMpg(hompage);
     member.setMpic(pic);
     member.setMcl(clazz);
+    member.setMem(mem);
     
     HashMap<String,Object> result = new HashMap<>();
     try {

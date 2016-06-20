@@ -490,7 +490,7 @@ function loadQuestionList() {
 function loadClassList() {	 
 	  $.getJSON("../ajax/class/list.do?", function(result) {  
 		  $.each(result, function(i,d){   
-		        $("#classbtns").append("<a href='java.html'><button class='button button--winona button--border-thin button--round-s' data-text='enter'><span>"+d.cnm+"</span></button></a>");
+		        $("#classbtns").append("<a href='java.html'><button class='button button--winona button--border-thin button--round-s' data-text='enter'><span>"+result.cnm+"</span></button></a>");
 		      });
 	})
 }
@@ -556,9 +556,6 @@ $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
 /*--------------------------------------- modal end ------------------------------------------*/
-
-
-$('.dropdown-toggle').dropdown();
 
 
 

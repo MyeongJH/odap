@@ -33,7 +33,4 @@ public class DefaultMemberService implements MemberService {
   public void change(Member mamber) {
     memberDao.update(mamber);
   }
-  
-
-
 }

@@ -11,11 +11,21 @@ public class Member {
   String mpg;
   String mpic;
   String mcl;
+  String mem;
   @Override
   public String toString() {
     return "Member [mno=" + mno + ", mid=" + mid + ", mpw=" + mpw + ", mnm=" + mnm + ", mtel=" + mtel + ", madr=" + madr
         + ", mjob=" + mjob + ", mpg=" + mpg + ", mpic=" + mpic + ", mcl=" + mcl + "]";
   }
+  
+  public String getMem() {
+    return mem;
+  }
+
+  public void setMem(String mem) {
+    this.mem = mem;
+  }
+
   public int getMno() {
     return mno;
   }

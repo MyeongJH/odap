@@ -10,5 +10,4 @@ public interface MemberService {
   Member retrieve(int no);
   List<Member> list();
   void change(Member member);
-  int countPage(int pageSize);
 }
