@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odap Note</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/slider.css" type="text/css">
+<script src="js/jquery.flexslider-min.js"></script>
+
+<style>
+nav#logo {
+	display: inline;
+	position: relative;
+	left: 0%;
+}
+
+#mypage {
+   display: inline;
+   position: relative;
+   float: right;
+   top: 10px;
+}
+
+header {
+	background-color: white; 
+	border: 1px solid white;
+	margin: 0px auto;
+	width: 1280px;
+}
+
+#search-line { 
+	height: 5px;
+	background-color: gray;
+}
+
+
+
+
+
+section{
+	width:1280px;
+	margin: 50px auto;
+	align-self: center;
+	opacity: 0.7;		
+}
+
+iframe{
+	position: absolute;
+	z-index: -100;
+}
+
+#btn-p{
+	border-radius: 17px;
+	margin-top: 600px;	
+	width: 90px;
+}
+
+#block{	
+	width:1280px;
+	height:720px;	
+	position: absolute;
+}
+
+#start-btn{
+	font-size: 40px;
+	opacity: 1;
+	left: 600px;
+	color: white;	
+}
+
+#start-btn:hover{
+	text-decoration: none;
+}
+
+#btn-p:hover{
+	background-color: silver;
+}
+
+
+/*******************************************************************************/
+</style>
+
+</head>
+<body>
+<header>
+	<nav id="logo">
+		<a href="front.html"><img src="img/Logo.png"></a>
+	</nav>
+	<div id="mypage" class="dropdown">
+	<img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
+		<li><a href="mypage.html">mypage</a></li>
+		<li><a href="#">profile</a></li>
+		<li role="presentation" class="divider"></li>
+		<li><a href="front.html">logout</a></li>
+	</ul>
+	</div>
+</header>
+<div id="search-line"></div>
+<section>
+<div>		
+	<iframe width="1280" height="720" src="https://www.youtube.com/embed/fz2iuhvGUDo?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1&loop=1" frameborder="0" allowfullscreen>
+	</iframe>
+	<div id="block">
+			<center>
+				<div id="btn-p">
+					<a id="start-btn" href="signup.html">Start</a>
+				</div>
+			</center>
+	</div>
+</div>
+</section>
+</body>
+</html>
