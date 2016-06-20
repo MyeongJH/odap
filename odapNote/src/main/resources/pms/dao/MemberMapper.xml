@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.MemberDao">
+  
+  <insert id="insert" parameterType="Member">
+    insert into MEMBER(MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL)
+    values(#{mid},#{mpw},#{mnm},#{mtel},#{madr},#{mjob},#{mpg},#{mpic},#{mcl})
+  </insert>
+  
+  <update id="update" parameterType="Member">
+    update MEMBER set
+      MPW=#{mpw},
+      MNM,=#{mnm},
+      MTEL=#{mtel},
+      MADR=#{madr},
+      MJOB=#{mjob},
+      MPG=#{mpg},
+      MPIC=#{mpic},
+      MCL=#{mcl}
+    where MNO=#{mno}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from MEMBER 
+    where MNO=#{mno}
+  </delete>
+
+  <select id="selectList" resultType="Member" parameterType="map">
+    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL
+    from MEMBER
+    order by MNO ASC   
+  </select>
+  
+  <select id="selectOne" resultType="Member" parameterType="int">
+    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL
+    from MEMBER
+    where MNO=#{mno}
+  </select>
+  
+  <select id="countAll" resultType="int">
+    select count(*) 
+    from MEMBER
+  </select>
+</mapper>

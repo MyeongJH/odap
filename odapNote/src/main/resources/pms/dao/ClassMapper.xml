@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.ClassDao">
+  
+  <insert id="insert" parameterType="Class">
+    insert into CLASS(MNO,CNM,CCD,CDES,CSUB)
+    values(#{mno},#{cnm},now(),#{cdes},#{csub})
+  </insert>
+  
+  <update id="update" parameterType="Class">
+    update CLASS set
+      CNM=#{cnm}, 
+      CCD=now(),
+      CDES=#{cdes},
+      CSUB=#{csub}
+    where CNO=#{cno}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from CLASS 
+    where CNO=#{cno}
+  </delete>
+
+  <select id="selectList" resultType="Class" parameterType="map">
+    select CNO, MNO, CNM, CCD, CDES, CSUB 
+    from CLASS
+    order by CNO ASC   
+  </select>
+  
+  <select id="selectOne" resultType="Class" parameterType="int">
+    select CNO, MNO, CNM, CCD, CDES, CSUB 
+    from CLASS
+    where CNO=#{cno}
+  </select>
+  
+  <select id="countAll" resultType="int">
+    select count(*) 
+    from CLASS
+  </select>
+</mapper>
