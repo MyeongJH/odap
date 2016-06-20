@@ -217,12 +217,21 @@ table {
 </div>
 <script>
 loadBoardList();
+loadBookmarkList();
 
 function loadBoardList() {
   $.getJSON("../ajax/question/list.do", function(result) {   
-	  $.each(result.question,function(i,d){
-	        $("tbody").append("<tr class="+d["cl"]+"><td>"+d["no"]+"</td><td>"+d["title"]+"</td><td>"+d["date"]+"</td></tr>");
+	  $.each(result,function(i,d){
+	        $("tbody").append("<tr class="+d["cno"]+"><td>"+d["qno"]+"</td><td>"+d["qtit"]+"</td><td>"+d["qcd"]+"</td></tr>");
 	      });
+  });
+}
+
+function loadBookmarkList() {
+  $.getJSON("../ajax/question/list.do", function(result) {   
+	  $.each(result,function(i,d){
+          $(".carousel-inner").append("<div class='"+d["cno"]+"'><img src='"+d["qpic"]+"' class='bpic'><div class='carousel-caption'><h3>"+d["qtit"]+"</h3><p>"+d["qcd"]+"</p></div>");
+      });
   });
 }
 
@@ -234,9 +243,7 @@ $(function(){
       $.each(result.class,function(i,d){
         $("#classbtns").append("<a href='java.html'><button class='button button--winona button--border-thin button--round-s' data-text="+d["k"]+"><span>"+d["k"]+"</span></button></a>");
       });
-      $.each(result.question,function(i,d){
-    	  $("tbody").append("<tr class="+d["cl"]+"><td>"+d["no"]+"</td><td>"+d["title"]+"</td><td>"+d["date"]+"</td></tr>");
-      });
+     
       $.each(result.bookmark,function(i,d){
           $(".carousel-inner").append("<div class='"+d["cl"]+"'><img src='"+d["img"]+"' class='bpic'><div class='carousel-caption'><h3>"+d["h3"]+"</h3><p>"+d["p"]+"</p></div>");
       });
