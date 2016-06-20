@@ -5,32 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pms.dao.ClassDao;
-import pms.service.ClassService;
-import pms.vo.Class;
+import pms.dao.MemberDao;
+import pms.service.MemberService;
+import pms.vo.Member;
 
 @Service
-public class DefaultMemberService implements ClassService {
-  @Autowired ClassDao classDao;
+public class DefaultMemberService implements MemberService {
+  @Autowired MemberDao memberDao;
 
-  public void add(Class clazz) {
-    classDao.insert(clazz);
+
+  public void add(Member mamber) {
+    memberDao.insert(mamber);
   }
 
   public void delete(int no) {
-    classDao.delete(no);
+    memberDao.delete(no);
   }
 
-  public Class retrieve(int no) {
-    return classDao.selectOne(no);
+  public Member retrieve(int no) {
+    return memberDao.selectOne(no);
   }
 
-  public List<Class> list() {
-    return classDao.selectList();
+  public List<Member> list() {
+    return memberDao.selectList();
   }
 
-  public void change(Class clazz) {
-    classDao.update(clazz);
+  public void change(Member mamber) {
+    memberDao.update(mamber);
   }
+  
+
 
 }
