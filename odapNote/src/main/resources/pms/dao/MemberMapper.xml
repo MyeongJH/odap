@@ -23,6 +23,15 @@
       MEM=#{mem}
     where MNO=#{mno}
   </update>
+  <update id="updateTe" parameterType="Member">
+    update MEMBER set
+      MNM,=#{mnm},
+      MADR=#{madr},
+      MJOB=#{mjob},
+      MPG=#{mpg},
+      MEM=#{mem}
+    where MNO=#{mno}
+  </update>
   
   <delete id="delete" parameterType="int">
     delete from MEMBER 

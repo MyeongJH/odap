@@ -108,4 +108,28 @@ public class MemberAjaxController {
     }
     return new Gson().toJson(result);
   }
+  
+  @RequestMapping(value="updateTe",
+      method=RequestMethod.POST,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String updateTe(int mno, String mnm, String mem, String mjob, String madr, String mpg) throws ServletException, IOException {
+    
+    Member member = new Member();
+    member.setMnm(mnm);
+    member.setMno(mno);
+    member.setMem(mem);
+    member.setMjob(mjob);
+    member.setMadr(madr);
+    member.setMpg(mpg);    
+    
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+      memberService.change(member);
+      result.put("status", "success");
+    } catch (Exception e) {
+      result.put("status", "failure");
+    }
+    return new Gson().toJson(result);
+  }
 }
