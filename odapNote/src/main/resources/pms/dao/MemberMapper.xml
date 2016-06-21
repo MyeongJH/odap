@@ -13,19 +13,8 @@
   <update id="update" parameterType="Member">
     update MEMBER set
       MPW=#{mpw},
-      MNM,=#{mnm},
+      MNM=#{mnm},
       MTEL=#{mtel},
-      MADR=#{madr},
-      MJOB=#{mjob},
-      MPG=#{mpg},
-      MPIC=#{mpic},
-      MCL=#{mcl},
-      MEM=#{mem}
-    where MNO=#{mno}
-  </update>
-  <update id="updateTe" parameterType="Member">
-    update MEMBER set
-      MNM,=#{mnm},
       MADR=#{madr},
       MJOB=#{mjob},
       MPG=#{mpg},

@@ -7,6 +7,8 @@
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/input-style.css">
+
 <style>
 nav#logo {
     display: inline;
@@ -63,10 +65,10 @@ nav#logo {
 }
 
 .btn-edit {
-  width: 60px;
-  height: 30px;
+  width: 80px;
+  height: 40px;
   color: white;
-  font-size: 15px;
+  font-size: 130%;
   text-align: center;
   padding-top: 3px;
   background-color: MediumSeaGreen;
@@ -74,35 +76,11 @@ nav#logo {
   border-radius: 4px;
 }
 
-.btn-edit:active {
-  background-color: grey;
-}
-
-.btn-save {
-  background-color: salmon;
-}
-
-.first-name-label {
-  color: DimGray;
-  font-size: 14px;
-  font-weight: 900;
-  padding-top: 3px;
-}
-
 .label {
   color: DimGray;
   font-size: 14px;
   font-weight: 900;
   padding-top: 3px;
-}
-
-.first-name {
-  color: DimGray;
-  font-size: 16px;
-  font-weight: 900;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 7px;
 }
 
 .name {
@@ -114,153 +92,11 @@ nav#logo {
   padding-bottom: 7px;
 }
 
-.hr-custom {
-  border-top: 1px solid DarkGrey;
-  margin: 0;
-  padding: 0;
-}
-
-.first-name-input-container {
-  padding-top: 5px;
-  padding-bottom: 4px;
-}
-
-#first-name-input {
-  width: 80%;
-  font-size: 16px;
-  color: DimGrey;
-  padding-left: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 1px solid DimGrey;
-  border-radius: 4px;
-  background-color: silver;
-}
-
-.last-name-label {
-  color: DimGray;
-  font-size: 14px;
-  font-weight: 900;
-  padding-top: 3px;
-}
-
-.last-name {
-  color: DimGray;
-  font-size: 16px;
-  font-weight: 900;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 7px;
-}
-
-.last-name-input-container {
-  padding-top: 5px;
-  padding-bottom: 4px;
-}
-
-#last-name-input {
-  width: 80%;
-  font-size: 16px;
-  color: DimGrey;
-  padding-left: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 1px solid DimGrey;
-  border-radius: 4px;
-  background-color: silver;
-}
-
-.profile-organization-label {
-  color: MediumSeaGreen;
-  font-size: 14px;
-  font-weight: 900;
-  padding-top: 3px;
-}
-
-.profile-organization {
-  color: DimGray;
-  font-size: 16px;
-  font-weight: 900;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 7px;
-}
-
-.profile-organization-input-container {
-  padding-top: 5px;
-  padding-bottom: 4px;
-}
-
-#profile-organization-input {
-  width: 80%;
-  font-size: 16px;
-  color: DimGrey;
-  padding-left: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 1px solid DimGrey;
-  border-radius: 4px;
-  background-color: silver;
-}
-
-.email-label {
-  color: MediumSeaGreen;
-  font-size: 14px;
-  font-weight: 900;
-  padding-top: 3px;
-}
-
-.email {
-  color: DimGray;
-  font-size: 16px;
-  font-weight: 900;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 7px;
-}
-
-.email-input-container {
-  padding-top: 5px;
-  padding-bottom: 4px;
-}
-
-#email-input {
-  width: 80%;
-  font-size: 16px;
-  color: DimGrey;
-  padding-left: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 1px solid DimGrey;
-  border-radius: 4px;
-  background-color: silver;
-}
-
-.popover {
-  width: 160px;
-}
-
-.profile-title-label {
-  color: MediumSeaGreen;
-  font-size: 14px;
-  font-weight: 900;
-  padding-top: 3px;
-}
-
 .profile-label {
   color: MediumSeaGreen;
   font-size: 14px;
   font-weight: 900;
   padding-top: 3px;
-}
-
-.profile-title {
-  color: DimGray;
-  font-size: 16px;
-  font-weight: 900;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 7px;
 }
 
 .profile {
@@ -270,43 +106,6 @@ nav#logo {
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 7px;
-}
-
-.profile-title-input-container {
-  padding-top: 5px;
-  padding-bottom: 4px;
-}
-
-#profile-title-input {
-  width: 80%;
-  font-size: 16px;
-  color: DimGrey;
-  padding-left: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 1px solid DimGrey;
-  border-radius: 4px;
-  background-color: silver;
-}
-
-.profile-panel::-webkit-input-placeholder {
-  color: grey;
-  font-weight: 700;
-}
-
-profile-panel:-moz-placeholder {
-  color: grey;
-  font-weight: 700;
-}
-
-profile-panel::-moz-placeholder {
-  color: grey;
-  font-weight: 700;
-}
-
-profile-panel:-ms-input-placeholder {
-  color: grey;
-  font-weight: 700;
 }
 
 /*****************************profile form*********************************/
@@ -417,69 +216,57 @@ input[type="file"]::-webkit-file-upload-button {
   </div>
   <!-- ---------------------------------------------------------------- -->
   <div class="container edit-profile-page">
-	  <button id="changeBtn" class='change-form btn btn-default btn-sm'>change</button>
     <div class="row">
       <div class="col-sm-12 profile-panel">    
         <div class="profile-header">PROFILE</div>
-        <div class="edit-container"><div class="btn-edit" onclick="editProfile()">Edit</div></div>
-        <!------------------------------------------------------------------------------------------------------------>
+        <div class="edit-container">
+			  <button id="changeBtn" type="button" class='btn-edit'>change</button><br>
+        </div>
+        <!------------------------------------------------------------------------------------------------------------>        
         <div class="profile-label MID-label">ID</div>
         <div class="profile MID"></div>
-        <hr class="hr-custom"></hr>
         <div class="profile-label MPW-label">PASSWORD</div>
         <div class="profile MPW"></div>
-        <hr class="hr-custom"></hr>        
         <div class="profile-label MNM-label">NAME</div>
         <div class="profile MNM"></div>
-        <hr class="hr-custom"></hr>
         <div class="profile-label MTEL-label">TEL</div>
         <div class="profile MTEL"></div>
-        <hr class="hr-custom"></hr>
         <div class="label MEM-label">EMAIL</div>
-        <div class="name MEM"></div>
-        <hr class="hr-custom"></hr>
+        <div class="profile MEM"></div>
         <div class="label MJOB-label">JOB</div>
-        <div class="name MJOB"></div>
-        <hr class="hr-custom"></hr>
+        <div class="profile MJOB"></div>
         <div class="label MADR-label">LOCATION</div>
-        <div class="name MADR"></div>
-        <hr class="hr-custom"></hr>
+        <div class="profile MADR"></div>
         <div class="label MPG-label">HOMEPAGE</div>
-        <div class="name MPG"></div>
-        <hr class="hr-custom"></hr>        
-        <div class="first-name-label">NAME</div>
-        <div class="first-name"></div>
-        <!-----------------------------------------------------------------------------------------------------------
-        <hr class="hr-custom"></hr>
-        <div class="last-name-label">EMAIL</div>
-        <div class="last-name"></div>
-        <hr class="hr-custom"></hr>
-        <div class="profile-organization-label">JOB</div>
-        <div class="profile-organization"></div>
-        <hr class="hr-custom"></hr>
-        <div class="email-label">LOCATION</div>
-        <div class="email"></div>
-        <hr class="hr-custom"></hr>
-        <div class="profile-title-label">HOMEPAGE</div>
-        <div class="profile-title"></div>
-        <hr class="hr-custom"></hr>
-        -->
+        <div class="profile MPG"></div>
       </div>
     </div>
   </div>
 
 </div>
+
 <script type="text/javascript">
 
 loadMyInfo();
 function loadMyInfo() {
 	   var Mno = 1;
 	   $.getJSON("../ajax/member/detail.do?no="+Mno, function(result) {
-		    $(".MNM").append(result.mnm);
-		    $(".MEM").append(result.mem);
-		    $(".MJOB").append(result.mjob);
-		    $(".MADR").append(result.madr);
-		    $(".MPG").append(result.mpg);
+		    $(".MID").append("<div class='col-3'><text id='MID' class='effect-1'>"+result.mid+"</text><span class='focus-border'></span></div>");
+		    $(".MPW").append("<div class='col-3'><input id='MPW' class='effect-1' type='password' value='"+result.mpw+"'><span class='focus-border'></span></div>");
+		    $(".MNM").append("<div class='col-3'><input id='MNM' class='effect-1' type='text' value='"+result.mnm+"'><span class='focus-border'></span></div>");
+		    $(".MTEL").append("<div class='col-3'><input id='MTEL' class='effect-1' type='text' value='"+result.mtel+"'><span class='focus-border'></span></div>");
+		    if (!result.mem)
+		    	result.mem="";
+		    $(".MEM").append("<div class='col-3'><input id='MEM' class='effect-1' type='text' value='"+result.mem+"'><span class='focus-border'></span></div>");
+		    if (!result.mjob)
+		          result.mjob="";
+		    $(".MJOB").append("<div class='col-3'><input id='MJOB' class='effect-1' type='text' value='"+result.mjob+"'><span class='focus-border'></span></div>");
+		    if (!result.madr)
+		          result.madr="";
+		    $(".MADR").append("<div class='col-3'><input id='MADR' class='effect-1' type='text' value='"+result.madr+"'><span class='focus-border'></span></div>");
+		    if (!result.mpg)
+		          result.mpg="";
+		    $(".MPG").append("<div class='col-3'><input id='MPG' class='effect-1' type='text' value='"+result.mpg+"'><span class='focus-border'></span></div>");
 		    $(".img-wrapper")
 	        .css('background', 'url(' + result.mpic + ') no-repeat center center')
 	        .css('background-size', 'cover');
@@ -487,20 +274,24 @@ function loadMyInfo() {
 }
 
 $("#changeBtn").click(function(event) {
-	  $.ajax("../ajax/member/updateTe.do", {
+	  $.ajax("../ajax/member/update.do", {
+		 
 	    method: "POST",
 	    dataType: "json",
 	    data: {
-	    	mno: 1,
-	      mnm: $(".first-name").val(), 
-	      mem: $(".last-name").val(),
-	      mjob: $(".profile-organization").val(),
-	      madr: $(".email").val() ,
-	      mpg: $(".profile-title").val()
+	    	no: 1,
+	      pw: $("#MPW").val(),
+	      name: $("#MNM").val(),
+	      tel: $("#MTEL").val(), 
+	      email: $("#MEM").val(),
+	      job: $("#MJOB").val(),
+	      adress: $("#MADR").val(),
+	      homepage: $("#MPG").val()
 	    },
 	    success: function(result) {
 	      if (result.status == "success") {
-	        location.href = "profile.html";
+	    	  alert("저장되었습니다.");
+	        location.href = "mypage.html";
 	      } else {
 	        window.alert("변경 실패입니다!");
 	      }
@@ -510,201 +301,6 @@ $("#changeBtn").click(function(event) {
 	    }
 	  });
 });
-
-//var profileData = {};
-
-function closeSupervisorPopover() {
-  $('.supervisor-email-icon-custom').popover('hide');
-}
-
-function editProfile() {
-  if ($('.btn-edit').hasClass('btn-save')) {
-    $('.btn-edit')
-      .removeClass('btn-save')
-      .text('Edit');
-/*******************************************************************************/
-  $('<div>').addClass('MID').html($('#MID-input').val()).insertAfter('.MID-label');
-  $('<div>').addClass('MPW').html($('#MPW-input').val()).insertAfter('.MPW-label');
-  $('<div>').addClass('MNM').html($('#MNM-input').val()).insertAfter('.MNM-label');
-  $('<div>').addClass('MTEL').html($('#MTEL-input').val()).insertAfter('.MTEL-label');
-  $('<div>').addClass('MADR').html($('#MADR-input').val()).insertAfter('.MADR-label');
-  $('<div>').addClass('MJOB').html($('#MJOB-input').val()).insertAfter('.MJOB-label');
-  $('<div>').addClass('MPG').html($('#MPG-input').val()).insertAfter('.MPG-label');
-  $('<div>').addClass('MEM').html($('#MEM-input').val()).insertAfter('.MEM-label');
-
-/*******************************************************************************/
-    
-    var firstName = $('<div>')
-      .addClass('first-name')
-      .html($('#first-name-input').val())
-      .insertAfter('.first-name-label');
-    
-    
-    var hr = $('<hr>')
-      .addClass('hr-custom')
-      .insertAfter('.first-name');
-
-    var lastName = $('<div>')
-      .addClass('last-name')
-      .html($('#last-name-input').val())
-      .insertAfter('.last-name-label');
-    var hr = $('<hr>')
-      .addClass('hr-custom')
-      .insertAfter('.last-name');
-
-    var organization = $('<div>')
-      .addClass('profile-organization')
-      .html($('#profile-organization-input').val())
-      .insertAfter('.profile-organization-label');
-    var hr = $('<hr>')
-      .addClass('hr-custom')
-      .insertAfter('.profile-organization');
-
-    var email = $('<div>')
-      .addClass('email')
-      .html($('#email-input').val())
-      .insertAfter('.email-label');
-    var hr = $('<hr>')
-      .addClass('hr-custom')
-      .insertAfter('.email');
-
-    var hr = $('<hr>')
-      .addClass('hr-custom')
-      .insertAfter('.supervisor-email');
-
-    var title = $('<div>')
-      .addClass('profile-title')
-      .html($('#profile-title-input').val())
-      .insertAfter('.profile-title-label');
-    var hr = $('<hr>')
-      .addClass('hr-custom')
-      .insertAfter('.profile-title');
-
-    $('.first-name-input-container').remove();
-    $('.last-name-input-container').remove();
-    $('.profile-organization-input-container').remove();
-    $('.email-input-container').remove();
-    $('.profile-title-input-container').remove();
-
-   // saveProfile();
-
-    return;
-  } else {
-    $('.btn-edit')
-      .addClass('btn-save')
-      .text('Save');
-  }
-
-  var firstNameContainer = $('<div>')
-    .addClass('first-name-input-container');
-  var firstName = $('<input>')
-    .attr({
-      type: 'text',
-      id: 'first-name-input'
-    })
-    .val($('.first-name').html())
-    .appendTo(firstNameContainer);
-  firstNameContainer.appendTo('.first-name-label');
-
-  $('<input>')
-  .attr({
-    type: 'text',
-    id: 'first-name-input'
-  })
-  .val($('.name').html())
-  .appendTo(firstNameContainer);
-  firstNameContainer.appendTo('.first-name-label');
-
-  var lastNameContainer = $('<div>')
-    .addClass('last-name-input-container');
-  var lastName = $('<input>') 
-    .attr({
-      type: 'text',
-      id: 'last-name-input'
-    })
-    .val($('.last-name').html())
-    .appendTo(lastNameContainer);
-  lastNameContainer.appendTo('.last-name-label');
-
-  var organizationContainer = $('<div>')
-    .addClass('profile-organization-input-container');
-  var organization = $('<input>')
-    .attr({
-      type: 'text',
-      id: 'profile-organization-input'
-    })
-    .val($('.profile-organization').html())
-    .appendTo(organizationContainer);
-  organizationContainer.appendTo('.profile-organization-label');
-
-  var emailContainer = $('<div>')
-    .addClass('email-input-container');
-  var email = $('<input>')
-    .attr({
-      type: 'text',
-      id: 'email-input'
-    })
-    .val($('.email').html())
-    .appendTo(emailContainer);
-  emailContainer.appendTo('.email-label');
-
-  var titleContainer = $('<div>')
-    .addClass('profile-title-input-container');
-  var email = $('<input>')
-    .attr({
-      type: 'text',
-      id: 'profile-title-input'
-    })
-    .val($('.profile-title').html())
-    .appendTo(titleContainer);
-  titleContainer.appendTo('.profile-title-label');
-
-  $('.first-name').remove();
-  $('.last-name').remove();
-  $('.profile-organization').remove();
-  $('.email').remove();
-  $('.profile-title').remove();
-  $('.profile-panel hr').remove();
-}
-/* 
-function saveProfile() {
-
-  profileData.firstname = $('.first-name').html();
-  profileData.lastname = $('.last-name').html();
-  profileData.lastname = $('.first-name').html();
-  profileData.organization = $('.profile-organization').html();
-  profileData.email = $('.email').html();
-  profileData.supervisoremail = $('.supervisor-email').html();
-  profileData.title = $('.profile-title').html();
-
-  saveProfileToParse();
-  
-}
-
-function saveProfileToParse() {
-  var currentUser = Parse.User.current();
-  console.log(currentUser);
-  if (!currentUser) {
-    alert('Not logged in');
-    //showLogin();
-    return;
-  }
-
-  Parse.Cloud.run('saveProfile', {
-    profileData: JSON.stringify(profileData)
-  }, {
-    success: function(saveLocation) {
-      console.log(saveLocation)
-      alert("Data saved to Parse cloud");
-    },
-    error: function(error) {
-      console.log(error)
-      alert('Parse database save error code: ' + error.code + ' message: ' + error.message);
-    }
-  });
-}
- */
-//-------------------------------------------------------------------------------------------
 
 $(function() {
   function maskImgs() {
@@ -749,7 +345,7 @@ $(function() {
           var img = $(previewImg).find('img');
 
           if (img.length == 0) {
-            $(previewImg).html('<img src="' + e.target.result + '" alt=""/>');
+        	  $(previewImg).html('<img src="' + e.target.result + '" alt=""/>');
           } else {
             img.attr('src', e.target.result);
           }

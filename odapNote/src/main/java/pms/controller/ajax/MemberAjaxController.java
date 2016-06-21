@@ -84,20 +84,17 @@ public class MemberAjaxController {
       method=RequestMethod.POST,
       produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String update(int no, String id, String pw, String name, String tel, String adress, String job, String hompage, String pic, String clazz,String mem) throws ServletException, IOException {
+  public String update(int no, String pw, String name,String email, String tel, String adress, String job, String homepage) throws ServletException, IOException {
     
     Member member = new Member();
     member.setMno(no);
-    member.setMid(id);
     member.setMpw(pw);
     member.setMnm(name);
+    member.setMem(email);
     member.setMtel(tel);
     member.setMadr(adress);
     member.setMjob(job);
-    member.setMpg(hompage);
-    member.setMpic(pic);
-    member.setMcl(clazz);
-    member.setMem(mem);
+    member.setMpg(homepage);
     
     HashMap<String,Object> result = new HashMap<>();
     try {
@@ -105,30 +102,7 @@ public class MemberAjaxController {
       result.put("status", "success");
     } catch (Exception e) {
       result.put("status", "failure");
-    }
-    return new Gson().toJson(result);
-  }
-  
-  @RequestMapping(value="updateTe",
-      method=RequestMethod.POST,
-      produces="application/json;charset=UTF-8")
-  @ResponseBody
-  public String updateTe(int mno, String mnm, String mem, String mjob, String madr, String mpg) throws ServletException, IOException {
-    
-    Member member = new Member();
-    member.setMnm(mnm);
-    member.setMno(mno);
-    member.setMem(mem);
-    member.setMjob(mjob);
-    member.setMadr(madr);
-    member.setMpg(mpg);    
-    
-    HashMap<String,Object> result = new HashMap<>();
-    try {
-      memberService.change(member);
-      result.put("status", "success");
-    } catch (Exception e) {
-      result.put("status", "failure");
+      e.printStackTrace();
     }
     return new Gson().toJson(result);
   }
