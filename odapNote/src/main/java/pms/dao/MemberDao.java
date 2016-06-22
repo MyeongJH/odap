@@ -7,7 +7,7 @@ import pms.vo.Member;
 
 public interface MemberDao {
   List<Member> selectList();
-  Member selectOne(Map<String,Object> paramMap);
+  Member selectOne(int no);
   int insert(Member member);
   int update(Member member);
   int delete(int no);
