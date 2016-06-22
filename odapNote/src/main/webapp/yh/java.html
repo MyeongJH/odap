@@ -294,12 +294,12 @@
 
 <div id="container">
   <div class="list-view">
-        <div id="classlist"></div>      
+        <div id="4classlist"></div>      
   </div>
   <div class="details-view">
     <div class="back"></div>
     <div class="background"></div>
-       <div id="classdetail"></div>  
+       <div id="4classdetail"></div>  
   </div>
 </div>
  
@@ -414,7 +414,7 @@ function load4classList() {
 function load4classList(){    
     $.getJSON("../ajax/class/list.do", function(result) {  
        $.each(result, function(i,d){   
-             $("#4classlist").append("<ul><li><span class='avatar'></span><span class='name'>" + d.cnm + "</span></li></ul>");
+             $("#4classlist").append("<li><span class='avatar'></span><span class='name'>" + d.cnm + "</span></li>");
              
        });
   })
