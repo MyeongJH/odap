@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odap Note</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/buttons.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<style>
+
+ nav#logo {
+   display: inline;
+   position: relative;
+   left: 0%;
+}
+nav#logo:hover { cursor: pointer; }
+
+#mypage {
+   display: inline;
+   position: relative;
+   float: right;
+   top: 10px; 
+}
+
+#mypage:hover {cursor: pointer;}
+
+header {
+   border: 1px solid white;
+   margin: 0px auto;
+   width: 1280px;
+}
+#search-line { 
+   height: 5px;
+   background-color: gray;
+}
+#contents {
+   margin: 0px auto;
+   width: 1280px;
+}
+.divi {
+  display: block;
+  height: 360px;
+  margin-bottom: 30px;
+}
+h2 {
+  color: gray;
+}
+h3 {
+  color: black;    
+}
+p {
+  color: black;    
+}
+#me {
+  color: #3588CC;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+    display: inline;
+  height: 800px;
+  float: left;
+  margin: 0px auto;
+}
+#class {
+  width: 35%;
+    display: inline;
+  height: 800px;
+  float: left;
+  margin-left: 40px;
+}
+#myquestion {
+  width: 35%;
+  padding: 10px;
+  display: inline;
+  height: 800px;
+  margin-left: 40px;
+  float: right;
+}
+
+#classbtns {
+  margin-left: 10%;
+}
+
+.btn-block {
+  margin: 3px;
+}
+
+.item {
+  height: 270px;
+}
+.bpic {
+  width: 60%;
+}
+.carousel-inner img {
+     /* width of visible piece */
+    width: 100%;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.6);
+    transition: all 0.3s ease-in-out;
+}
+.carousel-caption {
+  background-color: rgba(255,255,255,0.5);
+}
+/*********************************************************************************/
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
+
+table {
+  text-align: center;
+}
+</style>
+
+</head>
+<body>
+<header>
+      <nav id="logo">
+         <a href="front.html"><img src="img/Logo.png"></a>
+      </nav>
+      <div id="mypage" class="dropdown">
+        <img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
+          <li><a href="mypage.html">mypage</a></li>
+          <li><a href="profile.html">profile</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="front.html">logout</a></li>
+        </ul>
+      </div>
+</header>
+<div id="search-line"></div>
+<section id="contents">
+  <section id="me">
+    <br>
+    <img src="img/girl.png" class="img-circle"><br><br>
+    <section id="myinfo"></section>
+    <br>
+    <input type="text" id="search" placeholder="Search"><a href="search.html"><button type="button" class="btn btn-default btn-xs"><img src="img/search.png"></button></a><br>
+  </section>
+  <section id="class">
+    <div id="top" class="divi">
+    <h2>My Class <button type="button" class="btn btn-default btn-sm btn-lg" data-toggle="modal" data-target="#myModal"><img src="img/setting.png" width="30px"></button></h2>
+    <!--******************************************************************-->
+      <div id="classbtns"></div>
+    <!--******************************************************************-->
+    </div>
+    <div id="bottom" class="divi">
+      <h2>Book Mark</h2><br>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" align="center"></div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="myquestion">
+    <h2>My Question</h2><br>
+    <table class="table table-hover">
+      <thead><td>번호</td><td>제목</td><td>작성일</td></thead>
+      <tbody>
+      </tbody>
+    </table>
+
+  </section>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Class 관리 및 설정</h4>
+      </div>
+      <div class="modal-body">
+       	<form id="classlist">
+          <button class="btn btn-default">클래스 추가</button>
+          <button class="btn btn-default">클래스 삭제</button><br><br>          
+          <ul id="sortable">
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Java</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Math</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Windows</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Android</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Swift</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>English</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>C#</li>
+          </ul>
+        </form>
+        <form id="newClass">
+          <h2>Create New Class</h2><br>
+          <input type="text" class="form-control" placeholder="클래스명">
+          <input type="text" class="form-control" placeholder="과목">
+          <input type="text" class="form-control" placeholder="암호">
+          <textarea class="form-control" rows="5" placeholder="설명"></textarea><br><br>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+loadBoardList();
+loadBookmarkList();
+
+function loadBoardList() {
+  $.getJSON("../ajax/question/list.do", function(result) {   
+	  $.each(result,function(i,d){
+	        $("tbody").append("<tr class="+d["cno"]+"><td>"+d["qno"]+"</td><td>"+d["qtit"]+"</td><td>"+d["qcd"]+"</td></tr>");
+	      });
+  });
+}
+
+function loadBookmarkList() {
+  $.getJSON("../ajax/question/list.do", function(result) {   
+	  $.each(result,function(i,d){
+          $(".carousel-inner").append("<div class='"+d["cno"]+"'><img src='"+d["qpic"]+"' class='bpic'><div class='carousel-caption'><h3>"+d["qtit"]+"</h3><p>"+d["qcd"]+"</p></div>");
+      });
+  });
+}
+
+$(function(){
+  $.ajax({
+    url:"mypage.json",
+    dataType:"json",
+    success:function(result){
+      $.each(result.class,function(i,d){
+        $("#classbtns").append("<a href='java.html'><button class='button button--winona button--border-thin button--round-s' data-text="+d["k"]+"><span>"+d["k"]+"</span></button></a>");
+      });
+     
+      $.each(result.bookmark,function(i,d){
+          $(".carousel-inner").append("<div class='"+d["cl"]+"'><img src='"+d["img"]+"' class='bpic'><div class='carousel-caption'><h3>"+d["h3"]+"</h3><p>"+d["p"]+"</p></div>");
+      });
+      $.each(result.member,function(i,d){
+          $("#myinfo").append("Name : "+d["name"]+"<br>E-mail :"+d["email"]+"<br>Tel : "+d["tel"]+"<br>Job : "+d["job"]+"<br>office : "+d["office"]);
+      });
+    }
+  });
+  $( "#sortable" ).sortable();
+  $( "#sortable" ).disableSelection();
+});
+
+$('.carousel').carousel({
+     interval: 100
+})
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+$('.dropdown-toggle').dropdown()
+
+</script>
+</body>
+</html>
