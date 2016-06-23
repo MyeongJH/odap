@@ -50,18 +50,15 @@ body {
     right: 0;
     background: white;
     z-index: 1;
-    transition: background 0.3s 0.1s; }
+    transition: background 0.3s 0.1s;
+    overflow: hidden; }
     #container .list-view ul li {
+      overflow: hidden;
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 0px;
+      padding-left: 20px;
       height: 70px;
-      border-bottom-width: 1px;
-      border-style: solid;
-      border-color: #ddd;
       transition: transform 0.3s, opacity 0.3s 0.3s, border-color 0.3s 0.3s; }
-      #container .list-view ul li .name {
-        -webkit-font-smoothing: antialiased; }
       #container .list-view ul li:nth-child(1) {
         transform: translate3d(0, 0px, 0); }
       #container .list-view ul li:nth-child(2) {
@@ -83,7 +80,7 @@ body {
       #container .list-view ul li:nth-child(10) {
         transform: translate3d(0, 630px, 0); }
       #container .list-view ul li:hover {
-        background: #efefef; }
+        cursor: pointer; }
       #container .list-view ul li .avatar {
         content: '';
         display: inline-block;
@@ -94,6 +91,8 @@ body {
         background: url("http://1.viki.io/a/ph/avatar_profile-acc6c5a5a9d35bd7d292dfd776cfec76.png?s=30x30&f=t&cb=1");
         background-size: 100%;
         margin: 10px 15px; }
+      #container .list-view ul li .name {
+        -webkit-font-smoothing: antialiased; }
   #container .details-view {
     position: absolute;
     top: 0;
@@ -110,7 +109,7 @@ body {
       transition: transform 0.25s; }
     #container .details-view .back {
       position: absolute;
-      top: 20px;
+      top: 25px;
       left: 5px;
       width: 30px;
       height: 30px;

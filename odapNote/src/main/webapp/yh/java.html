@@ -142,6 +142,7 @@
 }
 
 .pin:hover { 
+         
   opacity: 0.4;
 }  
 
@@ -267,6 +268,7 @@
   margin-left: 5%;
 }
 
+
 /*****************************************************************************/
 
 </style>
@@ -294,7 +296,11 @@
 
 <div id="container">
   <div class="list-view">
-        <div id="4classlist"></div>      
+    <ul>
+    
+    </ul>
+           
+ 
   </div>
   <div class="details-view">
     <div class="back"></div>
@@ -364,18 +370,6 @@
   </div>
 </div>
 
-<script id="4class" type="text/x-handlebars-template">
-    
-{{#each 4class}}
-      <li>
-        <span class="avatar"></span>
-        <span class="name">{{cnm}}</span>
-      </li>           
-{{/each}}
-    
- 
-</script>
-
 <script>
 // -JSON적용=======================================================================-
 $(function(){
@@ -397,31 +391,20 @@ $(function(){
 	
 load4classList();
 
-/*
-load4classDetail();*/
 
-/*
-function load4classList() {
-   $.getJSON("../ajax/class/list.do", function(result) {
-      var templateData = $('#4class').html(); 
-      var template = Handlebars.compile(templateData);
-      var html = template(result);
-      $("#4classlist").append(html);
-      
-   });
-}
-*/
+
+
 function load4classList(){    
     $.getJSON("../ajax/class/list.do", function(result) {  
        $.each(result, function(i,d){   
-             $("#4classlist").append("<li><span class='avatar'></span><span class='name'>" + d.cnm + "</span></li>");
-             
+             $(".list-view > ul").append("<li><span class='avatar'></span><span class='name'>" + d.cnm + "</span></li>");
+           
        });
   })
 }
-/*
+load4classDetail();
 function load4classDetail() {    
-     $.getJSON("../ajax/member/list.do", function(result) {            
+     $.getJSON("../ajax/member/detail.do?no=1", function(result) {            
           $("#4classdetail").append("<ul><li><i class='fa fa-video-camera'></i>" + result.mnm +
         		    "</li><li><i class='fa fa-envelope'></i>" + result.mem +
         		    "</li><li><i class='fa fa-mobile'></i>" + result.mtel +  
@@ -429,7 +412,7 @@ function load4classDetail() {
               
         });
    }
-*/
+
 
 
 

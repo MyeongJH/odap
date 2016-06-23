@@ -67,22 +67,18 @@ body {
     background: rgba(255,255,255,1);
     z-index: 1;
     transition: background 0.3s 0.1s;
+    overflow: hidden;
 
 
     ul {
-      li {
+      li {        
+         overflow: hidden;
         position: absolute;
-        left: 0;
-        right: 0;
-        height: 70px;
-        border-bottom-width: 1px;
-        border-style: solid;
-        border-color: #ddd;
+        left: 0px;
+        padding-left:20px;       
+        height: 70px;       
         transition: transform 0.3s, opacity 0.3s 0.3s, border-color 0.3s 0.3s;
 
-        .name {
-          -webkit-font-smoothing: antialiased;
-        }
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
@@ -91,7 +87,7 @@ body {
         }
 
         &:hover {
-          background: #efefef;
+          cursor: pointer;
         }
         .avatar {
           content: '';
@@ -103,6 +99,9 @@ body {
           background: url('http://1.viki.io/a/ph/avatar_profile-acc6c5a5a9d35bd7d292dfd776cfec76.png?s=30x30&f=t&cb=1');
           background-size: 100%;
           margin: 10px 15px;
+        }
+        .name {
+          -webkit-font-smoothing: antialiased;
         }
       }
     }
@@ -128,7 +127,7 @@ body {
     
     .back {
       position: absolute;
-      top: 20px;
+      top: 25px;
       left: 5px;
       width: 30px;
       height: 30px;
