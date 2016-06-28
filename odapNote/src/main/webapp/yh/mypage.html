@@ -12,32 +12,85 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="../yh/js/jquery.parallaxmouse.min.js"></script>
+
+
+
 <style>
 
- nav#logo {
-   display: inline;
-   position: relative;
-   left: 0%;
-}
-nav#logo:hover { cursor: pointer; }
+.logo :hover { cursor: pointer; }
 
-#mypage {
-   display: inline;
-   position: relative;
-   float: right;
-   top: 10px; 
-}
+
 
 #mypage:hover {cursor: pointer;}
 
 header {
-   border: 1px solid white;
    margin: 0px auto;
-   width: 1280px;
 }
+
+.logo {
+   display: inline;
+   position: relative;
+   float: left;
+   top: 60px; 
+   left: 30px;   
+}
+
+#pheader {         
+   width: 100%;
+   height: 200px;
+   max-height: 200px;
+   position: relative;
+   background: #a8e4d8;
+   overflow: hidden;
+}
+
+.parallax {
+   position: absolute;
+}
+#warpbg {
+   top: -200px;
+   left: -350px;
+}
+#star1 {
+    top: 100px;
+    right:800px;
+}
+#star2 {
+    top: 30px;
+    right: 700px;
+}
+#star3 {
+    bottom: -70px;
+    right: 320px;
+}
+#star4 {
+    top: 240px;
+    left: 690px;
+}
+#star5 {
+    bottom: -38px;
+    left: 5200px;
+}
+#star6 {
+     bottom: -100px;
+    right: 100px;
+}
+#star7 {
+    bottom: -170px;
+    right: 200px;
+}
+#star8 {
+    top: 370px;
+    right: 300px;
+}
+
+
 #search-line { 
    height: 5px;
-   background-color: gray;
+   background-color: black;
 }
 #contents {
    margin: 0px auto;
@@ -118,21 +171,22 @@ table {
 
 </head>
 <body>
-<header>
-      <nav id="logo">
-         <a href="front.html"><img src="img/Logo.png"></a>
-      </nav>
-      <div id="mypage" class="dropdown">
-        <img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
-          <li><a href="mypage.html">mypage</a></li>
-          <li><a href="profile.html">profile</a></li>
-          <li role="presentation" class="divider"></li>
-          <li><a href="front.html">logout</a></li>
-        </ul>
-      </div>
+<header>    
+<div id="pheader">
+    <img id="warpbg" class="parallax left top" src="">
+    <img id="star1" class="parallax top" src="img/ta.png">
+    <img id="star2" class="parallax top" src="img/clo.png">
+    <img id="star3" class="parallax" src="img/mo.png">
+    <img id="star4" class="parallax left top" src="img/mu.png">
+    <img id="star5" class="parallax left" src="img/pe.png">
+    <img id="star6" class="parallax left top" src="img/usb.png">
+    <img id="star7" class="parallax top" src="img/tr.png">
+    <img id="star8" class="parallax top" src="img/ph.png">
+
+    
+    <a class="logo" href="mypage.html" ><img src="img/Logo.png"></a>     
+</div>
+     
 </header>
 <div id="search-line"></div>
 <section id="contents">
@@ -215,6 +269,38 @@ table {
     </div>
   </div>
 </div>
+<script>
+    // Plugin Test
+    $(window).parallaxmouse({
+        invert: true,
+        range: 400,
+        elms: [
+            {el: $('#warpbg'), rate: 0.1},
+            {el: $('#star1'), rate: 0.2},
+            {el: $('#star2'), rate: 0.2},
+            {el: $('#star3'), rate: 0.2},
+            {el: $('#star4'), rate: 0.4},
+            {el: $('#star5'), rate: 0.9},
+            {el: $('#star6'), rate: 0.5},
+            {el: $('#star7'), rate: 0.6},
+            {el: $('#star8'), rate: 0.9}
+       
+        ]
+    });
+</script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 <script>
 loadBoardList();
 loadBookmarkList();
