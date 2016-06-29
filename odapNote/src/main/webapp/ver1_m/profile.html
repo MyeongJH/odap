@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<title>Odap Note</title>
+<script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -166,7 +166,6 @@ input[type="file"]::-webkit-file-upload-button {
 .file-upload-text {
     z-index: 10;
     padding: 5px 15px 8px;
-    overflow: hidden;
     font-size: 14px;
     line-height: 1.4;
     cursor: pointer;
@@ -182,11 +181,8 @@ input[type="file"]::-webkit-file-upload-button {
     z-index: 15;
     opacity: 0;
 }
-
 </style>
 </head>
-
-
 <body>
 <header>
       <nav id="logo">
@@ -195,23 +191,21 @@ input[type="file"]::-webkit-file-upload-button {
       <div id="mypage" class="dropdown">
         <img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
           <span class="caret"></span>
-        </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
           <li><a href="mypage.html">mypage</a></li>
           <li><a href="#">profile</a></li>
           <li role="presentation" class="divider"></li>
-          <li><a href="front.html">logout</a></li>
+          <li><a href="../auth/logout.do">logout</a></li>
         </ul>
       </div>
 </header>
 <div id="search-line"></div>
-
 <!-- ---------------------------------------------------------------- -->
 <div class="contents">
-
+  <form id="frm" name="frm" method="POST">
   <div class="preview img-wrapper"></div>
   <div class="file-upload-wrapper">
-      <input type="file" name="file" class="file-upload-native" accept="image/*"/>
+      <input type="file" id="uploadFile" name="uploadFile" class="file-upload-native" accept="image/*"/>
       <input type="text" disabled placeholder="upload image" class="file-upload-text" />
   </div>
   <!-- ---------------------------------------------------------------- -->
@@ -219,9 +213,7 @@ input[type="file"]::-webkit-file-upload-button {
     <div class="row">
       <div class="col-sm-12 profile-panel">    
         <div class="profile-header">PROFILE</div>
-        <div class="edit-container">
-			  <button id="changeBtn" type="button" class='btn-edit'>change</button><br>
-        </div>
+        <div class="edit-container"><button id="upload" name='upload' type='submit' class='btn-edit'>change</button></div>
         <!------------------------------------------------------------------------------------------------------------>        
         <div class="profile-label MID-label">ID</div>
         <div class="profile MID"></div>
@@ -242,64 +234,89 @@ input[type="file"]::-webkit-file-upload-button {
       </div>
     </div>
   </div>
-
+  </form>
 </div>
 
 <script type="text/javascript">
-
-loadMyInfo();
+$(document).ready(
+$.ajax({
+    url: "../ajax/member/detail.do",
+    type: "POST",
+    async: false,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success:  function(result) {        
+        $(".MID").append("<div class='col-3'><text id='MID' name='mid' class='effect-1'>"+result.mid+"</text><span class='focus-border'></span></div>");
+        $(".MPW").append("<div class='col-3'><input id='MPW' name='mpw' class='effect-1' type='password' value='"+result.mpw+"'><span class='focus-border'></span></div>");
+        $(".MNM").append("<div class='col-3'><input id='MNM' name='mnm' class='effect-1' type='text' value='"+result.mnm+"'><span class='focus-border'></span></div>");
+        $(".MTEL").append("<div class='col-3'><input id='MTEL' name='mtel' class='effect-1' type='text' value='"+result.mtel+"'><span class='focus-border'></span></div>");
+        if (!result.mem)
+          result.mem="";
+        $(".MEM").append("<div class='col-3'><input id='MEM' name='mem' class='effect-1' type='text' value='"+result.mem+"'><span class='focus-border'></span></div>");
+        if (!result.mjob)
+              result.mjob="";
+        $(".MJOB").append("<div class='col-3'><input id='MJOB' name='mjob' class='effect-1' type='text' value='"+result.mjob+"'><span class='focus-border'></span></div>");
+        if (!result.madr)
+              result.madr="";
+        $(".MADR").append("<div class='col-3'><input id='MADR' name='madr' class='effect-1' type='text' value='"+result.madr+"'><span class='focus-border'></span></div>");
+        if (!result.mpg)
+              result.mpg="";
+        $(".MPG").append("<div class='col-3'><input id='MPG' name='mpg' class='effect-1' type='text' value='"+result.mpg+"'><span class='focus-border'></span></div>");
+        if (!result.mpic)
+              result.mpic="img/noimage.jpg";
+        $(".img-wrapper").css('background', 'url(' + result.mpic + ') no-repeat center center').css('background-size', 'cover');     
+      
+        }
+    }
+  });
+);
+/* loadMyInfo();
 function loadMyInfo() {
-	   var Mno = 1;
-	   $.getJSON("../ajax/member/detail.do?no="+Mno, function(result) {
-		    $(".MID").append("<div class='col-3'><text id='MID' class='effect-1'>"+result.mid+"</text><span class='focus-border'></span></div>");
-		    $(".MPW").append("<div class='col-3'><input id='MPW' class='effect-1' type='password' value='"+result.mpw+"'><span class='focus-border'></span></div>");
-		    $(".MNM").append("<div class='col-3'><input id='MNM' class='effect-1' type='text' value='"+result.mnm+"'><span class='focus-border'></span></div>");
-		    $(".MTEL").append("<div class='col-3'><input id='MTEL' class='effect-1' type='text' value='"+result.mtel+"'><span class='focus-border'></span></div>");
+	   $.getJSON("../ajax/member/detail.do", function(result) {	      
+		    $(".MID").append("<div class='col-3'><text id='MID' name='mid' class='effect-1'>"+result.mid+"</text><span class='focus-border'></span></div>");
+		    $(".MPW").append("<div class='col-3'><input id='MPW' name='mpw' class='effect-1' type='password' value='"+result.mpw+"'><span class='focus-border'></span></div>");
+		    $(".MNM").append("<div class='col-3'><input id='MNM' name='mnm' class='effect-1' type='text' value='"+result.mnm+"'><span class='focus-border'></span></div>");
+		    $(".MTEL").append("<div class='col-3'><input id='MTEL' name='mtel' class='effect-1' type='text' value='"+result.mtel+"'><span class='focus-border'></span></div>");
 		    if (!result.mem)
 		    	result.mem="";
-		    $(".MEM").append("<div class='col-3'><input id='MEM' class='effect-1' type='text' value='"+result.mem+"'><span class='focus-border'></span></div>");
+		    $(".MEM").append("<div class='col-3'><input id='MEM' name='mem' class='effect-1' type='text' value='"+result.mem+"'><span class='focus-border'></span></div>");
 		    if (!result.mjob)
 		          result.mjob="";
-		    $(".MJOB").append("<div class='col-3'><input id='MJOB' class='effect-1' type='text' value='"+result.mjob+"'><span class='focus-border'></span></div>");
+		    $(".MJOB").append("<div class='col-3'><input id='MJOB' name='mjob' class='effect-1' type='text' value='"+result.mjob+"'><span class='focus-border'></span></div>");
 		    if (!result.madr)
 		          result.madr="";
-		    $(".MADR").append("<div class='col-3'><input id='MADR' class='effect-1' type='text' value='"+result.madr+"'><span class='focus-border'></span></div>");
+		    $(".MADR").append("<div class='col-3'><input id='MADR' name='madr' class='effect-1' type='text' value='"+result.madr+"'><span class='focus-border'></span></div>");
 		    if (!result.mpg)
 		          result.mpg="";
-		    $(".MPG").append("<div class='col-3'><input id='MPG' class='effect-1' type='text' value='"+result.mpg+"'><span class='focus-border'></span></div>");
-		    $(".img-wrapper")
-	        .css('background', 'url(' + result.mpic + ') no-repeat center center')
-	        .css('background-size', 'cover');
-	   });	   
-}
+		    $(".MPG").append("<div class='col-3'><input id='MPG' name='mpg' class='effect-1' type='text' value='"+result.mpg+"'><span class='focus-border'></span></div>");
+		    if (!result.mpic)
+		    	    result.mpic="img/noimage.jpg";
+		    $(".img-wrapper").css('background', 'url(' + result.mpic + ') no-repeat center center').css('background-size', 'cover');     
+	    
+	});
+}	   
+ */
+$("form#frm").submit(function(event){    
+	  //disable the default form submission
+	  event.preventDefault();
 
-$("#changeBtn").click(function(event) {
-	  $.ajax("../ajax/member/update.do", {
-		 
-	    method: "POST",
-	    dataType: "json",
-	    data: {
-	    	no: 1,
-	      pw: $("#MPW").val(),
-	      name: $("#MNM").val(),
-	      tel: $("#MTEL").val(), 
-	      email: $("#MEM").val(),
-	      job: $("#MJOB").val(),
-	      adress: $("#MADR").val(),
-	      homepage: $("#MPG").val()
-	    },
-	    success: function(result) {
-	      if (result.status == "success") {
-	    	  alert("저장되었습니다.");
-	        location.href = "mypage.html";
-	      } else {
-	        window.alert("변경 실패입니다!");
-	      }
-	    },
-	    error: function() {
-	      window.alert("서버 요청 실패입니다!");
+	  var fd = new FormData($(this)[0]);
+	  
+	  $.ajax({
+	    url: "../ajax/member/upload.do",
+	    type: "POST",
+	    data: fd, 
+	    async: false,
+	    cache: false,
+	    contentType: false,
+	    processData: false,
+	    success:  function(data){
+	      alert("저장되었습니다.");
+	      location.href="profile.html";
 	    }
-	  });
+	  });	  
+	  return false;	  
 });
 
 $(function() {

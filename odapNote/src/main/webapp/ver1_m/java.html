@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Odap Note</title>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/java.css">
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="css/buttons.css" />
+
 <style>
   nav#logo {
     display: inline;
@@ -138,6 +142,7 @@
 }
 
 .pin:hover { 
+         
   opacity: 0.4;
 }  
 
@@ -263,6 +268,9 @@
   margin-left: 5%;
 }
 
+
+/*****************************************************************************/
+
 </style>
 
 </head>
@@ -274,7 +282,6 @@
       <div id="mypage" class="dropdown">
         <img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
           <span class="caret"></span>
-        </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
           <li><a href="mypage.html">mypage</a></li>
           <li><a href="profile.html">profile</a></li>
@@ -287,7 +294,21 @@
 <section id="contents">
 <section id="side">
 
-  <div id = "classlist"></div>
+<div id="container">
+  <div class="list-view">
+    <ul>
+    
+    </ul>
+           
+ 
+  </div>
+  <div class="details-view">
+    <div class="back"></div>
+    <div class="background"></div>
+       <div id="4classdetail"></div>  
+  </div>
+</div>
+ 
    <div id="myinf"></div>
     
 </section>
@@ -363,15 +384,40 @@ $(function(){
       $("<div class='pin'>").html("<img src='" + entry["P"]+"'/>" + "<p>" 
           + entry["T"] + "</p><br>" + "<p>" + entry["C"] + "</p>").appendTo($("#columns"));
     });
-    $.each(data.CL, function(index,entry){
-      $("<div id='cL'>").html("<button class='button button--winona button--border-thin button--round-s' data-text='"
-          + entry["T"] +"'><span>"+ entry["T"]+"</span></button>").appendTo($("#classlist"));
-    });   
+     
   })
 });
 //=================================================================================
-	
+   
+load4classList();
 
+
+
+
+function load4classList(){    
+    $.getJSON("../ajax/class/list.do", function(result) {  
+       $.each(result, function(i,d){   
+             $(".list-view > ul").append("<li><span class='avatar'></span><span class='name'>" + d.cnm + "</span></li>");
+           
+       });
+  })
+}
+load4classDetail();
+function load4classDetail() {    
+     $.getJSON("../ajax/member/detail.do?no=1", function(result) {            
+          $("#4classdetail").append("<ul><li><i class='fa fa-video-camera'></i>" + result.mnm +
+                  "</li><li><i class='fa fa-envelope'></i>" + result.mem +
+                  "</li><li><i class='fa fa-mobile'></i>" + result.mtel +  
+                  "</li><li><i class='fa fa-home'></i>" + result.mpg + "</li></ul>");
+              
+        });
+   }
+
+
+
+
+   
+//=================================================================================
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
@@ -403,12 +449,26 @@ function removeUpload() {
     $('.file-upload-content').hide();
     $('.image-upload-wrap').show();
   }
+  
   $('.image-upload-wrap').bind('dragover', function () {
       $('.image-upload-wrap').addClass('image-dropping');
     });
     $('.image-upload-wrap').bind('dragleave', function () {
       $('.image-upload-wrap').removeClass('image-dropping');
   });
+    
+    
+    var container = $('#container');
+
+    $(document).on('click', '.list-view li', function(){
+      $(this).addClass('active');
+      container.addClass('details');
+    });
+
+    $('.back').click(function(){
+      container.removeClass('details');
+      $('.list-view li').removeClass('active');
+    }); 
 
 </script>
 

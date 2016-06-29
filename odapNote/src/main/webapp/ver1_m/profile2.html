@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odap Note</title>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/input-style.css">
+
+<style>
+nav#logo {
+    display: inline;
+    position: relative;
+    left: 0%;
+  }
+  #mypage {
+    display: inline;
+    position: relative;
+    float: right;
+    top: 10px;
+  }
+  header {
+    border: 1px solid white;
+    margin: 0px auto;
+    width: 1280px;
+  }
+    #search-line { 
+   height: 5px;
+   background-color: gray;
+  }
+/****************************header****************************************/
+
+.edit-profile-page {
+  position: relative;
+  margin-top: 50px;
+  width: 700px;
+  height: 800px;
+}
+
+.profile-panel {
+  background-color: LightGrey;
+}
+
+.linkedin-container {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.profile-header {
+  color: DimGray;
+  font-size: 24px;
+  font-weight: 900;
+  padding-bottom: 5px;
+}
+
+.edit-container {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  display: inline-block;
+}
+
+.btn-edit {
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-size: 130%;
+  text-align: center;
+  padding-top: 3px;
+  background-color: MediumSeaGreen;
+  border: 1px solid LightGrey;
+  border-radius: 4px;
+}
+
+.label {
+  color: DimGray;
+  font-size: 14px;
+  font-weight: 900;
+  padding-top: 3px;
+}
+
+.name {
+  color: DimGray;
+  font-size: 16px;
+  font-weight: 900;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 7px;
+}
+
+.profile-label {
+  color: MediumSeaGreen;
+  font-size: 14px;
+  font-weight: 900;
+  padding-top: 3px;
+}
+
+.profile {
+  color: DimGray;
+  font-size: 16px;
+  font-weight: 900;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 7px;
+}
+
+/*****************************profile form*********************************/
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+.preview {  
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;    
+    border: 2px solid rgb(33, 122, 105);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    z-index: 5;
+    display: block;
+    width: 250px;
+    height: 30px;
+    margin: 50px auto;
+    border-top: 2px solid rgb(33, 122, 105);
+    border-right: 2px solid rgb(33, 122, 105);
+    border-bottom: 2px solid rgb(33, 122, 105);
+    border-left: 2px solid rgb(33, 122, 105);
+}
+
+.file-upload-native,
+.file-upload-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.file-upload-native:focus,
+.file-upload-text:focus {
+    outline: none;
+}
+
+.file-upload-text {
+    z-index: 10;
+    padding: 5px 15px 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 1px;
+    text-overflow: ellipsis;
+    color: rgb(144, 162, 148);
+    border: 0;
+    background-color: transparent;
+}
+
+.file-upload-native {
+    z-index: 15;
+    opacity: 0;
+}
+</style>
+</head>
+<body>
+<header>
+      <nav id="logo">
+         <a href="mypage.html"><img src="img/Logo.png"></a>
+      </nav>
+      <div id="mypage" class="dropdown">
+        <img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+          <span class="caret"></span>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
+          <li><a href="mypage.html">mypage</a></li>
+          <li><a href="#">profile</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="../auth/logout.do">logout</a></li>
+        </ul>
+      </div>
+</header>
+<div id="search-line"></div>
+<!-- ---------------------------------------------------------------- -->
+<div class="contents">
+  <form id="frm" name="frm" method="POST">
+  <div class="preview img-wrapper"></div>
+  <div class="file-upload-wrapper">
+      <input type="file" id="uploadFile" name="uploadFile" class="file-upload-native" accept="image/*"/>
+      <input type="text" disabled placeholder="upload image" class="file-upload-text" />
+  </div>
+  <!-- ---------------------------------------------------------------- -->
+  <div class="container edit-profile-page">
+    <div class="row">
+      <div class="col-sm-12 profile-panel">    
+        <div class="profile-header">PROFILE</div>
+        <div class="edit-container"><button id="upload" name='upload' type='submit' class='btn-edit'>change</button></div>
+        <!------------------------------------------------------------------------------------------------------------>        
+        <div class="profile-label MID-label">ID</div>
+        <div class="profile MID"></div>
+        <div class="profile-label MPW-label">PASSWORD</div>
+        <div class="profile MPW"></div>
+        <div class="profile-label MNM-label">NAME</div>
+        <div class="profile MNM"></div>
+        <div class="profile-label MTEL-label">TEL</div>
+        <div class="profile MTEL"></div>
+        <div class="label MEM-label">EMAIL</div>
+        <div class="profile MEM"></div>
+        <div class="label MJOB-label">JOB</div>
+        <div class="profile MJOB"></div>
+        <div class="label MADR-label">LOCATION</div>
+        <div class="profile MADR"></div>
+        <div class="label MPG-label">HOMEPAGE</div>
+        <div class="profile MPG"></div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+loadMyInfo();
+function loadMyInfo() {
+	   $.getJSON("../ajax/member/detail.do", function(result) {
+		    /* var img = new Image();
+	      img.src=result.mpic; 
+	       img.onerror=function(){
+		      $("#frm").css("opacity","0.5");
+		      $('#loading').append("<div id='loadingImg'><img src='img/reload.gif'/></div>").show();
+		      setTimeout(function() {
+		      location.href="profile.html";
+		      }, 3000);
+	      } */
+	      
+		    $(".MID").append("<div class='col-3'><text id='MID' name='mid' class='effect-1'>"+result.mid+"</text><span class='focus-border'></span></div>");
+		    $(".MPW").append("<div class='col-3'><input id='MPW' name='mpw' class='effect-1' type='password' value='"+result.mpw+"'><span class='focus-border'></span></div>");
+		    $(".MNM").append("<div class='col-3'><input id='MNM' name='mnm' class='effect-1' type='text' value='"+result.mnm+"'><span class='focus-border'></span></div>");
+		    $(".MTEL").append("<div class='col-3'><input id='MTEL' name='mtel' class='effect-1' type='text' value='"+result.mtel+"'><span class='focus-border'></span></div>");
+		    if (!result.mem)
+		    	result.mem="";
+		    $(".MEM").append("<div class='col-3'><input id='MEM' name='mem' class='effect-1' type='text' value='"+result.mem+"'><span class='focus-border'></span></div>");
+		    if (!result.mjob)
+		          result.mjob="";
+		    $(".MJOB").append("<div class='col-3'><input id='MJOB' name='mjob' class='effect-1' type='text' value='"+result.mjob+"'><span class='focus-border'></span></div>");
+		    if (!result.madr)
+		          result.madr="";
+		    $(".MADR").append("<div class='col-3'><input id='MADR' name='madr' class='effect-1' type='text' value='"+result.madr+"'><span class='focus-border'></span></div>");
+		    if (!result.mpg)
+		          result.mpg="";
+		    $(".MPG").append("<div class='col-3'><input id='MPG' name='mpg' class='effect-1' type='text' value='"+result.mpg+"'><span class='focus-border'></span></div>");
+		    if (!result.mpic)
+		    	    result.mpic="img/noimage.jpg";
+		    $(".img-wrapper").css('background', 'url(' + result.mpic + ') no-repeat center center').css('background-size', 'cover');     
+	    
+	});
+}	   
+
+$("form#frm").submit(function(event){    
+	  //disable the default form submission
+	  event.preventDefault();
+
+	  var fd = new FormData($(this)[0]);
+	  
+	  $.ajax({
+	    url: "../ajax/member/upload.do",
+	    type: "POST",
+	    data: fd, 
+	    async: false,
+	    cache: false,
+	    contentType: false,
+	    processData: false,
+	    success:  function(data){
+	      alert("저장되었습니다.");
+	      location.href="profile.html";
+	    }
+	  });	  
+	  return false;	  
+});
+
+$(function() {
+  function maskImgs() {
+    //$('.img-wrapper img').imagesLoaded({}, function() {
+    $.each($('.img-wrapper img'), function(index, img) {
+      var src = $(img).attr('src');
+      var parent = $(img).parent();
+      parent
+        .css('background', 'url(' + src + ') no-repeat center center')
+        .css('background-size', 'cover');
+      $(img).remove();
+    });
+    //});
+  }
+
+  var preview = {
+    init: function() {
+      preview.setPreviewImg();
+      preview.listenInput();
+    },
+    setPreviewImg: function(fileInput) {
+      var path = $(fileInput).val();
+      var uploadText = $(fileInput).siblings('.file-upload-text');
+
+      if (!path) {
+        $(uploadText).val('');
+      } else {
+        path = path.replace(/^C:\\fakepath\\/, "");
+        $(uploadText).val(path);
+
+        preview.showPreview(fileInput, path, uploadText);
+      }
+    },
+    showPreview: function(fileInput, path, uploadText) {
+      var file = $(fileInput)[0].files;
+
+      if (file && file[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          var previewImg = $(fileInput).parents('.file-upload-wrapper').siblings('.preview');
+          var img = $(previewImg).find('img');
+
+          if (img.length == 0) {
+        	  $(previewImg).html('<img src="' + e.target.result + '" alt=""/>');
+          } else {
+            img.attr('src', e.target.result);
+          }
+
+          uploadText.val(path);
+          maskImgs();
+        }
+
+        reader.onloadstart = function() {
+          $(uploadText).val('uploading..');
+        }
+
+        reader.readAsDataURL(file[0]);
+      }
+    },
+    listenInput: function() {
+      $('.file-upload-native').on('change', function() {
+        preview.setPreviewImg(this);
+      });
+    }
+  };
+  preview.init();
+});
+</script>
+</body>
+</html>
