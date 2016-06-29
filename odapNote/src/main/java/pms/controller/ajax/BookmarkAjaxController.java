@@ -15,28 +15,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import pms.service.ClassService;
-import pms.vo.Class;
+import pms.service.BookmarkService;
+import pms.vo.Bookmark;
 import pms.vo.Member;
+import pms.vo.Question;
 
 @Controller
-@RequestMapping("/ajax/class/")
-public class ClassAjaxController {
-@Autowired ClassService classService;
+@RequestMapping("/ajax/bookmark/")
+public class BookmarkAjaxController {
+@Autowired BookmarkService bookmarkService;
   
   @RequestMapping(value="add", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String add(String cnm, String csub, String cdes, HttpSession session) throws ServletException, IOException {
+  public String add(int mno, int qno) throws ServletException, IOException {
 
-    Class clazz = new Class();
-    clazz.setMno(((Member)session.getAttribute("loginUser")).getMno());
-    clazz.setCnm(cnm);
-    clazz.setCsub(csub);
-    clazz.setCdes(cdes);
+    Bookmark bookmark = new Bookmark();
+    bookmark.setMno(mno);
+    bookmark.setQno(qno);
     
     HashMap<String,Object> result = new HashMap<>();
     try {
-      classService.add(clazz);
+      bookmarkService.add(bookmark);
       result.put("status", "success");
     } catch (Exception e) {
       e.printStackTrace();
@@ -52,7 +51,7 @@ public class ClassAjaxController {
       throws ServletException, IOException {
     HashMap<String,Object> result = new HashMap<>();
     try {
-      classService.delete(no);
+      bookmarkService.delete(no);
       result.put("status", "success");
     } catch (Exception e) {
       result.put("status", "failure");
@@ -60,36 +59,29 @@ public class ClassAjaxController {
     return new Gson().toJson(result);
   }
   
-  @RequestMapping(value="detail", produces="application/json;charset=UTF-8")
-  @ResponseBody
-  public String detail(int no) throws ServletException, IOException {
-    Class clazz = classService.retrieve(no);
-    return new Gson().toJson(clazz);
-  }
-  
   @RequestMapping(value="list", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String list() 
-      throws ServletException, IOException {    
-    
-    List<Class> list = classService.list();
+  public String detail(HttpSession session) throws ServletException, IOException {
+    Member member = (Member)session.getAttribute("loginUser");
+    System.out.println(member);
+    List<Question> list = bookmarkService.userBookmark(member.getMno());
     return new Gson().toJson(list);
   }
   
+   
   @RequestMapping(value="update",
       method=RequestMethod.POST,
       produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String update(int no, String cnm, String cdes) throws ServletException, IOException {
+  public String update(int bno, int mno, int qno) throws ServletException, IOException {
     
-    Class clazz = new Class();
-    clazz.setCno(no);
-    clazz.setCnm(cnm);
-    clazz.setCdes(cdes);
+    Bookmark bookmark = new Bookmark();
+    bookmark.setMno(mno);
+    bookmark.setQno(qno);
     
     HashMap<String,Object> result = new HashMap<>();
     try {
-      classService.change(clazz);
+      bookmarkService.change(bookmark);
       result.put("status", "success");
     } catch (Exception e) {
       result.put("status", "failure");
