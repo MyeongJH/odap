@@ -1,0 +1,1007 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>ODap</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Material Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!--fonts-->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+<!--//fonts-->
+<!--Calender -->
+  <style>
+ 
+body{
+  background: url(http://p.w3layouts.com/demos/material_uikit/web/images/back1.jpg)  ;  
+  font-family: 'Roboto', sans-serif;
+}
+body a{
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all; 
+}
+ ul{
+  padding: 0;
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6,label,p{
+  margin:0; 
+}
+.main {
+  padding: 7em 0;
+}
+.header{
+  background:#48d1cc;
+  padding: 2em 2em 0;
+  margin: 0 1em;
+}
+.logo{
+  float:left;
+  margin-top: 0.8em;
+}
+.logo a.go {
+  float: right;
+  width: 70%;
+}
+.logo-top {
+  display: inline-block;
+  float: left;
+  position:relative;
+}
+
+ ul.sub{
+  background:#fff;
+  border:1px solid #ccc;
+  position:absolute;
+  left: 0;
+  width: 118px;
+  margin: 20px 0 0 0;
+  opacity: 0;
+  visibility: hidden;
+  top: 37px;
+  z-index: 1;
+
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+
+ }
+.logo-top:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+  z-index: 9999;
+}
+ ul.sub li {
+  list-style:none;  
+}
+  ul.sub li a {
+  display: inline-block;
+  color: #333;
+  text-decoration: none;  
+  font-weight: 400; 
+  font-size: 0.8em;
+  padding: 0.5em;
+}
+ ul.sub li a:hover{
+ color:#039be5;
+  }
+/*--- Navigation---*/
+span.menu-at,span.menu-at-in,span.menu-at-on{
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+.menu  ul,.menu1  ul,.menu2  ul{
+  display: none;
+  position:absolute;
+  border:1px solid #ccc;
+  z-index: 9999;
+  left: -40%;
+  margin:0.5em 0em 0;
+  background:#fff;
+  padding:0.5em;
+}
+.menu span.menu-at,.menu1 span.menu-at-in,.menu2 span.menu-at-on{
+  display: block;
+}
+.menu ul li ,.menu1 ul li,.menu2 ul li{
+  list-style:none;  
+}
+.menu ul li  a ,.menu1 ul li a,.menu2 ul li a{
+  display: inline-block;
+  color: #333;
+  text-decoration: none;  
+  font-weight: 400; 
+  font-size: 0.8em;
+  padding: 0.5em;
+  
+}
+.menu ul li  a:hover{
+  color:#000;
+}
+.header-top{
+  float:right;
+  width: 62%;
+}
+.search{
+  position:relative;
+  border-bottom: 2px solid #81d4fa;
+}
+.search input[type="text"] {
+  outline: none;
+  padding:8px 15px;
+  background: none;
+  width: 90%;
+  border: none;
+  font-size: 2.3em;
+  color: #fff;
+  font-weight: 300; 
+}
+.search input[type="submit"] {  
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  outline: none;
+  top: 20px;
+  right: 0px;
+  background: url(http://p.w3layouts.com/demos/material_uikit/web/images/img-sprite.png)no-repeat -8px -13px ;
+  width: 30px;
+  height: 30px;
+}
+.top-nav{
+  padding:2em 0 0;
+}
+.top-nav ul li {
+  display:inline-block; 
+}
+.top-nav ul li  a {
+  display: inline-block;
+  color: #81d4fa;
+  text-decoration: none;  
+  font-weight: 400; 
+  font-size: 1.1em;
+  padding: 1em 1.5em;
+}
+.top-nav ul li  a:hover,.top-nav ul li.active a{
+  color:#fff;
+  border-bottom:3px solid #ffff00;
+}
+.top-nav span.menu-in{
+  display: none;
+}
+.header-bottom{
+  display:none;
+}
+.search-at{
+  display:none;
+}
+/*--top--*/
+.col-top{
+  background:#3949ab;
+  padding:1.5em;
+}
+.col-top p{
+  color:#fff;
+  font-size:1em;
+  line-height:1.8em;
+}
+.posts {
+  margin:1em 0;
+  border-top:1px solid #7986cb;
+  border-bottom:1px solid #7986cb;
+  padding:0.8em 0;
+}
+.col-md{
+  float:left;
+  width:33.33%;
+  text-align: center;   
+}
+.col-md span{
+  display:block;
+  color:#fff;
+  font-size:1em;  
+}
+.col-md label{
+  color:#7986cb;
+  font-size:0.9em;  
+}
+a.follow {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1em;
+  padding: 0.4em 0;
+  text-align: center;
+  width: 93%;
+  margin: 0 auto;
+  background: #7986cb;
+  display: block;
+}
+a.follow:hover {
+  background:#7E90EC;
+
+}
+ a.follow i{  
+  display: inline-block;
+  background: url(http://p.w3layouts.com/demos/material_uikit/web/images/img-sprite.png)no-repeat -314px -15px;
+  width: 20px;
+  height: 20px;
+  vertical-align: sub;
+  margin: 0 0.3em 0 0;
+}
+
+ul.message li{
+  display:inline-block;
+  padding: 0 6px; 
+}
+.men{
+  position:relative;
+}
+ul.message {
+  position:absolute;
+  top:5%;
+  right:8%;
+}
+.men h2{
+  color:#fff;
+  font-size:2.5em;
+  font-weight:300;
+  position:absolute;
+  top:35%;
+  left:7%;
+}
+.content-top {
+  padding: 2em 0;
+}
+/*--weather--*/
+.weather{
+  background:url(http://p.w3layouts.com/demos/material_uikit/web/images/we.jpg)no-repeat 0px 0px;
+  min-height:382px;
+  display:inline-block;
+  width: 100%;
+}
+ span.time{
+  text-align:center;
+  color:#fff;
+  font-size:1.1em;
+  padding:1em 0;
+  display:block;
+}
+.item h1{
+  font-size:8em;
+  font-weight:100;
+  color:#fff;
+}
+.item h1 em{
+  font-size: 0.4em;
+  vertical-align:top;
+  color:#fff;
+  font-style:normal;
+}
+.item p{
+  font-size:1em;
+  color:#fff;
+}
+.item p i{
+  display: inline-block;
+  background: url(http://p.w3layouts.com/demos/material_uikit/web/images/img-sprite.png)no-repeat -128px -14px;
+  width: 20px;
+  height: 20px;
+  vertical-align: sub;
+  margin: 0 0.5em 0 0;
+}
+.san{
+  background:#4db6ac;
+  color:#fff;
+  text-align:center;
+  padding:1em 0;
+}
+.san h3{
+  font-size:1.9em;
+  font-weight:300;
+  padding: 0 0 0.2em;
+}
+.san h3 a{
+  color:#fff;
+  text-decoration:none;
+}
+.san h3 a:hover{
+  color:#20211f;
+}
+.san small{
+  font-size:1em;
+}
+/*---*/
+.balloon iframe{
+  border:none;
+  width:100%;
+  height:382px;
+  display: block;
+}
+.red{
+  background:#d01a25;
+  color:#fff;
+  padding:1em 0;
+  text-align:center;
+}
+.red h3{
+  font-size:1.9em;
+  font-weight:300;
+  padding: 0 0 0.2em;
+}
+.red h3 a{
+  color:#fff;
+  text-decoration:none;
+}
+.red h3 a:hover{
+  color:#20211f;
+}
+.red small{
+  font-size:1em;
+}
+/*--middle--*/
+.content-middle {
+  padding: 0 0 2em;
+}
+.middle-at iframe{
+  border:none;
+  width:100%;
+  height:330px;
+  display: block;
+}
+.col-mid {
+  background: #673ab7;
+  padding: 1.5em;
+}
+.col-mid p {
+  color: #fff;
+  font-size: 1em;
+  line-height: 1.8em;
+}
+ul.col-at li{
+  display:inline-block;
+  padding: 0 6px; 
+}
+
+.men-grid{
+  position:relative;
+}
+ul.col-at {
+  position:absolute;
+  top:5%;
+  right:7%;
+}
+.men-grid h2{
+  color:#fff;
+  font-size:2.5em;
+  font-weight:300;
+  position:absolute;
+  top:45%;
+  left:7%;
+}
+.rose{
+  background:#d81b60;
+  padding:1em;
+  color:#fff;
+}
+.rose-grid{
+  padding:0.5em 0;
+}
+.rose-grid span{
+  font-size:1em;
+  display:block;
+  color:#f06292;
+}
+.rose-grid label{
+  font-size:2em;
+  font-weight:300;
+}
+.col-bottom {
+  background: #20211f;
+  padding: 1.5em;
+}
+.col-bottom h5 {
+  font-size: 1.7em;
+}
+.col-bottom h5  a{
+  color:#fff;
+  text-decoration:none;
+}
+.col-bottom h5  a:hover{
+  color:#d81b60;
+}
+.col-bottom p {
+  color: #fff;
+  font-size: 1em;
+  line-height: 1.8em;
+}
+ul.col-at-in li{
+  display:inline-block;
+padding:0 6px;  
+}
+
+.men-grid-in{
+  position:relative;
+}
+ul.col-at-in {
+  position:absolute;
+  top:5%;
+  right:7%;
+}
+
+.men-grid-in h3{
+  color:#fff;
+  font-size:2.5em;
+  font-weight:300;
+  position:absolute;
+  top:56%;
+  left:7%;
+}
+p.footer-class {
+  padding: 4em 0 0;
+  text-align: center;
+  font-size: 1.1em;
+  color:#039be5;
+}
+p.footer-class a{
+  text-decoration:none;
+  color:#d81b60;
+}
+p.footer-class a:hover{
+  color:#039be5;
+}
+/*--responsive--*/
+@media(max-width:1366px){
+}
+@media(max-width:1280px){
+  
+}
+@media(max-width:1024px){
+.top-nav ul li a {
+  padding: 1em 1em;
+}
+.search input[type="text"] {
+  font-size: 2em;
+}
+.balloon iframe {
+  height: 366px;
+}
+.weather {
+  min-height: 366px;
+}
+.men h2 {
+  top: 28%;
+}
+.men-grid h2 {
+  top: 38%;
+}
+.middle-at iframe {
+  height: 315px;
+}
+div#recipes {
+  height: 197px !important;
+}
+.main {
+  padding: 5em 0;
+}
+}
+@media(max-width:768px){
+.header-bottom{
+  display:block;
+  float: right;
+  width: 62%;
+}
+.header-top{
+  display:none;
+}
+.search-at{
+  display:block;
+  width: 80%;
+  margin: 1em auto 0;
+}
+.top-nav{
+  float:right;
+  padding:0.8em 0 0;
+}
+span.menu-in{
+  display: block;
+  text-align: right;
+  cursor: pointer;
+  position: relative;
+}
+.top-nav ul{
+  display: none;
+  position:absolute;
+  width: 92.6%;
+  z-index: 9999;
+  left: 3.9%;
+  margin:2em 0em;
+  background:#d81b60;
+  border:0;
+}
+.top-nav span.menu-in{
+  display: block;
+}
+.top-nav ul li{
+  display: block;
+  float:none;
+  padding:  0.3em;
+  text-align: center;
+}
+.top-nav ul li a{
+  color:#fff;
+  display:block;
+  margin:0;
+  background: none;
+  border:none;
+  padding:0.4em;
+}
+.top-nav ul li a:hover,.top-nav ul li.active a{
+  background: none;
+  border:none;
+  color:#000; 
+}
+.men img,.men-grid img,.men-grid-in img{
+  width:100%;
+}
+.weather-grid,.men-grid-in{
+  padding:2em 1em;
+}
+.men-grid {
+  padding: 2em 1em 0;
+}
+.header {
+  padding: 1.5em;
+}
+ul.col-at-in ,ul.col-at{
+  top: 9%;
+}
+.search-at{
+  position:relative;
+  border-bottom: 2px solid #81d4fa;
+}
+.search-at input[type="text"] {
+  outline: none;
+  padding:8px 15px;
+  background: none;
+  width: 90%;
+  border: none;
+  font-size: 1.3em;
+  color: #fff;
+  font-weight: 300; 
+}
+.search-at input[type="submit"] { 
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  outline: none;
+  top: 7px;
+  right: 0px;
+  background: url(http://p.w3layouts.com/demos/material_uikit/web/images/mg-sprite.png)no-repeat -8px -13px ;
+  width: 30px;
+  height: 30px;
+}
+
+}
+@media(max-width:640px){
+ul.col-at-in ,ul.col-at{
+  top: 8%;
+} 
+.search-at input[type="text"] {
+  font-size: 1.1em;
+}
+.top-nav ul {
+  width: 90.6%;
+  left: 4.7%;
+}
+
+}
+@media(max-width:480px){
+.header-bottom {
+  width: 20%;
+}
+.main {
+  padding: 3em 0;
+}
+p.footer-class {
+  padding: 3em 0 0;
+}
+.top-nav ul {
+  width: 87.6%;
+  left: 6.3%;
+}
+
+}
+@media(max-width:320px){
+.main {
+  padding: 2em 0;
+}
+.header {
+  padding: 1em;
+  margin: 0;
+}
+.col-md-4,.col-md-8{
+  padding-left:0;
+  padding-right:0;
+}
+p.footer-class {
+  padding: 2em 0 0;
+  font-size: 0.85em;
+}
+.men h2 {
+  font-size: 1.8em;
+  top: 32%;
+}
+.col-top p {
+  height: 50px;
+  overflow: hidden;
+}
+.col-md label {
+  font-size: 0.8em;
+}
+.item h1 {
+  font-size: 5em;
+}
+.weather {
+  min-height: 250px;
+}
+.san h3,.red h3 {
+  font-size: 1.5em;
+}
+.balloon iframe ,.middle-at iframe{
+  height: 250px;
+}
+.men-grid h2 {
+  font-size: 1.8em;
+  top: 41%;
+}
+.col-mid p {
+  height: 50px;
+  overflow: hidden;
+}
+.men-grid-in h3 {
+  top: 44%;
+}
+.rose-grid label {
+  font-size: 1.5em;
+}
+.top-nav ul {
+  width: 90.1%;
+  left: 5%;
+  margin:1em 0;
+}
+
+.search-at input[type="text"] {
+  font-size: 0.87em;
+}
+.search-at input[type="submit"] {
+  top: 2px;
+}
+.search-at {
+  width: 95%;
+  margin: 0.7em auto 0;
+}
+
+}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="main">
+    <div class="header">
+      <div class="logo">
+      <div class="logo-top">
+      <a href="#" ><img src="http://p.w3layouts.com/demos/material_uikit/web/images/go.png" alt="" ></a>
+      <ul class="sub">
+            <li><a href="#">mypage</a></li>
+            <li><a href="#" >profile</a></li> 
+            <li><a href="#" >logout</a></li>
+          </ul>
+      </div>
+      
+        <a href="#" class="go"><h1>OdapNote</h1></a>
+        <div class="clearfix"> </div>
+      </div>
+      <div class="header-top">
+        <div class="search">
+          <form>
+            <input type="text" value="search here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'search here';}" >
+            <input type="submit" value="" >
+          </form>
+        </div>
+        <div class="top-nav">
+          <ul>
+            <li class="active"><a href="#">WEB</a></li>
+            <li><a href="#" > IMAGES</a></li> 
+            <li><a href="#" > VIDEOS</a></li>
+            <li><a href="#" > SHOPPING</a></li>
+            <li><a href="#" > NEWS</a></li>
+            <li><a href="#" > MORE</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-bottom">
+        
+        <div class="top-nav">
+          <span class="menu-in"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/menu.png" alt=""> </span>
+          <ul>
+            <li class="active"><a href="#">WEB</a></li>
+            <li><a href="#" > IMAGES</a></li> 
+            <li><a href="#" > VIDEOS</a></li>
+            <li><a href="#" > SHOPPING</a></li>
+            <li><a href="#" > NEWS</a></li>
+            <li><a href="#" > MORE</a></li>
+          </ul>
+          <script>
+            $("span.menu-in").click(function(){
+              $(".top-nav ul").slideToggle(500, function(){
+              });
+            });
+          </script>
+        </div>
+        
+      </div>
+      <div class="clearfix"> </div>
+        <div class=" search-at">
+          <form>
+            <input type="text" value="search here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+            <input type="submit" value="" >
+          </form>
+        </div>      
+    </div>
+    <!--top-->
+    
+      <div class="content-top">
+        <div class="col-md-4 men">
+          <a href="#" id="mypic"></a>
+          <div class="col-top">
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p> 
+            <div class="posts">
+              <div class="col-md">
+                <span> 373</span>
+                <label>POSTS</label>
+              </div>
+              <div class="col-md">
+                <span> 452,373</span>
+                <label>FOLLOEERS</label>
+              </div>
+              <div class="col-md">
+                <span> 153</span>
+                <label>FOLLOWING</label>
+              </div>
+                <div class="clearfix"> </div>
+            </div>
+            <a href="#" class="follow"><i> </i>Follow</a>
+          </div>
+          <ul class="message">
+            <li><a href="#"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/mes.png" alt=""> </a></li>
+            <li>
+            <div class=" menu">
+          <span class="menu-at"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/dot.png" alt=""> </span> 
+          <ul>
+            <li><a href="#">Gmail</a></li>
+            <li><a href="#" > Facebook</a></li> 
+            <li><a href="#" > Twitter</a></li>                
+          </ul>
+          <script>
+            $("span.menu-at").click(function(){
+              $(".menu ul").slideToggle(500, function(){
+              });
+            });
+          </script>
+        </div>
+</li>
+          </ul>
+          <h2>Eric Smith</h2>
+        </div>
+        <div class="col-md-4 weather-grid">
+        <div class=" weather">
+          <span class="time">14:45 pm</span>
+          <!-- requried-jsfiles-for owl -->           
+                  
+
+    <!-- start content_slider -->
+          <div id="example1">
+       
+          </div>
+        </div>
+        <div class="san">
+          <h3><a href="#">San Francisco</a></h3>
+          <small>California</small>
+        </div>
+        
+        </div>
+        <div class="col-md-4 balloon">
+        <iframe  src="https://www.youtube.com/embed/e2Y1tRBOXfA"  allowfullscreen></iframe>
+          <!--
+          <iframe src="https://player.vimeo.com/video/56124799"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+          -->
+          <div class="red">
+            <h3><a href="#">Montreal</a></h3>
+            <small>The Weeknd</small>
+          </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    <!--//-->
+    
+    <!--middle-->
+      <div class="content-middle">
+        <div class="col-md-8 middle-at">
+          <iframe  src="https://www.youtube.com/embed/jdkKQxWCpKs"  allowfullscreen></iframe>
+        </div>
+        <div class="col-md-4 men-grid">
+          <a href="#"><img class="img-responsive " src="http://p.w3layouts.com/demos/material_uikit/web/images/ph.jpg" alt=""></a>
+          <div class="col-mid">
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p> 
+            
+          </div>
+          
+          <ul class="col-at">
+            <li><a href="#"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/lo.png" alt=""> </a></li>
+            <li>
+            <div class=" menu1">
+          <span class="menu-at-in"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/dot.png" alt=""> </span>  
+          <ul>
+            <li><a href="#">Gmail</a></li>
+            <li><a href="#" > Facebook</a></li> 
+            <li><a href="#" > Twitter</a></li>            
+          </ul>
+          <script>
+            $("span.menu-at-in").click(function(){
+              $(".menu1 ul").slideToggle(500, function(){
+              });
+            });
+          </script>
+        </div>
+</li>
+          </ul>
+          <h2>iPhone 6 Review</h2>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    <!--//-->
+    <!--bottom-->
+      <div class="content-bottom">
+        <div class="col-md-4 bottom-at">
+          <!-- start calender  ---->
+          <div class="column_right_grid calender">
+                      <div class="cal1"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><p class="clndr-previous-button">previous</p></div><div class="month">November 2013</div><div class="clndr-control-button rightalign"><p class="clndr-next-button">next</p></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day past adjacent-month last-month calendar-day-2013-10-27"><div class="day-contents">27</div></td><td class="day past adjacent-month last-month calendar-day-2013-10-28"><div class="day-contents">28</div></td><td class="day past adjacent-month last-month calendar-day-2013-10-29"><div class="day-contents">29</div></td><td class="day past adjacent-month last-month calendar-day-2013-10-30"><div class="day-contents">30</div></td><td class="day past adjacent-month last-month calendar-day-2013-10-31"><div class="day-contents">31</div></td><td class="day past calendar-day-2013-11-01"><div class="day-contents">1</div></td><td class="day past calendar-day-2013-11-02"><div class="day-contents">2</div></td></tr><tr><td class="day past calendar-day-2013-11-03"><div class="day-contents">3</div></td><td class="day past calendar-day-2013-11-04"><div class="day-contents">4</div></td><td class="day past calendar-day-2013-11-05"><div class="day-contents">5</div></td><td class="day past calendar-day-2013-11-06"><div class="day-contents">6</div></td><td class="day past calendar-day-2013-11-07"><div class="day-contents">7</div></td><td class="day past calendar-day-2013-11-08"><div class="day-contents">8</div></td><td class="day past calendar-day-2013-11-09"><div class="day-contents">9</div></td></tr><tr><td class="day past event calendar-day-2013-11-10"><div class="day-contents">10</div></td><td class="day past event calendar-day-2013-11-11"><div class="day-contents">11</div></td><td class="day past event calendar-day-2013-11-12"><div class="day-contents">12</div></td><td class="day past event calendar-day-2013-11-13"><div class="day-contents">13</div></td><td class="day past event calendar-day-2013-11-14"><div class="day-contents">14</div></td><td class="day past calendar-day-2013-11-15"><div class="day-contents">15</div></td><td class="day past calendar-day-2013-11-16"><div class="day-contents">16</div></td></tr><tr><td class="day past calendar-day-2013-11-17"><div class="day-contents">17</div></td><td class="day past calendar-day-2013-11-18"><div class="day-contents">18</div></td><td class="day past calendar-day-2013-11-19"><div class="day-contents">19</div></td><td class="day past calendar-day-2013-11-20"><div class="day-contents">20</div></td><td class="day past event calendar-day-2013-11-21"><div class="day-contents">21</div></td><td class="day past event calendar-day-2013-11-22"><div class="day-contents">22</div></td><td class="day today event calendar-day-2013-11-23"><div class="day-contents">23</div></td></tr><tr><td class="day calendar-day-2013-11-24"><div class="day-contents">24</div></td><td class="day calendar-day-2013-11-25"><div class="day-contents">25</div></td><td class="day calendar-day-2013-11-26"><div class="day-contents">26</div></td><td class="day calendar-day-2013-11-27"><div class="day-contents">27</div></td><td class="day calendar-day-2013-11-28"><div class="day-contents">28</div></td><td class="day calendar-day-2013-11-29"><div class="day-contents">29</div></td><td class="day calendar-day-2013-11-30"><div class="day-contents">30</div></td></tr></tbody></table></div></div>
+          </div>
+      <!-- end calender  ---->
+        </div>
+        <div class="col-md-4 men-grid-in">
+          <a href="#"><img class="img-responsive " src="http://p.w3layouts.com/demos/material_uikit/web/images/ac.jpg" alt=""></a>
+          <div class="col-bottom">
+            <h5><a href="#">Wireless Speaker</a></h5>
+            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum </p>
+          </div>
+          
+          <ul class="col-at-in">
+          
+            <li><a href="#" > <img src="http://p.w3layouts.com/demos/material_uikit/web/images/ca.png" alt=""> </a></a></li>
+            <li><a href="#"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/st.png" alt=""> </a></li>
+            <li>
+            <div class="menu2">
+          <span class="menu-at-on"><img src="http://p.w3layouts.com/demos/material_uikit/web/images/dt.png" alt=""> </span> 
+          <ul>
+            <li><a href="#">Gmail</a></li>
+            <li><a href="#" > Facebook</a></li> 
+            <li><a href="#" > Twitter</a></li>              
+          </ul>
+          <script>
+            $("span.menu-at-on").click(function(){
+              $(".menu2 ul").slideToggle(500, function(){
+              });
+            });
+          </script>
+        </div>
+</li>
+          </ul>
+          <h3>£99</h3>
+        </div>
+        <div class="col-md-4">
+          <div id="recipes" style="100%; height:225px; margin: 0 auto"></div>
+             <script>
+             loadMyInfo();
+             
+             function loadMyInfo() {
+            	  
+            	   $.getJSON("../ajax/member/detail.do", function(result) {      
+            	     if(!result.mpic) {
+            	       result.mpic = "./img/noimage.jpg" ;
+            	     }
+            	      $("#mypic").append("<img class='img-responsive ' src=''"+result.mpic+"' alt=''>");            	    
+            	   });
+            	}
+             
+             $(function () {
+                  $('#recipes').highcharts({
+                      
+                      title: {
+                          text: ' ',
+                          style: {
+                            color: 'red',
+                            fontWeight: '100'
+                           
+                        }
+                      },
+                     
+                     xAxis: {
+                        categories: ['AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN'],
+                  
+                    },
+                      
+                      yAxis: {
+                         labels: {
+                              formatter: function() {
+                                  return this.value +'k'
+                              }
+                          },
+                       title: {
+                                enabled: false
+                            }
+                      },
+                       plotOptions: {
+                        series: {
+                           cursor: 'pointer',
+                            color: '#ec407a'
+                        }
+                    },
+                       
+                      legend: {
+                        enabled: false
+                    },
+                      
+                      tooltip: {
+                         shared: true,
+                           pointFormat: '{point.x} k',
+                            backgroundColor: '#fff'
+                      },
+                      
+                      series: [{            
+                          data: [1, 4.5, 4, 6.7, 1],
+                          pointStart: 1
+                      }]
+                  });
+              });
+
+             </script>
+             <div class="rose">
+              <div class="rose-grid">
+                <span>Pageviews</span>
+                <label>28,473,585</label>
+              </div>
+              <div class="rose-grid">
+                <span>Visitors</span>
+                <label>19,594,958</label>
+              </div>
+              
+             </div>
+        </div>      
+          <!---//End-chart---->
+        <div class="clearfix"> </div>
+        </div>
+        
+    <!--//-->
+    <p class="footer-class">© 2015 Material_uikit All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+  </div>
+</div>
+</body>
+</html>
