@@ -13,11 +13,13 @@
   <update id="update" parameterType="Member">
     update MEMBER set
       MPW=#{mpw},
-      MNM=#{mnm},
+      MNM,=#{mnm},
       MTEL=#{mtel},
       MADR=#{madr},
       MJOB=#{mjob},
       MPG=#{mpg},
+      MPIC=#{mpic},
+      MCL=#{mcl},
       MEM=#{mem}
     where MNO=#{mno}
   </update>
@@ -33,11 +35,32 @@
     order by MNO ASC   
   </select>
   
-  <select id="selectOne" resultType="Member" parameterType="int">
+  <select id="selectOne" resultType="Member" parameterType="map">
     select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL,MEM
     from MEMBER
-    where MNO=#{mno}
+    where 
+    <if test="no != null">
+      MNO=#{no}
+    </if>
+    <if test="id != null">
+      MID=#{id}
+    </if>
   </select>
+  
+  <select id="isMember" parameterType="map" resultType="int">
+    select count(*) 
+    from MEMBER
+    where     
+    MID=#{id} and MPW=#{password}   
+  </select>
+  
+  <select id="isMember2" parameterType="map" resultType="int">
+    select count(*) 
+    from MEMBER
+    where     
+    MID=#{id}
+  </select>
+  
   
   <select id="countAll" resultType="int">
     select count(*) 
