@@ -14,6 +14,138 @@
 
 <style>
 
+
+      #top {
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
+      }
+       #header {
+        height: 200px;
+        margin-bottom: 10px;
+        border-bottom: 3px solid gray;       
+      }
+      
+      #topmenu {
+      height: 30px;
+      padding-right: 50px;
+      margin-bottom: 20px;
+      word-spacing: 20px;
+      text-align: right;
+      font-size: 20px;   
+      background-color: #288c28;        
+      }
+             
+       #topmenu a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: white;
+       }
+        #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: black;
+        }
+                        
+       #topmenu a:hover {
+        color: gray;
+       }
+       
+       
+h2 {
+  color: gray;
+}
+
+section{
+  margin: 0px auto;
+  width: 1280px;
+}
+
+.section{
+  position:relative;
+  display: inline-block;
+}
+
+
+
+#search-wrapper {
+  display: inline;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  min-width: 800px;
+  margin-top: 100px;
+  margin-left: 80px;
+}
+
+#search-columns {
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  -webkit-column-fill: auto;
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -moz-column-fill: auto;
+  column-count: 3;
+  column-gap: 20px;
+  column-fill: auto;
+}
+
+.search-pin {
+  display: inline-block;
+  background: #FEFEFE;
+  border-top: 1px solid lightgray;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 3px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  padding: 7px;
+  padding-bottom: 5px;
+  background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+  opacity: 1;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  -webkit-column-break-inside: avoid;
+}
+
+.search-pin img {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+.search-pin p {
+  font: 12px/18px Arial, sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+
+@media ( min-width : 960px) {
+  #columns {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
+@media ( min-width : 1100px) {
+  #columns {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 4;
+  }
+}
+
+.search-pin:hover {
+  opacity: 0.7;
+}
+      
 .section{
    border: 1px solid white;
 }
@@ -199,33 +331,40 @@ header {
     top: 370px;
     right: 300px;
 }
+     
+     #container {
+        width: 1280px;
+        margin: 0px auto;
+        padding: 20px;       
+      }
+    
 </style>
 
 </head>
 <body>
-  <header>
-    <div id="container">
-    <div id="top">
-        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
-    </div>
-    <div class="line"></div>
-    <div id="header">
-      <div id="pheader">
-        <img id="warpbg" class="parallax left top" src="">
-        <img id="star1" class="parallax top" src="img/ta.png">
-        <img id="star2" class="parallax top" src="img/clo.png">
-        <img id="star3" class="parallax" src="img/mo.png">
-        <img id="star4" class="parallax left top" src="img/mu.png">
-        <img id="star5" class="parallax left" src="img/pe.png">
-        <img id="star6" class="parallax left top" src="img/usb.png">
-        <img id="star7" class="parallax top" src="img/tr.png">
-        <img id="star8" class="parallax top" src="img/ph.png">
-    
-        
-        <a class="logo" href="mypage.html" ><img src="img/logo.png"></a>     
-      </div>
-    </div>
-  <section>
+<div id="container">
+	<div id="top">
+		<h1>
+			<a href="#">문의하기 </a><a href="#">로그아웃</a>
+		</h1>
+	</div>
+	<div class="line"></div>
+	<div id="header">
+		<div id="pheader">
+			<img id="warpbg" class="parallax left top" src=""> <img
+				id="star1" class="parallax top" src="img/cle.png"> <img
+				id="star2" class="parallax top" src="img/clo.png"> <img
+				id="star3" class="parallax" src="img/mo.png"> <img id="star4"
+				class="parallax left top" src="img/mu.png"> <img id="star5"
+				class="parallax left" src="img/pe.png"> <img id="star6"
+				class="parallax left top" src="img/ph.png"> <img id="star7"
+				class="parallax top" src="img/tr.png"> <img id="star8"
+				class="parallax top" src="img/fi.png"> <img id="star9"
+				class="parallax" src="img/pr.png"> <a
+				class="navbar-brand page-scroll" href="mypage.html">Odap note</a>
+		</div>
+	</div>
+	<section>
   <div class="section">
     <h2>Search</h2>
     <input type="text" id="search" placeholder="Search">
@@ -248,7 +387,7 @@ header {
     </article>
     </div>
   </section>
-
+</div>
 
   <script>
   loadQueList();

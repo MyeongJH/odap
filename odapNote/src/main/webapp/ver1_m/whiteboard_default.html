@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odap Note</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<style>
+nav#logo {
+	display: inline;
+	position: relative;
+	left: 0%;
+}
+
+#mypage {
+   display: inline;
+   position: relative;
+   float: right;
+   top: 10px;
+}
+
+header {
+	background-color: white; 
+	border: 1px solid white;
+	margin: 0px auto;
+	width: 1280px;
+}
+
+#search-line { 
+	height: 5px;
+	background-color: gray;
+}
+/*************************************************************************/
+#contents {
+   margin: 0px auto;
+   width: 1280px;
+}
+#myCanvas {
+	cursor: crosshair;
+	margin-top: 3.5%;
+	margin-left: 3%;
+	background-size: 100% 100%;
+	display: inline-block;
+}
+#side {
+	float: left;
+}
+
+#bg {
+	z-index: -100;
+	position: absolute;	
+}
+/*************************************************************************/
+</style>
+
+</head>
+<body>
+<header>
+	<nav id="logo">
+		<a href="front.html"><img src="img/Logo.png"></a>
+	</nav>
+	<div id="mypage" class="dropdown">
+	<img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
+		<li><a href="mypage.html">mypage</a></li>
+		<li><a href="#">profile</a></li>
+		<li role="presentation" class="divider"></li>
+		<li><a href="front.html">logout</a></li>
+	</ul>
+	</div>
+</header>
+<div id="search-line"></div>
+<section id="contents">
+	<img id="side" src="img/boardside.png">
+	<img id="bg" src="img/board.jpg" width="1000" height="800">
+	<canvas id="myCanvas">
+		Sorry, your browser does not support HTML5 canvas technology.
+	</canvas>
+</section>
+<script>
+	window.onload = function() {
+	var myCanvas = document.getElementById("myCanvas");
+	var ctx = myCanvas.getContext("2d");
+    
+    // Fill Window Width and Height
+	myCanvas.width = window.innerWidth*0.475;
+	myCanvas.height = window.innerHeight*0.73;
+	
+	// Set Background Color
+    ctx.fillStyle="rgba(0,0,0,0)";
+    ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+	
+    // Mouse Event Handlers
+	if(myCanvas){
+		var isDown = false;
+		var canvasX, canvasY;
+		ctx.lineWidth = 5;
+		
+		$(myCanvas)
+		.mousedown(function(e){
+			isDown = true;
+			ctx.beginPath();
+			canvasX = e.pageX - myCanvas.offsetLeft;
+			canvasY = e.pageY - myCanvas.offsetTop;
+			ctx.moveTo(canvasX, canvasY);
+		})
+		.mousemove(function(e){
+			if(isDown !== false) {
+				canvasX = e.pageX - myCanvas.offsetLeft;
+				canvasY = e.pageY - myCanvas.offsetTop;
+				ctx.lineTo(canvasX, canvasY);
+				ctx.strokeStyle = "#000";
+				ctx.stroke();
+			}
+		})
+		.mouseup(function(e){
+			isDown = false;
+			ctx.closePath();
+		});
+	}
+	
+	// Touch Events Handlers
+	draw = {
+		started: false,
+		start: function(evt) {
+
+			ctx.beginPath();
+			ctx.moveTo(
+				evt.touches[0].pageX,
+				evt.touches[0].pageY
+			);
+
+			this.started = true;
+
+		},
+		move: function(evt) {
+
+			if (this.started) {
+				ctx.lineTo(
+					evt.touches[0].pageX,
+					evt.touches[0].pageY
+				);
+
+				ctx.strokeStyle = "#fff";
+				ctx.lineWidth = 5;
+				ctx.stroke();
+			}
+
+		},
+		end: function(evt) {
+			this.started = false;
+		}
+	};
+	
+	// Touch Events
+	myCanvas.addEventListener('touchstart', draw.start, false);
+	myCanvas.addEventListener('touchend', draw.end, false);
+	myCanvas.addEventListener('touchmove', draw.move, false);
+	
+	// Disable Page Move
+	document.body.addEventListener('touchmove',function(evt){
+		evt.preventDefault();
+	},false);
+};
+</script>
+</body>
+</html>
