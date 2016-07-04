@@ -188,7 +188,7 @@
   function loadClassList() {   
       $.getJSON("../ajax/class/list.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='#'>☎</a></td></tr>"); 
+              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./test6.html'>☎</a></td></tr>"); 
         });
     })
   }

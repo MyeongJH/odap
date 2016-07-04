@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="utf-8">
@@ -46,6 +46,12 @@
         height: 25px;        
       }
       
+         #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: black;
+        }
+      
       #header {
         height: 200px;
         margin-bottom: 10px;
@@ -56,7 +62,6 @@
       #content {
         width: 900px;
        float: right; /*위치변경가능*/
-        align-items: center;
         padding: 10px;
         margin-bottom: 20px;
         margin-right: 20px;
@@ -64,8 +69,8 @@
         box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
         font-family: 'Hanna';
         font-size: 20px;
-        line-height: 140%;        
-        background-color: rgba(0,0,0,0.4);
+        /*line-height: 140%;*/        
+        background-color: rgba(50,50,50,0.87);
         padding-bottom: 40px;
       } 
     
@@ -80,30 +85,52 @@
         line-height: 150%;
       }
       
+      #sidebar img {
+        border-radius: 60px;
+      }
+      /*
         #search {
-        border-radius: 20px;
+        border-radius: 10px;
         margin-top: 80px;        
         display: block; 
         height: 80px;
-        width: 800px;
+        width: 700px;
         margin-right: 20px;
         background-color: white;
         opacity: 0.8;
       }
+      */
       
       #mypage, #class {
-        border-radius: 20px;
-        margin-top: 30px;
-        float: right;
-        margin-bottom: 80px;
+        border-radius: 60px;
         display: inline-block; 
+        padding-top: 5px;
         height: 100px;
         width: 100px;
-        margin-right: 20px;
+        margin: 30px;
         background-color: white;
         opacity: 0.8;
+        box-shadow: 2px 4px 6px 2px rgba(0,0,0,.2);
+        
       }
       
+      #mypage:hover, #class:hover {
+        box-shadow: 2px 5px 10px 5px rgba(0,0,0,.8);
+        cursor: pointer;
+      }
+      
+      #topmenu {
+      height: 30px;
+      padding-top: 4px;
+      padding-right: 50px;
+      margin-bottom: 20px;
+      text-align: right;
+      font-size: 22px;   
+      background-color: #288c28;  
+      font-family: 'Hanna', serif;
+      text-decoration: none;
+      color: white;      
+      }
       
       #footer {
         clear: both;
@@ -112,8 +139,8 @@
       }
       
       .innerimg {
-        padding: 5px;
-        width: 80%;
+        width: 80%;        
+        border-radius: 60px;
       }
 
 /********************************************************header****************************************/
@@ -177,13 +204,83 @@
     left: 100px;
 }
 
+#search {
+     margin-top: 60px;        
+     display: block; 
+     height: 80px;
+     width: 920px;
+     font-size: 20px;
+}
+/*
+#search input[type="text"] {
+    background: url(search-dark.png) no-repeat 10px 6px #444;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #777;
+    width: 500px;
+    height: 40px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 1px 2px 1px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    }
+
+#search input[type="text"]:focus {
+    width: 700px;
+    }
+    
+    #enter {
+      margin-top: 7px;
+      width: 15px;
+    }
+    
+    */
+    #search input[type="text"] {
+    background: url(search-white.png) no-repeat 10px 6px #444;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #d7d7d7;
+    width:500px;
+    height: 35px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3); 
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    }
+
+#search input[type="text"]:focus {
+    background-color: #fcfcfc;
+    color: #6a6f75;    
+    width: 700px;
+    height: 45px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    }
 
     </style>
   </head>
   <body>
     <div id="container">
     <div id="top">
-        <h1><a href="#">문의하기 </a><a href="#">로그아웃</a></h1>
+        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
       </div>
       <div class="line"></div>
       <div id="header">
@@ -203,17 +300,19 @@
 </div>
       </div>
       
+      <div id="topmenu">Odap Note</div>
       <div id="content">
       <center>
-              <div id="search"><div id="sbox"><span>search</span></div></div>
-              
-              <div id="mypage"><img class="innerimg" src="img/user.png"><span>mypage</span></div>
-              <div id="class"><img class="innerimg" src="img/anf.png"><span>Question</span></div>
-              </center>
+        <form method="get" action="./search.html" id="search">
+              <p>Class/Question search</p>
+              <input name="search" type="text" size="40" placeholder="Searching here" />
+              <img src="img/enter.png" width="15px">
+        </form>        
+        <div id="mypage"><a href="./testfinal.html""><img class="innerimg" src="img/user.png"></a><p>mypage</p></div>
+        <div id="class"><img class="innerimg" src="img/anf.png"><p>Question</p></div>
+      </center>
       </div>
-        <div id="sidebar">
-        <div id="myinf"></div>
-      </div>
+        <div id="sidebar"></div>
 
       <div id="footer">
         <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
@@ -222,19 +321,32 @@
     </div>   
   <script>
   loadMyInfo();
+ 
+  function loadMyInfo() {	  
+	   $.getJSON("../ajax/member/detail.do", function(result) {      
+	     if(!result.mpic) {
+	       result.mpic = "./img/noimage.jpg" ;
+	     }
+	     $("#sidebar").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
+         $("#sidebar").append("<h1>"+result.mnm+"</h1>");
+         $("#sidebar").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);        
+	   });
+	}
   
+  
+  /*
   function loadMyInfo() {
 	    
-	    $.getJSON("../ajax/member/classmaster.do?mno=6", function(result) {   
+	    $.getJSON("../ajax/member/classmaster.do?mno="+1, function(result) {   
 	      if(!result.mpic) {
-	             result.mpic = "./img/noimage.jpg" ;
+	             result.mpic = "./img/noimage.jpg"; 
 	           }
-	         $("#myinf").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
-	            $("#myinf").append("<h1>"+result.mnm+"</h1>");
-	            $("#myinf").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);         
+	         $("#sidebar").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
+	            $("#sidebar").append("<h1>"+result.mnm+"</h1>");
+	            $("#sidebar").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);         
 	       });
 	  }
-  
+  */
   // Plugin Test
   $(window).parallaxmouse({
       invert: true,
