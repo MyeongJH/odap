@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Odap Note</title>
-<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.event.drag-2.0.js"></script>
 <script src="http://192.168.0.48:4000/socket.io/socket.io.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.parallaxmouse.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery.parallaxmouse.min.js"></script>
+<link rel="stylesheet" href="css/whiteboard.css" />
 
 <style>
 nav#logo {
@@ -37,17 +36,62 @@ header {
 	height: 5px;
 	background-color: gray;
 }
+  a {
+    text-decoration: none;
+  }
+     a:hover {
+    text-decoration: none;
+  }
+      #container {
+        width: 1280px;
+        margin: 0px auto;
+        padding: 20px;       
+      }
+    
+      #top {
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
+      }
+      
+      #header {
+        height: 200px;
+        margin-bottom: 10px;
+        border-bottom: 3px solid gray;       
+      }
+      
+      #topmenu {
+      height: 30px;
+      padding-right: 50px;
+      margin-bottom: 20px;
+      word-spacing: 20px;
+      text-align: right;
+      font-size: 20px;   
+      background-color: #288c28;        
+      }
+             
+       #topmenu a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: white;
+       }
+        #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: black;
+        }
+                        
+       #topmenu a:hover {
+        color: gray;
+       }
 /*************************************************************************/
 #contents {
    margin: 0px auto;
    width: 1280px;
-}
-#myCanvas {
-	cursor: crosshair;
-	margin-top: 3.5%;
-	margin-left: 3%;
-	background-size: 100% 100%;
-	display: inline-block;
+   position: absolute;
+   z-index: -100;
 }
 #side {
 	float: left;
@@ -56,6 +100,11 @@ header {
 #bg {
 	z-index: -100;
 	position: absolute;	
+}
+#question {
+  margin-left: 5%;
+  margin-top: 5%;
+  width: 400px;
 }
 /*************************************************************************/
 #pheader .navbar-brand {
@@ -122,6 +171,126 @@ header {
     margin: 0px auto;
     padding: 20px;
 }
+
+article {
+  margin-left: 22%;
+}
+.color-bar {
+  position: relative;
+  top: calc(50% + 250px);
+  left: calc(50% - 350px);
+  text-align: center;
+  width: 700px;
+  padding: 40px 0;
+}
+.color-bar .color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 20px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s cubic-bezier(0.1, 2, 0.5, 1);
+  transition: all 0.5s cubic-bezier(0.1, 2, 0.5, 1);
+}
+.color-bar .color:hover {
+  -webkit-transform: scale(1.2, 1.2);
+          transform: scale(1.2, 1.2);
+}
+.color-bar .color.active {
+  -webkit-transform: scale(1.3, 1.3);
+          transform: scale(1.3, 1.3);
+  cursor: default;
+}
+.color-bar .color:nth-child(1) {
+  background-color: #9b59b6;
+  box-shadow: 0 7px 25px rgba(155, 89, 182, 0.6);
+}
+.color-bar .color:nth-child(2) {
+  background-color: #3498db;
+  box-shadow: 0 7px 25px rgba(52, 152, 219, 0.6);
+}
+.color-bar .color:nth-child(3) {
+  background-color: #2ecc71;
+  box-shadow: 0 7px 25px rgba(46, 204, 113, 0.6);
+}
+.color-bar .color:nth-child(4) {
+  background-color: #1abc9c;
+  box-shadow: 0 7px 25px rgba(26, 188, 156, 0.6);
+}
+.color-bar .color:nth-child(5) {
+  background-color: #f1c40f;
+  box-shadow: 0 7px 25px rgba(241, 196, 15, 0.6);
+}
+.color-bar .color:nth-child(6) {
+  background-color: #e67e22;
+  box-shadow: 0 7px 25px rgba(230, 126, 34, 0.6);
+}
+.color-bar .color:nth-child(7) {
+  background-color: #e73c61;
+  box-shadow: 0 7px 25px rgba(231, 76, 60, 0.6);
+}
+.thickness-bar {
+  position: relative;
+  bottom: calc(50% + 250px);
+  left: calc(50% - 350px);
+  padding: 40px 0;
+  width: 700px;
+  text-align: center;
+}
+.thickness-bar .thickness {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 0 20px;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+.thickness-bar .thickness:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.thickness-bar .thickness:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+.thickness-bar .thickness.active {
+  border-color: #3498db;
+}
+.thickness-bar .thickness.active:after {
+  background-color: #3498db;
+}
+.thickness-bar .thickness:nth-child(1):after {
+  width: 5px;
+  height: 5px;
+}
+.thickness-bar .thickness:nth-child(2):after {
+  width: 10px;
+  height: 10px;
+}
+.thickness-bar .thickness:nth-child(3):after {
+  width: 15px;
+  height: 15px;
+}
+.thickness-bar .thickness:nth-child(4):after {
+  width: 20px;
+  height: 20px;
+}
+.thickness-bar .thickness:nth-child(5):after {
+  width: 25px;
+  height: 25px;
+}
 </style>
 
 </head>
@@ -149,13 +318,52 @@ header {
 		</div>
 	</div>
 
-		<article><!-- our canvas will be inserted here--></article>
 	<section id="contents">
-		<img id="side" src="img/boardside.png"> <img id="bg"
-			src="img/board.jpg" width="1000" height="800">	
+		<img id="side" src="img/boardside.png">
+		<img id="bg" src="img/board.jpg" width="1000" height="800">
 	</section>
+	<article><!-- our canvas will be inserted here--></article>
+	<nav class="color-bar">
+	  <div class="color" data-color="#9b59b6"></div>
+	  <div class="color" data-color="#3498db"></div>
+	  <div class="color" data-color="#2ecc71"></div>
+	  <div class="color active" data-color="#1abc9c"></div>
+	  <div class="color" data-color="#f1c40f"></div>
+	  <div class="color" data-color="#e67e22"></div>
+	  <div class="color" data-color="#E73C61"></div>
+  </nav>
+  <nav class="thickness-bar">
+	  <div class="thickness active" data-thickness="4"></div>
+	  <div class="thickness" data-thickness="12"></div>
+	  <div class="thickness" data-thickness="24"></div>
+	  <div class="thickness" data-thickness="48"></div>
+	  <div class="thickness" data-thickness="128"></div>
+  </nav>
 </div>
 <script>
+var qno = location.href.split("=")[1];
+loadQuestion();
+function loadQuestion() {
+	  $.getJSON("../ajax/question/detail.do?no="+qno, function(data){
+	    $("#contents").append("<img id='question' src="+data.qpic+">");
+	  })
+}
+
+var selectedColor = '#1abc9c';
+var selectedThickness = 4;
+$('.color').on('click', function() {
+	  $('.color.active').removeClass('active');
+	  $(this).addClass('active');
+
+	  selectedColor = $(this).data('color');
+});
+$('.thickness').on('click', function() {
+	  $('.thickness.active').removeClass('active');
+	  $(this).addClass('active');
+
+	  selectedThickness = $(this).data('thickness');
+	});
+
 $(window).parallaxmouse({
     invert: true,
     range: 400,
