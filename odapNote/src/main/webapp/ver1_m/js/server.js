@@ -6,8 +6,10 @@
       socket.broadcast.emit('draw', {
         x: data.x,
         y: data.y,
-        type: data.type
+        type: data.type,
+        color: data.color
       });
+      console.log(data.color)
     });
   });
 }).call(this);
