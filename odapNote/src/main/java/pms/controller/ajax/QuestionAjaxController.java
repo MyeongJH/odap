@@ -88,6 +88,13 @@ public class QuestionAjaxController {
     return new Gson().toJson(list);
   }
   
+  @RequestMapping(value="classlist", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String classlist(int cno) throws ServletException, IOException {    
+    List<Question> list = questionService.classlist(cno);
+    return new Gson().toJson(list);
+  }
+  
   @RequestMapping(value="update",
       method=RequestMethod.POST,
       produces="application/json;charset=UTF-8")
@@ -119,8 +126,18 @@ public class QuestionAjaxController {
     return new Gson().toJson(list);
   }
   
+  @RequestMapping(value="searchInclass",
+      method=RequestMethod.GET,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String searchInclass(String key, int cno) throws ServletException, IOException {
+      System.out.println(key);
+      List<Question> list = questionService.searchInclass(key, cno);
+    return new Gson().toJson(list);
+  }
+  
   @RequestMapping(value = "upload", method = RequestMethod.POST)
-  public String insert(MultipartHttpServletRequest request,HttpSession session, String qtit, String qcnt){
+  public String insert(MultipartHttpServletRequest request,HttpSession session, String qtit, String qcnt, int cno){
     Member member = (Member)session.getAttribute("loginUser");
     Question question = new Question();
     Map<String, MultipartFile> files = request.getFileMap();
@@ -150,7 +167,7 @@ public class QuestionAjaxController {
       }
     }
     
-    question.setCno(10);
+    question.setCno(cno);
     question.setQtit(qtit);
     question.setQcnt(qcnt);
     question.setQst(false);

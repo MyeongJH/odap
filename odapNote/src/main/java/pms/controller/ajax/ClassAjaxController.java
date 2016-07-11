@@ -106,4 +106,15 @@ public class ClassAjaxController {
     return new Gson().toJson(classmaster);
   }
   
+  @RequestMapping(value="myclasslist", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String myclasslist(HttpSession session) throws ServletException, IOException {
+    Member member = (Member)session.getAttribute("loginUser");
+    int mno = member.getMno();
+    List<Class> list = classService.myclasslist(mno);    
+    
+    return new Gson().toJson(list);
+  }
+  
+  
 }

@@ -10,4 +10,5 @@ public interface ClassService {
   Class retrieve(int no);
   List<Class> list();
   void change(Class clazz);
+  List<Class> myclasslist(int mno);
 }

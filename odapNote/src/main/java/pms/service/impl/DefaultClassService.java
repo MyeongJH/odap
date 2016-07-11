@@ -32,5 +32,9 @@ public class DefaultClassService implements ClassService {
   public void change(Class clazz) {
     classDao.update(clazz);
   }
+  
+  public List<Class> myclasslist(int mno) {
+    return classDao.mylist(mno);
+  };
 
 }

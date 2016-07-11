@@ -55,5 +55,18 @@ public class DefaultQuestionService implements QuestionService {
   public List<Question> mylist(int mno) {
     return questionDao.selectMyList(mno);
   }
+
+  @Override
+  public List<Question> classlist(int cno) {   
+    return questionDao.selectClassList(cno);
+  }
+  
+  @Override
+  public List<Question> searchInclass(String key,int cno) {
+    Map<String,Object> paramMap = new HashMap<>();
+    paramMap.put("key", key);
+    paramMap.put("cno", cno);
+    return questionDao.searchInclass(paramMap);
+  }
 }
 

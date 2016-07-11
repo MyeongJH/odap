@@ -10,4 +10,5 @@ public interface ClassDao {
   int update(Class clazz);
   int delete(int no);
   int countAll();
+  List<Class> mylist(int mno);
 }
