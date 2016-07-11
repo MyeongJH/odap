@@ -11,7 +11,7 @@
 <script src="js/jquery.parallaxmouse.min.js"></script>
 <link rel="stylesheet" href="css/whiteboard.css" />
 <link rel="stylesheet" href="css/buttons.css" />
-
+<script src="js/html2canvas.js"></script>
 <style>
 nav#logo {
 	display: inline;
@@ -89,15 +89,20 @@ header {
        }
 /*************************************************************************/
 #contents {
+   display: inline;
    margin: 0px auto;
    width: 1280px;
    position: absolute;
    z-index: -100;
 }
 #side {
+	display: inline-block;
+	width: 280px;
+	height: 813px;
+	/* border: 3px solid red; */
 	float: left;
+	
 }
-
 #bg {
 	z-index: -100;
 	position: absolute;	
@@ -106,6 +111,13 @@ header {
   margin-left: 5%;
   margin-top: 5%;
   width: 400px;
+}
+#page {
+  display: inline-block;
+  /* border: 3px solid red; */
+}
+article {
+  width: 987px;
 }
 /*************************************************************************/
 #pheader .navbar-brand {
@@ -171,10 +183,6 @@ header {
     width: 1280px;
     margin: 0px auto;
     padding: 20px;
-}
-
-article {
-  margin-left: 22%;
 }
 .color-bar {
   position: relative;
@@ -319,11 +327,18 @@ article {
 		</div>
 	</div>
 
-	<section id="contents">
-		<img id="side" src="img/boardside.png">
-		<img id="bg" src="img/board.jpg" width="1000" height="800">
-	</section>
-	<article><!-- our canvas will be inserted here--></article>
+  <div id="side">
+    <input type='button' id='newAnswer' value='newAnswer'/>
+	  <input type="button" value="Capture" id="capture" />
+	  <div id="answers"></div>
+	</div>
+  <div id="page">
+		<section id="contents">
+			<!-- <img id="side" src="img/boardside.png"> -->
+			<img id="bg" src="img/board.jpg" width="1000" height="800">
+		</section>
+	  <article><!-- our canvas will be inserted here--></article>
+	</div>
 	<nav class="color-bar">
 	  <div class="color" data-color="#9b59b6"></div>
 	  <div class="color" data-color="#3498db"></div>
@@ -337,19 +352,33 @@ article {
 	  <div class="thickness active" data-thickness="4"></div>
 	  <div class="thickness" data-thickness="12"></div>
 	  <div class="thickness" data-thickness="24"></div>
+	  <div class="thickness" data-thickness="36"></div>
 	  <div class="thickness" data-thickness="48"></div>
-	  <div class="thickness" data-thickness="128"></div>
   </nav>
-  <button id='joinbtn' type='submit'
-               class='button button--border-medium button button--nina joinbtn'>☆</button>
+  
+	
+	<img id="imgTarget" width="500">
 </div>
 <script>
 var qno = location.href.split("=")[1];
 loadQuestion();
+loadAnswer();
+
 function loadQuestion() {
 	  $.getJSON("../ajax/question/detail.do?no="+qno, function(data){
-	    $("#contents").append("<img id='question' src="+data.qpic+">");
+	    $("#contents").append("<img id='question' src='"+data.qpic+"'>");
 	  })
+}
+function loadAnswer() {
+	  $("#answers").empty();
+    $.getJSON("../ajax/answer/list.do?qno="+qno, function(data){
+    	if (data.length == 0) {
+	    	$('#answers').append("<img id='default' src='img/board.jpg' width='260'>");
+    	}
+    	$.each(data, function(i,d) {    		
+    		$('#answers').append("<img class='answer' onclick='change(this)' data-ano='"+d.ano+"' src='img/thumb_"+d.acon+"' width='260'>");
+    	})    	
+    })
 }
 
 var selectedColor = '#1abc9c';
@@ -365,8 +394,67 @@ $('.thickness').on('click', function() {
 	  $(this).addClass('active');
 
 	  selectedThickness = $(this).data('thickness');
-	});
+});
 
+function change(data) {
+	var acon = data.getAttribute('src').split('_');
+	$("#contents").empty();
+	$("#contents").append("<img id='bg' src='img/"+acon[1]+"' width='1000' height='800'>");	
+};
+
+document.querySelector("#capture").addEventListener("click", function() {
+    html2canvas($("#page"), {
+        //allowTaint: true,
+        //taintTest: false,
+        useCORS: true,
+        proxy: '/etc/proxy_image',
+        onrendered: function(canvas) {
+          var image = canvas.toDataURL();
+          $("#imgTarget").attr("src", image);
+          var dataURL = canvas.toDataURL('image/jpeg', 0.5);
+          var blob = dataURItoBlob(image);
+          var fd = new FormData(document.forms[0]);
+          
+          fd.append("image", blob);
+          fd.append("qno", qno);
+          $.ajax({
+        	  url: "../ajax/answer/update.do",
+            type: "POST",
+            data: fd,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success:  function(data){
+              loadAnswer();
+              alert("저장되었습니다.");
+            },
+            error: function(e){
+            }   
+          });    
+        }
+    });
+}, false);
+
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
 $(window).parallaxmouse({
     invert: true,
     range: 400,
