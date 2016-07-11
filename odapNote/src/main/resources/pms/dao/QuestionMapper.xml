@@ -14,7 +14,7 @@
     update QUESTION set
       QTIT=#{qtit}, 
       QCNT=#{qcnt}, 
-      CDT=now(),
+      QCD=now(),
       QST= #{qst},
       QPIC = #{qpic}
     where QNO=#{qno}
@@ -31,6 +31,14 @@
     order by QNO DESC   
   </select>
   
+  <select id="selectMyList" resultType="Question" parameterType="int">
+    select QNO, QTIT, QCNT, QCD, QST, QPIC, MNO 
+    from QUESTION
+    where MNO=#{mno}
+    order by QNO DESC   
+  </select>
+  
+  
   <select id="selectOne" resultType="Question" parameterType="int">
     select QNO, QTIT, QCNT, QCD, QST, QPIC, MNO  
     from QUESTION
@@ -41,11 +49,18 @@
     select count(*) 
     from QUESTION
   </select>
+  
+    <select id="search" resultType="Question" parameterType="map">
+    SELECT QNO, QTIT, QCNT, QCD, QST, QPIC, MNO
+    FROM QUESTION 
+    WHERE QTIT LIKE CONCAT('%',#{key},'%') OR QCNT LIKE CONCAT('%',#{key},'%')
+  </select>
+  
 </mapper>
 
 
 
-
+      
 
 
 

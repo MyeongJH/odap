@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.BookmarkDao">
+  
+  <insert id="insert" parameterType="BookMark">
+    insert into BOOKMARK(MNO,QNO)
+    values(#{mno},#{qno})
+  </insert>
+  
+  <update id="update" parameterType="BookMark">
+    update BOOKMARK set
+      MNO=#{mno}, 
+      QNO=#{qno}
+    where BNO=#{bno}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from BOOKMARK 
+    where BNO=#{bno}
+  </delete>
+
+  <select id="selectUserBookmark" resultType="Question" parameterType="int">
+    <!-- 서브쿼리 
+    select QTIT, QCNT, QCD, QST, QPIC , CNO 
+    from QUESTION q where q.QNO in (select b.QNO from BOOKMARK b where b.MNO = #{no});
+     -->
+    select q.QNO, CNO, QTIT, QCNT, QCD, QST, QPIC, q.MNO
+    from BOOKMARK b 
+    inner join QUESTION q 
+    on b.MNO = #{no} and b.QNO = q.QNO;
+  </select>
+  
+  <select id="findBookmark" parameterType="map" resultType="int">
+    select BNO 
+    from BOOKMARK
+    where     
+    MNO=#{mno} and QNO=#{qno}   
+  </select>  
+  
+   <select id="isBookmark" parameterType="map" resultType="int">
+    select count(*) 
+    from BOOKMARK
+    where     
+    MNO=#{mno} and QNO=#{qno}
+  </select>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

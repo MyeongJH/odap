@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.AnswerDao">
+  
+  <insert id="insert" parameterType="Answer">
+    insert into ANSWER(ACON,QNO)
+    values(#{acon},#{qno})
+  </insert>
+  
+  <update id="update" parameterType="Answer">
+    update ANSWER set
+      ACON=#{acon}, 
+      QNO=#{qno}
+    where ANO=#{ano}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from ANSWER 
+    where ANO=#{ano}
+  </delete>
+
+  <select id="selectList" resultType="Answer" parameterType="int">
+    select * 
+    from ANSWER
+    where QNO=#{qno}
+    order by ANO DESC   
+  </select>
+  
+  <select id="selectOne" resultType="Answer" parameterType="int">
+    select *  
+    from ANSWER
+    where ANO=#{ano}
+  </select>
+  
+  <select id="count" resultType="int" parameterType="int">
+    select count(*) 
+    from ANSWER
+    where QNO=#{qno}
+  </select>
+</mapper>

@@ -13,7 +13,7 @@
   <update id="update" parameterType="Member">
     update MEMBER set
       MPW=#{mpw},
-      MNM,=#{mnm},
+      MNM=#{mnm},
       MTEL=#{mtel},
       MADR=#{madr},
       MJOB=#{mjob},

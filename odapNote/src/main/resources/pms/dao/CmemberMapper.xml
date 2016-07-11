@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.CmemberDao">
+  
+  <insert id="insert" parameterType="Cmember">
+    insert into CMEMBER(MNO,CNO,CMITR,CMAD,CMST)
+    values(#{mno},#{cno},#{cmitr},now(),#{cmst})
+  </insert>
+  
+  <update id="update" parameterType="Member">
+    update MEMBER set
+      MPW=#{mpw},
+      MNM,=#{mnm},
+      MTEL=#{mtel},
+      MADR=#{madr},
+      MJOB=#{mjob},
+      MPG=#{mpg},
+      MPIC=#{mpic},
+      MCL=#{mcl},
+      MEM=#{mem}
+    where MNO=#{mno}
+  </update>
+  
+  <update id="apply" parameterType="map">
+    update CMEMBER set
+      CMST=TRUE
+    where MNO=#{mno} and CNO=#{cno}
+  </update>
+  
+  <delete id="delete" parameterType="map">
+    delete from CMEMBER 
+    where MNO=#{mno} and CNO=#{cno}
+  </delete>
+
+  <select id="selectList" resultType="JoinCmember" parameterType="int">
+    select MNM, CNO, MEM, MTEL, CMITR, CMAD, CMST, CMEMBER.MNO 
+    from CMEMBER 
+    inner join MEMBER 
+    on CMEMBER.CNO= #{cno} and CMEMBER.MNO = MEMBER.MNO 
+    order by CMST DESC 
+  </select>
+  
+  
+  <select id="selectOne" resultType="Member" parameterType="map">
+    select MNO,MID,MPW,MNM,MTEL,MADR,MJOB,MPG,MPIC,MCL,MEM
+    from MEMBER
+    where 
+    <if test="no != null">
+      MNO=#{no}
+    </if>
+    <if test="id != null">
+      MID=#{id}
+    </if>
+  </select>
+  
+  <select id="isCmember" parameterType="map" resultType="int">
+    select count(*) 
+    from CMEMBER
+    where     
+    CNO=#{cno} and MNO=#{mno} and CMST=1
+  </select>
+  </mapper>
