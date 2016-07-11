@@ -10,8 +10,6 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.parallaxmouse.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/pheader.css" />
-    
-    <link rel="stylesheet" type="text/css" href="css/confirmbtn.css" />
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -33,70 +31,6 @@
    a:hover {
     text-decoration: none;
   }
-  .box-left {
-  position: absolute;
-  height: 75px;
-  width: 60px;
-  background-color: #e74c3c;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 50px;
-  margin: auto;
-  cursor: pointer;
-  border-top-left-radius: 13px;
-  border-bottom-left-radius: 13px;
-}
-
-.fa-times {
-  font-size: 70px !important;
-  margin-left: 10px;
-  margin-top: 10px;
-  color: #fff;
-}
-
-.box-right {
-  position: absolute;
-  height: 75px;
-  width: 15px;
-  background-color: #e74c3c;
-  top: 0;
-  bottom: 0;
-  left: 25px;
-  right: 0;
-  margin: auto;
-  transition: 0.5s;
-  cursor: pointer;
-  border-top-right-radius: 13px;
-  border-bottom-right-radius: 13px;
-}
-
-.fa-check {
-  font-size: 50px !important;
-  margin-left: 5px;
-  margin-top: 10px;
-}
-
-.bar {
-  height: 60px;
-  width: 0px;
-  background-color: lightgray;
-  position: absolute;
-  top: 7px;
-  bottom: 0;
-  left: 60px;
-  right: 0;
-  transition: 0.5s;
-  overflow: hidden;
-}
-
-.cl-bar2 {
-  width: 60px;
-}
-
-.cl-box2 {
-  left: 140px;
-}
       #container {
         width: 1280px;
         margin: 0px auto;
@@ -239,7 +173,7 @@ table {
   line-height: 40px;
   border-spacing: 0;
   border: 1px solid #428bca;
-  margin: 10px 10px;
+  margin: 10px auto;
   cursor: pointer;
 }
 
@@ -359,29 +293,6 @@ button:disabled, input:disabled {
           <div id="myinf"></div>     
       </div>
       <div id="footer">
-      
-      <!-- <div class="cbtn">
-         <div class="cbtn-back">
-           <p>Are you sure you want to do that?</p>
-            <button class="yes">Yes</button>
-            <button class="no">No</button>
-          </div>
-        <div class="cbtn-front">Delete</div>
-      </div>-->
-   <!-- 
-      <div class="pen-wrapper">
-        <div class="pen-wrapper__inner">    
-          <div class="cbutton-cover cbutton-slide-up">
-            <button class="cbtn cbtn--primary cbutton-slide-up__cbutton">Delete</button>
-            <div class="cbutton-set">
-              <button class="cbtn cbtn--gray">Cancel</button>
-              <button class="cbtn cbtn--gray-drk">Confirm</button>
-            </div>
-          </div>
-      
-        </div>
-      </div>
-    -->     
         <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
        
       </div>
@@ -408,11 +319,11 @@ function loadmember() {
         
         if(entry.cmst == true){
           $("#applied").append("<tr><td>"+entry.mnm +"</td><td>"+entry.mid  +"</td><td>"+entry.mem  +"</td><td>"+entry.mtel +
-          "</td><td><div class='cbtn' onclick='c_front(event,this);'><div class='cbtn-back'><button onclick='cDel_yes(event,this,"+entry.mno+");' class='yesD'>Yes</button><button onclick='c_no(event,this);' class='noD'>No</button> </div> <div class='cbtn-frontD'>Delete</div></div></td></tr>");
+          "</td><td> <input type='button' class='button button--size-m button button--nina' name='btn_js_delete' id='btn_js_delete' onclick='btn_js_delete_click("+ entry.mno+");' value='Delete'/></td></tr>");
         } else {    
           $("#apply").append("<tr><td>"+entry.mnm+"</td><td>"+entry.mno+"</td><td>"+entry.cmitr+"</td><td>"+entry.cmad+
-          "</td><td> <div class='cbtn' onclick='c_front(event,this);'><div class='cbtn-back'><button onclick='cA_yes(event,this,"+entry.mno+");' class='yesA'>Yes</button><button onclick='c_no(event,this);' class='noA'>No</button> </div> <div class='cbtn-frontA'>Apply</div></div></td>"+
-          "</td><td> <div class='cbtn' onclick='c_front(event,this);'><div class='cbtn-back'><button onclick='cDen_yes(event,this,"+entry.mno+");' class='yesD'>Yes</button><button onclick='c_no(event,this);' class='noD'>No</button> </div> <div class='cbtn-frontD'>Deny</div></div></td></tr>");
+          "</td><td> <input type='button' class='button button--size-m button button--nina' name='btn_js_apply' id='btn_js_apply' onclick='btn_js_apply_click("+ entry.mno+");' value='Apply'/>"+
+          "</td><td> <input type='button' class='button button--size-s button button--nina' name='btn_js_deny' id='btn_js_deny' onclick='btn_js_deny_click("+ entry.mno+");' value='Deny'/></td></tr>");
         }
                   
       });
@@ -431,64 +342,6 @@ function loadmember() {
        });
   }
 
-  function c_front( event,t ) {
-      var mx = event.clientX - t.offsetLeft,
-        my = t.offsetTop - event.clientY;
-
-      var w = t.offsetWidth,
-        h = t.offsetHeight;
-
-      var directions = [
-        { id: 'top', x: w/2, y: 0 },
-        { id: 'right', x: w, y: h/2 },
-        { id: 'bottom', x: w/2, y: h },
-        { id: 'left', x: 0, y: h/2 }
-      ];
-   
-      directions.sort( function( a, b ) {
-        return distance( mx, my, a.x, a.y ) - distance( mx, my, b.x, b.y );
-      } );
-
-      t.setAttribute( 'data-direction', directions.shift().id );
-      t.classList.add( 'is-open' );
-    }
-  function distance( x1, y1, x2, y2 ) {
-      var dx = x1-x2;
-      var dy = y1-y2;
-      return Math.sqrt( dx*dx + dy*dy );
-    }
-  
-  function cDel_yes(event,t,mno) {
-     var Cno = location.href.split("cno=")[1];
-    $.getJSON("../ajax/cmember/delete.do?mno="+mno+"&cno="+Cno);
-          alert("탈퇴 완료");          
-    t.parentNode.parentNode.classList.remove( 'is-open' );
-      event.stopPropagation();     
-      location.href=location.href;  
-    };
-    
-  function cA_yes(event,t,mno) {
-       var Cno = location.href.split("cno=")[1];
-      $.getJSON("../ajax/cmember/apply.do?mno="+mno+"&cno="+Cno);
-            alert("승인 완료");          
-      t.parentNode.parentNode.classList.remove( 'is-open' );
-        event.stopPropagation(); 
-        location.href=location.href;  
-      };
-      
-  function cDen_yes(event,t,mno) {
-      var Cno = location.href.split("cno=")[1];
-     $.getJSON("../ajax/cmember/delete.do?mno="+mno+"&cno="+Cno);
-           alert("거절 완료");          
-     t.parentNode.parentNode.classList.remove( 'is-open' );
-       event.stopPropagation();  
-       location.href=location.href;  
-     };
-
-   function c_no (event,t) {
-      t.parentNode.parentNode.classList.remove( 'is-open' );
-      event.stopPropagation();
-    };
 
   function btn_js_delete_click(mno){
     var Cno = location.href.split("cno=")[1];
