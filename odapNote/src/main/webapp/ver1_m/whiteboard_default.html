@@ -3,37 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Odap Note</title>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<script type="text/javascript" src="js/jquery.event.drag-2.0.js"></script>
+<script src="http://192.168.0.48:4000/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.parallaxmouse.min.js"></script>
 
+<link rel="stylesheet" href="css/whiteboard.css" />
+<link rel="stylesheet" href="css/buttons.css" />
+<script src="js/html2canvas.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/pheader.css" />
 <style>
-nav#logo {
-	display: inline;
-	position: relative;
-	left: 0%;
-}
-
-#mypage {
-   display: inline;
-   position: relative;
-   float: right;
-   top: 10px;
-}
-
-header {
-	background-color: white; 
-	border: 1px solid white;
-	margin: 0px auto;
-	width: 1280px;
-}
-
-#search-line { 
-	height: 5px;
-	background-color: gray;
-}
 /*************************************************************************/
 #contents {
    margin: 0px auto;
@@ -59,22 +39,26 @@ header {
 
 </head>
 <body>
-<header>
-	<nav id="logo">
-		<a href="front.html"><img src="img/Logo.png"></a>
-	</nav>
-	<div id="mypage" class="dropdown">
-	<img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
-		<li><a href="mypage.html">mypage</a></li>
-		<li><a href="#">profile</a></li>
-		<li role="presentation" class="divider"></li>
-		<li><a href="front.html">logout</a></li>
-	</ul>
-	</div>
-</header>
+ <div id="top">
+        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
+      </div>
+      <div class="line"></div>
+      <div id="header">
+          <div id="pheader">
+              <img id="warpbg" class="parallax left top" src="">
+              <img id="star1" class="parallax top" src="img/ta.png">
+              <img id="star2" class="parallax top" src="img/clo.png">
+              <img id="star3" class="parallax" src="img/mo.png">
+              <img id="star4" class="parallax left top" src="img/mu.png">
+              <img id="star5" class="parallax left" src="img/pe.png">
+              <img id="star6" class="parallax left top" src="img/usb.png">
+              <img id="star7" class="parallax top" src="img/tr.png">
+              <img id="star8" class="parallax top" src="img/ph.png">
+              <img id="star9" class="parallax top" src="img/cle.png">
+    
+              <a class="logo" href="mypage.html" ><img src="img/logo.png"></a>     
+          </div>
+      </div>
 <div id="search-line"></div>
 <section id="contents">
 	<img id="side" src="img/boardside.png">
@@ -168,6 +152,40 @@ header {
 		evt.preventDefault();
 	},false);
 };
+
+
+
+
+/* header**************************************************************************/
+$(window).parallaxmouse({
+    invert: true,
+    range: 400,
+    elms: [
+        {el: $('#warpbg'), rate: 0.1},
+        {el: $('#star1'), rate: 0.2},
+        {el: $('#star2'), rate: 0.1},
+        {el: $('#star3'), rate: 0.2},
+        {el: $('#star4'), rate: 0.4},
+        {el: $('#star5'), rate: 0.9},
+        {el: $('#star6'), rate: 0.5},
+        {el: $('#star7'), rate: 0.15},
+        {el: $('#star8'), rate: 0.9},
+        {el: $('#star9'), rate: 0.1}
+    ]
+});
+
+</script><script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 </script>
 </body>
 </html>

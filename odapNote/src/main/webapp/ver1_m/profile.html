@@ -204,9 +204,9 @@ input[type="file"]::-webkit-file-upload-button {
 <div class="contents">
   <form id="frm" name="frm" method="POST">
   <div class="preview img-wrapper"></div>
-  <div class="file-upload-wrapper">
-      <input type="file" id="uploadFile" name="uploadFile" class="file-upload-native" accept="image/*"/>
-      <input type="text" disabled placeholder="upload image" class="file-upload-text" />
+  <div class="file-upload-wrapper" hidden>
+      <input type="file" id="uploadFile" name="uploadFile" class="file-upload-native" accept="image/*" hidden/>
+      <input type="text" disabled placeholder="upload image" class="file-upload-text" hidden/>
   </div>
   <!-- ---------------------------------------------------------------- -->
   <div class="container edit-profile-page">
@@ -302,6 +302,7 @@ $("form#frm").submit(function(event){
 	  event.preventDefault();
 
 	  var fd = new FormData($(this)[0]);
+	  console.log(fd);
 	  
 	  $.ajax({
 	    url: "../ajax/member/upload.do",

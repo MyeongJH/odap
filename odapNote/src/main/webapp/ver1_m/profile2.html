@@ -279,7 +279,7 @@ $("form#frm").submit(function(event){
 	  event.preventDefault();
 
 	  var fd = new FormData($(this)[0]);
-	  
+	  console.log(fd);
 	  $.ajax({
 	    url: "../ajax/member/upload.do",
 	    type: "POST",
@@ -290,7 +290,6 @@ $("form#frm").submit(function(event){
 	    processData: false,
 	    success:  function(data){
 	      alert("저장되었습니다.");
-	      location.href="profile.html";
 	    }
 	  });	  
 	  return false;	  
