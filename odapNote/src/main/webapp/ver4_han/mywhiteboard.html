@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odap Note</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<style>
+nav#logo {
+	display: inline;
+	position: relative;
+	left: 0%;
+}
+
+#mypage {
+   display: inline;
+   position: relative;
+   float: right;
+   top: 10px;
+}
+
+header {
+	background-color: white; 
+	border: 1px solid white;
+	margin: 0px auto;
+	width: 1280px;
+}
+
+#search-line { 
+	height: 5px;
+	background-color: gray;
+}
+/*************************************************************************/
+#contents {
+   margin: 0px auto;
+   width: 1280px;
+}
+#myCanvas {
+	cursor: crosshair;
+	margin-top: 3.5%;
+	margin-left: 3%;
+	background-size: 100% 100%;
+	display: inline-block;
+}
+#side {
+  border: 3px solid blue;
+  float: left;
+}
+
+#bg {
+	z-index: -100;
+	position: absolute;	
+}
+
+#canpic {
+  width:100%;
+}
+
+/*************************************************************************/
+</style>
+
+</head>
+<body>
+<header>
+	<nav id="logo">
+		<a href="front.html"><img src="img/Logo.png"></a>
+	</nav>
+	<div id="mypage" class="dropdown">
+	<img src="img/Mypage.png"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" aria-haspopup="true" aria-expanded="false">
+		<li><a href="mypage.html">mypage</a></li>
+		<li><a href="#">profile</a></li>
+		<li role="presentation" class="divider"></li>
+		<li><a href="front.html">logout</a></li>
+	</ul>
+	</div>
+</header>
+<div id="search-line"></div>
+
+  <button onclick="resetCanvas();">초기화</button> 
+  <button type="button" id="questionbtn" data-toggle="modal" data-target="#myModal" onclick="toDataURL();">사진!</button> 
+  <button id="replay">재생</button> 
+<section id="contents">
+	<img id="side" src="img/boardside.png">
+	<img id="bg" src="img/board.jpg" width="1000" height="800">
+	<canvas id="myCanvas">
+		Sorry, your browser does not support HTML5 canvas technology.
+	</canvas>
+
+</section>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cap</h4>
+      </div>
+      <div class="modal-body">
+       <form>
+            <img id="canpic">        
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+	var myCanvas = document.getElementById("myCanvas");
+	var ctx = myCanvas.getContext("2d");
+	window.onload = function() {
+    
+    // Fill Window Width and Height
+	myCanvas.width = window.innerWidth*0.475;
+	myCanvas.height = window.innerHeight*0.73;
+	
+	// Set Background Color
+    ctx.fillStyle="rgba(0,0,0,0)";
+    ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+	
+    // Mouse Event Handlers
+	if(myCanvas){
+		var isDown = false;
+		var canvasX, canvasY;
+		ctx.lineWidth = 5;
+		
+		$(myCanvas)
+		.mousedown(function(e){
+			isDown = true;
+			ctx.beginPath();
+			canvasX = e.pageX - myCanvas.offsetLeft;
+			canvasY = e.pageY - myCanvas.offsetTop;
+			ctx.moveTo(canvasX, canvasY);
+		})
+		.mousemove(function(e){
+			if(isDown !== false) {
+				canvasX = e.pageX - myCanvas.offsetLeft;
+				canvasY = e.pageY - myCanvas.offsetTop;
+				ctx.lineTo(canvasX, canvasY);
+				ctx.strokeStyle = "#000";
+				ctx.stroke();
+			}
+		})
+		.mouseup(function(e){
+			isDown = false;
+			ctx.closePath();
+		});
+	}
+	
+	// Touch Events Handlers
+	draw = {
+		started: false,
+		start: function(evt) {
+
+			ctx.beginPath();
+			ctx.moveTo(
+				evt.touches[0].pageX,
+				evt.touches[0].pageY
+			);
+
+			this.started = true;
+
+		},
+		move: function(evt) {
+
+			if (this.started) {
+				ctx.lineTo(
+					evt.touches[0].pageX,
+					evt.touches[0].pageY
+				);
+
+				ctx.strokeStyle = "#fff";
+				ctx.lineWidth = 5;
+				ctx.stroke();
+			}
+
+		},
+		end: function(evt) {
+			this.started = false;
+		}
+	};
+	
+	// Touch Events
+	myCanvas.addEventListener('touchstart', draw.start, false);
+	myCanvas.addEventListener('touchend', draw.end, false);
+	myCanvas.addEventListener('touchmove', draw.move, false);
+	
+	// Disable Page Move
+	document.body.addEventListener('touchmove',function(evt){
+		evt.preventDefault();
+	},false);
+};
+
+function resetCanvas(){	 
+	  console.log("지워라!")
+    myCanvas.width = myCanvas.width;
+	  ctx.lineWidth = 5;
+  }
+function toDataURL(){
+    console.log("그림으로!")
+	  var canpic = document.getElementById('canpic');
+	  canpic.src = myCanvas.toDataURL();
+	}  
+  
+  /***************************************************************************************/
+var replay = document.querySelector('#replay');
+replay.onclick = function(){
+	myCanvas.width = myCanvas.width;
+  
+  // load localStorage
+  if (points.length === 0) {
+    if (localStorage["points"] !== undefined) {
+      points = JSON.parse(localStorage["points"]);
+    }
+  }
+  
+  var point = 1;
+  setInterval(function(){
+    drawNextPoint(point);
+    point += 1;
+  },10);
+  
+  function drawNextPoint(index) {    
+    if (index > points.length) {
+      return;
+    }
+    var startX = points[index-1].x;
+    var startY = points[index-1].y;
+    var x = points[index].x;
+    var y = points[index].y;
+    
+    context.beginPath();
+    context.moveTo(startX, startY);
+    context.lineTo(x, y);
+    context.lineWidth = 20;
+    context.lineCap = 'round';
+    context.strokeStyle = "rgba(0,0,0,1)";
+    context.stroke();
+    
+  }
+
+};
+/************************************************************************************************/
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+	
+</script>
+</body>
+</html>

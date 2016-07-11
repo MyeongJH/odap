@@ -138,16 +138,27 @@
       }
       
       #join {
-        width:0px;
+        width: 270px;
         margin-left: 40px;
         margin-top: 10px;
         float: left; /*위치변경가능*/      
         border-radius: 4px;
         text-align: center;
-        padding: 20px;
         line-height: 150%;
+        background-color: #66ddc0;
+      }
+      .joinbtn {
+        width: 100px;
+        margin-left: 20px;
       }
       
+      #cmitr {
+        width: 230px;
+        border: 2px solid gray;
+        border-radius: 15px;
+        padding: 10px;
+      }
+
       #sidebar h1 {
         font-size: 30px;
         font-family: 'Nanum Pen Script';        
@@ -349,7 +360,16 @@
           <div id="myinf"></div>
           <button id="subtn" class="button button--border-medium button button--nina" onclick="join_click();">가입신청</button>       
       </div>
-        <div id="join" ></div>
+        <div id="join" style="display:none;">
+        <h4 id='join_cnm'></h4>
+        <form id ='joinfrm' name ='joinfrm' method='POST'>
+        <p>가입 신청</p>
+        <input type='hidden' id='cno' name='cno' value='10'>
+        <textarea id='cmitr' name='cmitr' rows='5' placeholder='신청사유를 작성해주세요.'></textarea>
+        <button id='joinbtn' type='submit' class='button button--border-medium button button--nina joinbtn'>신청</button>
+        <button type='button' class='button button--border-medium button button--nina joinbtn' onclick = 'join_close();'>닫기</button>
+        </form>
+        </div>
     
       <div id="footer">
         <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
@@ -424,39 +444,49 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
-var x = 0;
-function join_click() {
-	if (x==0) {
-	$("#join").append("<h4 id='join_cnm'>Class Name</h4>"
-			              +"<form><div> <label>신청 사유</label>"
-			              +" <textarea id='wjoin' rows='5' placeholder='신청 사유을 입력해주세요.'></textarea>"
-			              +"<button type='button' class='button button--border-medium button button--nina joinbtn' onclick = 'join();'>신청</button>"
-			              +"<button type='button' class='button button--border-medium button button--nina joinbtn' onclick = 'join_close();'>닫기</button></form>");
-	
-	$("#join").width(230);
-	$("#joinbtn").width(10);
-	$("#join").css("background-color","red");
-	x = 1;	
-	} else if (x==1) {}
+var x = 0
+function join_click() {	
+	 if(x==0) {	
+		  $("#join_cnm").append("ClassName");
+		 
+		  x = 1
+	 }
+	 $("#join").css("display","");	 
 }
-	
-function join() {
-	   x = 0;
-	   var a = $('#wjoin').val();
-	   if (!a) {
-		   window.alert("아니 내용이 없자나!");
-	   } else {
-		   
-	   }
-	   $("#join *").remove();
-	   $("#join").css("background-color","white");
-	   
-	}
+
+   $("#joinfrm").submit(function(event){    
+    	//function join(event) {    	
+    		event.preventDefault();  
+    		  
+    		  var fd = new FormData($('form#joinfrm')[0]);   	      
+    	     $.ajax({
+    	        url: "../ajax/cmember/add.do",
+    	        type: "POST",
+    	        dataType : 'json',
+    	        data: fd, 
+    	        cache: false,
+    	        contentType: false,
+    	        processData: false,
+    	        success:  function(data){
+    	        	if(data.status =="success") {
+    	        		alert("신청 완료!");
+    	        		location.href = location.href;
+    	        	} else {
+    	        		alert("이미 가입신청을 하셨습니다.");
+    	        		location.href = location.href;
+    	        	}
+    	        },
+    	       // complete : function(data) {console.log(data.status);},
+    	        error: function(xhr, status, error){
+    	        	  alert("오류가 발생하였습니다. 잠시 후 시도해주세요.");
+    	        	  location.href = location.href;
+    	         }    	        
+    	      });    		 
+    	})
+    	
 	
 function join_close() {
-		  x = 0;
-		  $("#join *").remove();
-		  $("#join").css("background-color","white");
+	   $("#join").css("display","none");
 	}
 
 	

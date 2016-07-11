@@ -71,7 +71,7 @@
           $(".MPG").append("<div class='col-3'><input id='MPG' name='mpg' class='effect-1' type='text' value='"+result.mpg+"'><span class='focus-border'></span></div>");
           if (!result.mpic)
                 result.mpic="img/noimage.jpg";
-          $(".img-wrapper").css('background', 'url(../ver1_m/' + result.mpic + ') no-repeat center center').css('background-size', 'cover');     
+          $(".img-wrapper").css('background', 'url(../ver4_han/' + result.mpic + ') no-repeat center center').css('background-size', 'cover');     
         
     });
   }    
@@ -152,7 +152,6 @@
           reader.onloadstart = function() {
             $(uploadText).val('uploading..');
           }
-
           reader.readAsDataURL(file[0]);
         }
       },
@@ -188,7 +187,7 @@
   function loadClassList() {   
       $.getJSON("../ajax/class/list.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./test6.html'>☎</a></td></tr>"); 
+              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'>☎</a></td></tr>"); 
         });
     })
   }
@@ -209,13 +208,19 @@
 loadQuestions();
   
   function loadQuestions() {
-    $.getJSON("../ajax/question/list.do",function(data) {
+    $.getJSON("../ajax/question/mylist.do",function(data) {
        $.each(data, function(index,entry) {
-          $("<div class='pin'>").html("<img src='" + entry.qpic +"'/>" + "<p>" 
-                + entry.qtit + "</p><br>" + "<p>" + entry.qcnt + "</p>").appendTo($("#columns"));
+    	   var jbSplit = entry.qpic.split('/');
+           $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+entry.qno+"'/>" + "<p>" 
+                 + entry.qtit + "</p><br>" + "<p>" + entry.qcnt + "</p>").appendTo($("#columns"));
        });
   })
   }
+  
+  function onclickDetail(event) {
+      location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
+  } 
+  
   $("#m1").removeClass('selectmenu');
   $("#m2").removeClass('selectmenu');
   $("#m3").attr('class','menu selectmenu');
