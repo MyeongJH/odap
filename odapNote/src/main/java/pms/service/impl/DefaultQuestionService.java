@@ -1,6 +1,8 @@
 package pms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,19 @@ public class DefaultQuestionService implements QuestionService {
     if ((count % pageSize) > 0)
       pages++;
     return pages;
+  }
+
+  @Override
+  public List<Question> search(String key) {
+    System.out.println(key);
+    Map<String,Object> paramMap = new HashMap<>();
+    paramMap.put("key", key);
+    return questionDao.search(paramMap);
+  }
+
+  @Override
+  public List<Question> mylist(int mno) {
+    return questionDao.selectMyList(mno);
   }
 }
 

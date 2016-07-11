@@ -9,6 +9,8 @@ public interface QuestionService {
   void delete(int no);
   Question retrieve(int no);
   List<Question> list();
+  List<Question> mylist(int mno);
   void change(Question quetion);
   int countPage(int pageSize);
+  List<Question> search(String key);
 }

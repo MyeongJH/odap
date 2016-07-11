@@ -1,6 +1,7 @@
 package pms.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,18 @@ public class DefaultBookmarkService implements BookmarkService {
   
   public List<Question> userBookmark(int no) {
     return bookmarkDao.selectUserBookmark(no);
+  }
+
+  public boolean isBookmark(Map<String, Object> paramMap) {
+    if(bookmarkDao.isBookmark(paramMap)>0) {
+      return true;
+    } else {
+    return false;
+    }
+  }
+
+  public int findBookmark(Map<String, Object> paramMap) {
+    return bookmarkDao.findBookmark(paramMap);
   }
 
 }

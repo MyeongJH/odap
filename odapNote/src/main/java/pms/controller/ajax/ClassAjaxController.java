@@ -96,4 +96,14 @@ public class ClassAjaxController {
     }
     return new Gson().toJson(result);
   }
+  
+  
+  @RequestMapping(value="classmaster", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String classmaster(int cno) throws ServletException, IOException {
+    Class clazz = classService.retrieve(cno);
+    int classmaster = clazz.getMno();
+    return new Gson().toJson(classmaster);
+  }
+  
 }

@@ -27,10 +27,10 @@ public class BookmarkAjaxController {
   
   @RequestMapping(value="add", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String add(int mno, int qno) throws ServletException, IOException {
-
+  public String add(HttpSession session, int qno) throws ServletException, IOException {
+    Member member = (Member)session.getAttribute("loginUser");
     Bookmark bookmark = new Bookmark();
-    bookmark.setMno(mno);
+    bookmark.setMno(member.getMno());
     bookmark.setQno(qno);
     
     HashMap<String,Object> result = new HashMap<>();
@@ -47,11 +47,15 @@ public class BookmarkAjaxController {
   
   @RequestMapping(value="delete", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String delete(int no) 
-      throws ServletException, IOException {
+  public String delete(HttpSession session, int qno) throws ServletException, IOException {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    Member member = (Member)session.getAttribute("loginUser");
+    paramMap.put("qno", qno);
+    paramMap.put("mno", member.getMno());
+    int bno = bookmarkService.findBookmark(paramMap);
     HashMap<String,Object> result = new HashMap<>();
     try {
-      bookmarkService.delete(no);
+      bookmarkService.delete(bno);
       result.put("status", "success");
     } catch (Exception e) {
       result.put("status", "failure");
@@ -88,4 +92,33 @@ public class BookmarkAjaxController {
     }
     return new Gson().toJson(result);
   }
+  
+  @RequestMapping(value="/isbookmark",
+      method=RequestMethod.GET,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public boolean isbookmark(HttpSession session, int qno) throws ServletException, IOException {    
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    Member member = (Member)session.getAttribute("loginUser");
+    paramMap.put("qno", qno);
+    paramMap.put("mno", member.getMno());
+    boolean result = bookmarkService.isBookmark(paramMap);   
+    return result;
+  }
+  
+  @RequestMapping(value="/findBookmark",
+      method=RequestMethod.GET,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public int findBookmark(HttpSession session, int qno) throws ServletException, IOException {    
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    Member member = (Member)session.getAttribute("loginUser");
+    paramMap.put("qno", qno);
+    paramMap.put("mno", member.getMno());
+    int result = bookmarkService.findBookmark(paramMap);   
+    return result;
+  }
+  
 }

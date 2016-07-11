@@ -36,7 +36,7 @@ public class AuthController {
     if (memberService.exist(id, password)) {
       Member member = memberService.retrieveById(id);
       model.addAttribute("loginUser", member);
-      return "redirect:../ver4_han/testfinal.html";
+      return "redirect:../ver4_han/firstpage2.html";
     } else { // 로그인 실패!
       return "redirect:login.do";
     }
