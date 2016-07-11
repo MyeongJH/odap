@@ -9,8 +9,8 @@
     App.canvas = document.createElement('canvas');
 //    App.canvas.height = window.innerHeight;
 //    App.canvas.width = window.innerWidth;
-    App.canvas.height = 705;
-    App.canvas.width = 915;
+    App.canvas.height = 740;
+    App.canvas.width = 940;
     document.getElementsByTagName('article')[0].appendChild(App.canvas);
     App.ctx = App.canvas.getContext("2d");
     App.ctx.fillStyle = "rgba(0,0,0,0)";
