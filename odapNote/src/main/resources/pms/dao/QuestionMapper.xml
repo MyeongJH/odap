@@ -38,6 +38,13 @@
     order by QNO DESC   
   </select>
   
+    <select id="selectClassList" resultType="Question" parameterType="int">
+    select QNO, QTIT, QCNT, QCD, QST, QPIC, MNO 
+    from QUESTION
+    where CNO=#{cno}
+    order by QNO DESC   
+  </select>
+  
   
   <select id="selectOne" resultType="Question" parameterType="int">
     select QNO, QTIT, QCNT, QCD, QST, QPIC, MNO  
@@ -54,6 +61,12 @@
     SELECT QNO, QTIT, QCNT, QCD, QST, QPIC, MNO
     FROM QUESTION 
     WHERE QTIT LIKE CONCAT('%',#{key},'%') OR QCNT LIKE CONCAT('%',#{key},'%')
+  </select>
+  
+   <select id="searchInclass" resultType="Question" parameterType="map">
+    SELECT QNO, QTIT, QCNT, QCD, QST, QPIC, MNO
+    FROM QUESTION 
+    WHERE (QTIT LIKE CONCAT('%',#{key},'%') OR QCNT LIKE CONCAT('%',#{key},'%')) and CNO=#{cno}
   </select>
   
 </mapper>

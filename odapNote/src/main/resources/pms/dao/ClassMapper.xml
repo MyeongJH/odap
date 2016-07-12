@@ -40,4 +40,11 @@
     select count(*) 
     from CLASS
   </select>
+  
+  <select id="mylist" resultType="Class" parameterType="int">
+    select CLASS.CNO, CNM, CCD, CSUB
+    from CMEMBER
+    inner join CLASS
+    on CMEMBER.MNO=#{mno} and CMEMBER.CNO=CLASS.CNO and CMEMBER.CMST=1;
+  </select>
 </mapper>
