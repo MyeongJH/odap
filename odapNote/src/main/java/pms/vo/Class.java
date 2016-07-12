@@ -8,9 +8,23 @@ public class Class {
   String cnm;
   Date ccd;
   String cdes;
-  String csub;  
+  String csub;
+  int questionNo;
+  int cmemberNo;
+  String teacherName;
   
-  
+  public void setTeacherName(String teacherName) {
+    this.teacherName = teacherName;
+  }
+
+  public void setQuestionNo(int questionNo) {
+    this.questionNo = questionNo;
+  }
+
+  public void setCmemberNo(int cmemberNo) {
+    this.cmemberNo = cmemberNo;
+  }
+
   @Override
   public String toString() {
     return "Class [cno=" + cno + ", mno=" + mno + ", cnm=" + cnm + ", ccd=" + ccd + ", cdes=" + cdes + ", csub=" + csub

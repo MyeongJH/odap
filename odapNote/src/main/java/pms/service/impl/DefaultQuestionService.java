@@ -68,5 +68,9 @@ public class DefaultQuestionService implements QuestionService {
     paramMap.put("cno", cno);
     return questionDao.searchInclass(paramMap);
   }
+  
+  public int questionNo(int no) {
+    return questionDao.questionNo(no);    
+  }
 }
 

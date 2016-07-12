@@ -103,7 +103,7 @@ ServletContext servletContext;
     String filename = qno+"QNO"+System.currentTimeMillis()+".jpg";
     System.out.printf("새파일명=%s\n", filename);
     
-    String realPath = servletContext.getRealPath("ver4_han/img/" + filename);
+    String realPath = servletContext.getRealPath("ver2_m/img/" + filename);
     System.out.printf("새 파일을 저장할 실제 경로=%s\n", realPath);
     image.transferTo(new File(realPath));
     String[] splits = realPath.split(filename);

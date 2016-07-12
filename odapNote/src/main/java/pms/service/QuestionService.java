@@ -15,4 +15,5 @@ public interface QuestionService {
   int countPage(int pageSize);
   List<Question> search(String key);
   List<Question> searchInclass(String key,int cno);
+  int questionNo(int no);
 }

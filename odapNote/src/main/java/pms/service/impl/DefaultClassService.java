@@ -1,6 +1,8 @@
 package pms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import pms.dao.ClassDao;
 import pms.service.ClassService;
 import pms.vo.Class;
+import pms.vo.Question;
 
 @Service
 public class DefaultClassService implements ClassService {
@@ -36,5 +39,12 @@ public class DefaultClassService implements ClassService {
   public List<Class> myclasslist(int mno) {
     return classDao.mylist(mno);
   };
-
+  
+  @Override
+  public List<Question> search(String key) {
+    System.out.println(key);
+    Map<String,Object> paramMap = new HashMap<>();
+    paramMap.put("key", key);
+    return classDao.search(paramMap);
+  }
 }

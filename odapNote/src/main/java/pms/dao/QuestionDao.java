@@ -16,4 +16,5 @@ public interface QuestionDao {
   int countAll();
   List<Question> search(Map<String,Object> paramMap);
   List<Question> searchInclass(Map<String,Object> paramMap);
+  int questionNo(int no);
 }

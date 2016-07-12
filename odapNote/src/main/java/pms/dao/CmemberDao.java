@@ -17,4 +17,5 @@ public interface CmemberDao {
   List<JoinCmember> selectList(int cno);
   int apply(Map<String,Object> paramMap);
   int delete(Map<String,Object> paramMap);
+  int cmemberNo(int no);
 }

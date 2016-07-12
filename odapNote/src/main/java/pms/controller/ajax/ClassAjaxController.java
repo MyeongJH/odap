@@ -16,13 +16,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import pms.service.ClassService;
+import pms.service.CmemberService;
+import pms.service.MemberService;
+import pms.service.QuestionService;
 import pms.vo.Class;
 import pms.vo.Member;
+import pms.vo.Question;
 
 @Controller
 @RequestMapping("/ajax/class/")
 public class ClassAjaxController {
 @Autowired ClassService classService;
+@Autowired CmemberService cmemberService;
+@Autowired QuestionService questionService;
+@Autowired MemberService memberService;
   
   @RequestMapping(value="add", produces="application/json;charset=UTF-8")
   @ResponseBody
@@ -111,10 +118,24 @@ public class ClassAjaxController {
   public String myclasslist(HttpSession session) throws ServletException, IOException {
     Member member = (Member)session.getAttribute("loginUser");
     int mno = member.getMno();
-    List<Class> list = classService.myclasslist(mno);    
+    List<Class> lists = classService.myclasslist(mno);
+    for (Class list : lists) {
+      list.setTeacherName(memberService.retrieve(list.getMno()).getMnm());
+      list.setCmemberNo(cmemberService.cmemberNo(list.getCno()));
+      list.setQuestionNo(questionService.questionNo(list.getCno()));
+    }
     
-    return new Gson().toJson(list);
+    return new Gson().toJson(lists);
   }
   
+  @RequestMapping(value="search",
+      method=RequestMethod.GET,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String search(String key) throws ServletException, IOException {
+      System.out.println(key);
+      List<Question> list = classService.search(key);
+    return new Gson().toJson(list);
+  }
   
 }
