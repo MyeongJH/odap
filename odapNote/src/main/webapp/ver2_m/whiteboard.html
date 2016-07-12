@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>Odap Note</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/jquery.event.drag-2.0.js"></script>
 <script src="http://192.168.0.48:4000/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
@@ -134,38 +132,6 @@ article {
   width: 987px;
   height: 743.333px;
 }
-
-.box {
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 301px;
-  height: 101px;
-  background-color: #54cfb3;
-  display: table-cell;
-  vertical-align: middle;
-  float: left;
-}
-
-.text {
-  color: #fff;
-  text-align: center;
-  font-size: 28px;
-  letter-spacing: 1px;
-}
-
-.opac {
-  opacity: .8;
-}
-
-.move-cursor {
-  cursor: move;
-}
-
-.grab-cursor {
-  cursor: grab;
-  cursor: -webkit-grab;
-}
-
 
 /*************************************************************************/
 #pheader .navbar-brand {
@@ -397,7 +363,6 @@ article {
   <section id="contents">
     <img id="bg" src="img/board.jpg" width='987' height='743.333'>
   </section>
-  <div class='box'><p class='text'>Drag Me</p></div>
   <article><!-- our canvas will be inserted here--></article>
   </div>
   <nav class="color-bar">
@@ -543,28 +508,6 @@ function change(data) {
 
       return new Blob([ia], {type:mimeString});
   }
-/////////////////////////////////////////////////////////////////////////////////////////
-grid_size = 10;
-
-$(".box")
-  .draggable({ grid: [ grid_size, grid_size ] })
-  .resizable({ grid: grid_size * 2 })  
-  .on("mouseover", function(){
-    $( this ).addClass("move-cursor")
-  })
-  .on("mousedown", function(){
-    $( this )
-      .removeClass("move-cursor")
-      .addClass("grab-cursor")
-      .addClass("opac");  
-  })
-  .on("mouseup", function(){
-    $( this )
-      .removeClass("grab-cursor")
-      .removeClass("opac")
-      .addClass("move-cursor");
-  });
-/////////////////////////////////////////////////////////////////////////////////////////
 
 $(window).parallaxmouse({
     invert: true,
