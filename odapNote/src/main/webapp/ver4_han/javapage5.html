@@ -466,7 +466,7 @@ a:hover {
 }
 
 #search input[type="text"] {
-	background: url(search-dark.png) no-repeat 10px 6px #444;
+	background: #444;
 	border: 0 none;
 	font: bold 12px Arial, Helvetica, Sans-serif;
 	padding: 6px 15px 6px 15px;
@@ -528,10 +528,11 @@ a:hover {
 			<a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a
 				href="./testfinal.html">MYPAGE </a><a href="./search.html">SEARCH </a>
 		</div>
-		<form method="get" action="./search.html" id="search">
+		<form method="get" action="./searchInClass.html?" id="search">
 			<input name="search" type="text" size="40"
 				placeholder="Searching here" /> <img src="img/enter.png"
 				width="15px">
+			<input id="searchcno" name="cno" type="hidden"/>	
 		</form>
 		<div id="className"></div>
 		<div id="content">
@@ -633,6 +634,7 @@ a:hover {
 var cno = getQuerystring("cno");
 console.log(typeof cno);
 cno = +cno;
+$('#searchcno').val(cno);
 console.log(typeof cno);
 loadQuestions();
 loadMasterInfo();
@@ -666,7 +668,7 @@ function loadClassName() {
   
   
   function loadQuestions() {
-    $.getJSON("../ajax/question/list.do",function(data) {
+    $.getJSON("../ajax/question/classlist.do?cno="+cno,function(data) {
     	$.each(data, function(index,entry) {
     		var jbSplit = entry.qpic.split('/');
             $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+entry.qno+"'/>" + "<p>" 

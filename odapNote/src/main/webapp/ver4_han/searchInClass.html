@@ -89,45 +89,26 @@
         padding-bottom: 40px;
       }
    
-      #sidebar {
-        width: 230px;
-        margin-left: 40px;
-        float: left; /*위치변경가능*/       
-      }
-      
-      #sidebar .menu {
-        height: 40px;
-        padding-left: 30px;
-        font-family: 'Nanum Pen Script';
-        color: #888888;
-        font-size: 30px;
-        border-bottom: 1px solid LightGray;        
-      }
-      
-      .selectmenu {
-        height: 40px;
-        padding-left: 30px;
-        font-family: 'Nanum Pen Script';
-        background-color: LightGray;
-        font-size: 30px;
-        color: white;
-      }
-      
-       #sidebar .menu:hover {
-       /*background-color: #7fffd4;*/
-       background-color: LightGray;
-       color:white;
-       }
-
-      #sidebar h2{
-        font-family: 'Nanum Pen Script';
-        font-size: 40px;
-        text-align: center;
-        /*text-decoration: underline;*/
-        padding-bottom: 15px;
-        border-bottom: 3px solid gray;
-        margin-bottom: 0px;
-      }
+		 #sidebar {
+			  width: 230px;
+			  margin-left: 40px;
+			  float: left; /*위치변경가능*/
+			  border-radius: 4px;
+			  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2);
+			  text-align: center;
+			  padding: 20px;
+			  line-height: 150%;
+		}
+		
+		#sidebar h1 {
+		  font-size: 30px;
+		  font-family: 'Nanum Pen Script';
+		}
+				
+		#mypic {
+		  width: 200px;
+		  border-radius: 16px;
+		}
       
       #footer {
         clear: both;
@@ -456,6 +437,14 @@ figure {
   margin-top: 20px;
 }
 
+#className {
+  font-size: 20px;
+  padding-right: 50px;
+  font-family: 'Hanna', serif;
+  text-align: right;
+  margin: 10px;
+}
+
  </style>
   </head>
   <body>
@@ -483,28 +472,48 @@ figure {
       <div id="topmenu">
       <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a href="./testfinal.html">MYPAGE </a><a href="#">SEARCH </a> 
       </div>
+      <div id="className"></div>
       <div id="content">
               <div id="scon" class="profile-header"></div>           
               <article id="wrapper">
               <nav id="columns"></nav>
               </article> 
       </div>
+        <div id="sidebar">
+      <h1>CLASS MASTER</h1>
+      <div id="myinf"></div>
+      <button id="subtn"
+        class="mon button button--border-medium button button--nina"
+        style="display: none;" onclick="join_click();">가입신청</button>
+      <button id="qbtn"
+        class="mon button button--border-medium button button--nina"
+        style="display: none;" data-toggle="modal" data-target="#myModal">질문하기</button>
+      <button id="exibtn"
+        class="mon button button--border-medium button button--nina"
+        style="display: none;" onclick="exit_click();">탈퇴하기</button>
+    <button id="mset"
+      class="mon button button--border-medium button button--nina"
+      style="display: none;" onclick="mset_click();">멤버관리</button>
+    </div>
       <div id="footer">
         <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
        
       </div>
     </div>   
   <script>
-  loadClassList();
+  var get = getRequest();
+  var cno = +get['cno'];
+  loadQueList();
+  loadClassName();
+  loadMasterInfo();
   
-  function loadClassList() {   
-    var get = getRequest();
+  function loadQueList() {       
     if(!get){
     	return;
     }
     var wr_id = get['search'];
     $("#scon").append('<p>searching for " '+decodeURI(wr_id)+' "...');
-    $.getJSON("../ajax/question/search.do?key="+wr_id, function(result) {
+    $.getJSON("../ajax/question/searchInclass.do?key="+wr_id+"&cno="+cno, function(result) {
         $.each(result, function(i,d){                
         	var jbSplit = d.qpic.split('/');
             $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+d.qno+"'/>" + "<p>" 
@@ -512,6 +521,10 @@ figure {
         });
     })
   }
+  
+  function onclickDetail(event) {
+      location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
+  } 
   
   function getRequest() {
       if(location.search.length > 1) {
@@ -526,6 +539,19 @@ figure {
           return false;
       }
   }
+  
+  function loadMasterInfo() {   
+	    $.getJSON("../ajax/class/classmaster.do?cno="+ cno, function(result) {  
+	      $.getJSON("../ajax/member/classmaster.do?mno="+result, function(result) {
+	        if(!result.mpic) {
+	             result.mpic = "./img/noimage.jpg" ;
+	           }
+	         $("#myinf").append("<img src='"+result.mpic+"' id='mypic'>");
+	            $("#myinf").append("<h1>"+result.mnm+"</h1>");
+	            $("#myinf").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);         
+	       });
+	    });
+	  }
   
   // Plugin Test
   $(window).parallaxmouse({
@@ -544,6 +570,12 @@ figure {
           {el: $('#star9'), rate: 0.7}
       ]
   });
+
+  function loadClassName() {
+      $.getJSON("../ajax/class/detail.do?no="+cno, function(data){
+        $("#className").append("<div id='cnm'><h2>ㅣ"+data.cnm+"</h2></div>");
+      })
+    }
 </script><script type="text/javascript">
 
 var _gaq = _gaq || [];
@@ -556,10 +588,6 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-
-  
-  
-  
   </script>
   </body>
 </html>

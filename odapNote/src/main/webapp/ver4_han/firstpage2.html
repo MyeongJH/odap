@@ -258,7 +258,7 @@
     
     */
     #search input[type="text"] {
-    background: url(search-white.png) no-repeat 10px 6px #444;
+    background: #444;
     border: 0 none;
     font: bold 12px Arial,Helvetica,Sans-serif;
     color: #d7d7d7;
@@ -464,6 +464,10 @@
           <label for="exampleInputEmail1">Question</label>
           <center><input name="qtit" type="title" class="form-control" id="Qtitle" placeholder="제목을 입력해주세요."></center>
         </div>
+           <div id="classSelect">
+                     <label for="exampleInputEmail1">Class</label>
+                     <select id="cno" name="cno" class="form-control"></select>
+                  </div>
         <div class="file-upload">
 <div class="image-upload-wrap">
     <input id="uploadFile" name="uploadFile" class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
@@ -494,7 +498,8 @@
 </div> 
   <script>
   loadMyInfo();
- 
+  loadClassList();
+  
   function loadMyInfo() {	  
 	   $.getJSON("../ajax/member/detail.do", function(result) {      
 	     if(!result.mpic) {
@@ -506,20 +511,13 @@
 	   });
 	}
   
-  
-  /*
-  function loadMyInfo() {
-	    
-	    $.getJSON("../ajax/member/classmaster.do?mno="+1, function(result) {   
-	      if(!result.mpic) {
-	             result.mpic = "./img/noimage.jpg"; 
-	           }
-	         $("#sidebar").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
-	            $("#sidebar").append("<h1>"+result.mnm+"</h1>");
-	            $("#sidebar").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);         
-	       });
-	  }
-  */
+  function loadClassList() {   
+      $.getJSON("../ajax/class/myclasslist.do", function(result) {  
+        $.each(result, function(i,d){                
+              $("#cno").append("<option value="+d.cno+" selected>"+d.cnm+"</option>"); 
+        });
+    })
+  }
   // Plugin Test
   $(window).parallaxmouse({
       invert: true,
@@ -537,7 +535,6 @@
           {el: $('#star9'), rate: 0.7}
       ]
   });
-</script><script type="text/javascript">
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36251023-1']);

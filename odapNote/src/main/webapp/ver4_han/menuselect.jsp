@@ -229,25 +229,25 @@ loadQuestions();
   </c:when>
   <c:when test="${param.menu == 4}"> 
   <div class="profile-header">BOOKMARK</div>
-              <div class="ia-container"></div>
+               <article id="wrapper">
+              <nav id="columns"></nav>
+              </article>
   <script>
 loadQuestions();
   function loadQuestions() {
     $.getJSON("../ajax/bookmark/list.do",function(data) {
        $.each(data, function(i,d) {      
-         if(i == 0) {
-               $(".ia-container").append("<figure id='fic-" + i + "'><img class='bimg' src='"+d.qpic+"' alt='seocips'/>" +
-                   "<input type='radio' name='radio-set' checked='checked'/>" +
-                   "<figcaption><span>"+d.qtit+"<br>"+d.qcnt+"</span></figcaption></figure>")
-                                       
-           }  else {
-             $("#fic-"+(i-1)).append("<figure id='fic-" + i + "'><img class='bimg' src='"+d.qpic+"' alt='seocips'/>" +
-                       "<input type='radio' name='radio-set' checked='checked'/>" +
-                       "<figcaption><span>"+d.qtit+"<br>"+d.qcnt+"</span></figcaption></figure>")         
-           } 
+    	   var jbSplit = d.qpic.split('/');
+           $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+d.qno+"'/>" + "<p>" 
+                 + d.qtit + "</p><br>" + "<p>" + d.qcnt + "</p>").appendTo($("#columns"));
        });
   }) 
   }
+    
+  function onclickDetail(event) {
+      location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
+  } 
+  
   $("#m1").removeClass('selectmenu');
   $("#m2").removeClass('selectmenu');
   $("#m3").removeClass('selectmenu');
