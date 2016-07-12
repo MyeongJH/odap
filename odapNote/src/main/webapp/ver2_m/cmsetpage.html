@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>OdapNote</title>
+    <link rel="stylesheet" type="text/css" href="css/buttons.css" />
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>   
+    
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.parallaxmouse.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pheader.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <style>
+    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+    /*
+    body {
+       background-color: #ebffeb;
+    }
+    */
+  a {
+    text-decoration: none;
+  }
+   a:hover {
+    text-decoration: none;
+  }
+      #container {
+        width: 1280px;
+        margin: 0px auto;
+        padding: 20px;       
+      }
+    
+      #top {
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
+      }
+      
+      #header {
+        height: 200px;
+        margin-bottom: 10px;
+        border-bottom: 3px solid gray;       
+      }
+      
+      #topmenu {
+      height: 30px;
+      padding-right: 50px;
+      margin-bottom: 20px;
+      word-spacing: 20px;
+      text-align: right;
+      font-size: 20px;   
+      /*background-color: #288c28;*/
+      background-color: #523d1e;        
+      }
+             
+       #topmenu a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: white;
+       }
+        #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: black;
+        }
+                        
+       #topmenu a:hover {
+        color: gray;
+       }
+          
+      #content {
+        width: 870px;
+        padding: 10px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        float: right; /*위치변경가능*/
+         border-radius: 4px;
+        box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
+        font-family: 'Nanum Pen Script'; 
+        font-size: 20px;
+        line-height: 140%;        
+        background-color:white;
+        padding-bottom: 40px;
+      }
+ 
+  /*     
+      #content h2 {
+         font-family: 'Hanna';
+         font-size: 35px;
+         text-align: left;
+         margin-left: 20px;
+      }
+    
+ 
+      #content #updateProfile {
+        border-radius: 15px;
+        border: 3px solid #7dffbd;
+        background-color: #afffed;
+        font-family: 'Nanum Pen Script';
+        font-size: 25px; 
+        float: right;
+        width: 80px;
+        height: 33px;
+        opacity:20;
+        margin-right:30px;
+        margin-bottom: 10px;
+      }
+      */
+      
+      #className {
+        width: 1200px;
+        font-size: 30px;
+        padding-right: 50px;
+        font-family: 'Nanum Pen Script'; ;
+        text-align: right;
+        margin: 5px;
+      }
+        
+   
+      #sidebar {         
+        width: 230px;       
+        margin-left: 40px;
+        float: left; /*위치변경가능*/      
+        border-radius: 4px;
+        box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2); 
+        text-align: center;
+        padding: 20px;
+        line-height: 150%;
+      }
+      
+      #sidebar h1 {
+    
+        font-size: 30px;
+        font-family: 'Nanum Pen Script';
+      }
+      
+      #sidebar img {
+        border-radius: 60px;
+        width: 185px;
+      }
+            
+      #footer {
+        clear: both;
+        padding: 20px;
+        background-color:white;
+      }
+
+
+.profile-header {
+  padding-left: 50px;
+  padding-top: 20px;
+  color: DimGray;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+
+
+
+  /*************************회원 테이블******************************/
+table {
+  background-color: #FFF;
+  color: #333;
+  font-family: sans-serif;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: left;
+  line-height: 40px;
+  border-spacing: 0;
+  border: 1px solid #428bca;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+thead tr:first-child {
+  background: #428bca;
+  color: #fff;
+  border: none;
+}
+
+th {
+
+  text-align: center;
+  font-weight: bold;  
+}
+
+th:first-child,
+td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+thead tr:last-child th {
+  border-bottom: 2px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f0fbff;
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+font-family:Nanum Pen Script;
+font-size: 25px;
+text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td:last-child {
+  text-align: right;
+  padding-right: 1px;
+}
+
+.button {
+  float: left;
+  min-width: 100px;
+  max-width: 200px;
+  margin: 8px;
+  padding: 8px 1em;
+  border: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+button:active, input:active  {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+button:disabled, input:disabled {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+    <div id="top">
+        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
+      </div>
+      <div class="line"></div>
+      <div id="header">
+          <div id="pheader">
+              <img id="warpbg" class="parallax left top" src="">
+              <img id="star1" class="parallax top" src="img/ta.png">
+              <img id="star2" class="parallax top" src="img/clo.png">
+              <img id="star3" class="parallax" src="img/mo.png">
+              <img id="star4" class="parallax left top" src="img/mu.png">
+              <img id="star5" class="parallax left" src="img/pe.png">
+              <img id="star6" class="parallax left top" src="img/usb.png">
+              <img id="star7" class="parallax top" src="img/tr.png">
+              <img id="star8" class="parallax top" src="img/ph.png">
+              <img id="star9" class="parallax top" src="img/cle.png">
+    
+              <a class="logo" href="mypage.html" ><img src="img/logo2.png"></a>     
+          </div>
+      </div>
+      <div id="topmenu">
+      <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a href="#">MYPAGE </a><a href="./search.html">SEARCH </a> 
+      </div>
+      <div id = "className"></div>
+      
+      <div id="content">
+      <h1>기존 회원</h1>
+      <table><thead><tr><th style="width: 120px">이름</th><th style="width: 150px">ID</th><th style="width: 150px">E-mail</th><th style="width: 150px">Tel</th><th style="width: 50px">관리</th></tr></thead>
+        <tbody id="applied"></tbody>
+      </table> 
+      <h1>가입요청 회원</h1>     
+      <table><thead><tr><th style="width: 120px">이름</th><th style="width: 150px">E-mail</th><th style="width: 300px">소개</th><th style="width: 150px">가입 신청일</th><th style="width: 50px">승인</th><th style="width: 50px">거절</th></tr></thead>
+        <tbody id="apply"></tbody>
+      </table>   
+      </div>        
+      
+      <div id="sidebar">  
+          <h1>CLASS MASTER</h1>
+          <div id="myinf"></div>     
+      </div>
+      <div id="footer">
+        <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+       
+      </div>
+    </div>   
+  <script>
+  var cno = getQuerystring("cno");
+  cno = +cno;
+  loadMasterInfo();
+  loadClassName();
+  loadmember();
+
+  function getQuerystring(paramName){
+
+    var _tempUrl = window.location.search.substring(1); //url에서 처음부터 '?'까지 삭제
+    //console.log(window.location) Location {hash: "", search: "?cno=10", pathname: "/odapNote/ver4_han/javapage4.html", port: "8080", hostname: "localhost"…}
+    //console.log(window.location.search)
+    //console.log(_tempUrl)
+    var _tempArray = _tempUrl.split('&'); // '&'을 기준으로 분리하기
+    
+    for(var i = 0; _tempArray.length; i++) {
+      var _keyValuePair = _tempArray[i].split('='); // '=' 을 기준으로 분리하기
+      
+      if(_keyValuePair[0] == paramName){ // _keyValuePair[0] : 파라미터 명
+        // _keyValuePair[1] : 파라미터 값
+        return _keyValuePair[1];
+      }
+    }
+  } 
+
+function loadClassName() {
+  $.getJSON("../ajax/class/detail.do?no="+cno, function(data){
+    $("#className").append("<div id='cnm'><h2>ㅣ"+data.cnm+"</h2></div>");
+  })
+}
+
+function loadmember() {
+    $.getJSON("../ajax/cmember/list.do?cno="+cno,function(data) {
+      $.each(data, function(index,entry) {
+      
+        
+        if(entry.cmst == true){
+          $("#applied").append("<tr><td>"+entry.mnm +"</td><td>"+entry.mid  +"</td><td>"+entry.mem  +"</td><td>"+entry.mtel +
+          "</td><td> <input type='button' class='button button--size-m button button--nina' name='btn_js_delete' id='btn_js_delete' onclick='btn_js_delete_click("+ entry.mno+");' value='Delete'/></td></tr>");
+        } else {    
+          $("#apply").append("<tr><td>"+entry.mnm+"</td><td>"+entry.mno+"</td><td>"+entry.cmitr+"</td><td>"+entry.cmad+
+          "</td><td> <input type='button' class='button button--size-m button button--nina' name='btn_js_apply' id='btn_js_apply' onclick='btn_js_apply_click("+ entry.mno+");' value='Apply'/>"+
+          "</td><td> <input type='button' class='button button--size-s button button--nina' name='btn_js_deny' id='btn_js_deny' onclick='btn_js_deny_click("+ entry.mno+");' value='Deny'/></td></tr>");
+        }
+                  
+      });
+  }) 
+} 
+  
+function loadMasterInfo() {   
+    $.getJSON("../ajax/class/classmaster.do?cno="+ cno, function(result) {  
+      $.getJSON("../ajax/member/classmaster.do?mno="+result, function(result) {
+        if(!result.mpic) {
+             result.mpic = "./img/noimage.jpg" ;
+           }
+         $("#myinf").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
+            $("#myinf").append("<h1>"+result.mnm+"</h1>");
+            $("#myinf").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);         
+       });
+    });
+  }
+
+
+  function btn_js_delete_click(mno){
+    /* confirm(문자열, 초기값) */     
+      if(confirm("퇴출 시키겠습니까?")){
+        $.getJSON("../ajax/cmember/delete.do?mno="+mno+"&cno="+cno);
+        alert("퇴출 완료");
+        location.href=location.href;    
+    }
+  }  
+   function btn_js_deny_click(mno){
+      /* confirm(문자열, 초기값) */     
+        if(confirm("거절 하시겠습니까?")){
+          $.getJSON("../ajax/cmember/delete.do?mno="+mno+"&cno="+cno);
+          alert("거절 완료");
+          location.href=location.href;    
+      }
+   }    
+    function btn_js_apply_click(mno){
+      /* confirm(문자열, 초기값) */     
+      if(confirm("가입 승인 하시겠습니까?")){
+        $.getJSON("../ajax/cmember/apply.do?mno="+mno+"&cno="+cno);
+        alert("승인 완료");
+        location.href=location.href;
+      }
+    }
+
+  // Plugin Test
+  $(window).parallaxmouse({
+      invert: true,
+      range: 400,
+      elms: [
+          {el: $('#warpbg'), rate: 0.1},
+          {el: $('#star1'), rate: 0.2},
+          {el: $('#star2'), rate: 0.1},
+          {el: $('#star3'), rate: 0.2},
+          {el: $('#star4'), rate: 0.4},
+          {el: $('#star5'), rate: 0.9},
+          {el: $('#star6'), rate: 0.5},
+          {el: $('#star7'), rate: 0.15},
+          {el: $('#star8'), rate: 0.9},
+          {el: $('#star9'), rate: 0.1}
+      ]
+  });
+  
+</script><script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+  
+  
+  
+  </script>
+  </body>
+</html>

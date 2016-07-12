@@ -10,9 +10,6 @@
 <script src="js/jquery.js"></script>
 <script src="js/jquery.parallaxmouse.min.js"></script>
 <link rel="stylesheet" href="css/whiteboard.css" />
-<link rel="stylesheet" type="text/css" href="css/buttons.css" />
-<script src="js/html2canvas.js"></script>
-
 
 <style>
 nav#logo {
@@ -91,48 +88,24 @@ header {
        }
 /*************************************************************************/
 #contents {
-   display: inline;
    margin: 0px auto;
-   width:  987px;
-   height: 743.333px;
+   width: 1280px;
    position: absolute;
    z-index: -100;
+}
+#side {
+  float: left;
 }
 
 #bg {
   z-index: -100;
   position: absolute; 
-  margin-left: 0;
 }
 #question {
   margin-left: 5%;
   margin-top: 5%;
   width: 400px;
 }
-
-#side {
-  display: inline-block;
-  width: 280px;
-  height: 813px;
-  /* border: 3px solid red; */
-  float: left;
-  
-}
-
-#question {
-  margin-left: 5%;
-  margin-top: 5%;
-  width: 400px;
-}
-#page {
-  display: inline-block;
-  /* border: 3px solid red; */
-}
-article {
-  width: 987px;
-  height: 743.333px;
-}
-
 /*************************************************************************/
 #pheader .navbar-brand {
     color: black;
@@ -199,13 +172,16 @@ article {
     padding: 20px;
 }
 
+article {
+  margin-left: 22%;
+}
 .color-bar {
   position: relative;
-  display: inline-block;
   top: calc(50% + 250px);
+  left: calc(50% - 350px);
   text-align: center;
-  width: 987px;
-  padding: 50px 0;
+  width: 700px;
+  padding: 40px 0;
 }
 .color-bar .color {
   width: 40px;
@@ -256,23 +232,11 @@ article {
 }
 .thickness-bar {
   position: relative;
-  display: inline-block;
   bottom: calc(50% + 250px);
-  width: 987px;
-  margin-left: 280px;
+  left: calc(50% - 350px);
+  padding: 40px 0;
+  width: 700px;
   text-align: center;
-}
-
-#addbm {
- width: 150px;
- height: 40px;
- display: inline-block;
-}
-
-#delbm {
- width: 150px;
- height: 40px;
- display: inline-block;
 }
 .thickness-bar .thickness {
   width: 40px;
@@ -350,21 +314,15 @@ article {
         class="parallax top" src="img/tr.png"> <img id="star8"
         class="parallax top" src="img/fi.png"> <img id="star9"
         class="parallax" src="img/pr.png"> <a
-        class="navbar-brand page-scroll" href="firstpage2.html">Odap note</a>
+        class="navbar-brand page-scroll" href="mypage.html">Odap note</a>
     </div>
   </div>
-  <div id="side">
-    <input type='button' onclick='newan();' id='newAnswer' value='newAnswer'/>
-    <input type="button" value="Capture" id="capture" />
-    <input type="button" onclick='dellogfile();' value="log삭제" id="dellog" />
-    <div id="answers"></div>
-  </div>
-  <div id="page">
+
   <section id="contents">
-    <img id="bg" src="img/board.jpg" width='987' height='743.333'>
+    <img id="side" src="img/boardside.png">
+    <img id="bg" src="img/board.jpg" width="1000" height="800">
   </section>
   <article><!-- our canvas will be inserted here--></article>
-  </div>
   <nav class="color-bar">
     <div class="color" data-color="#9b59b6"></div>
     <div class="color" data-color="#3498db"></div>
@@ -381,48 +339,16 @@ article {
     <div class="thickness" data-thickness="48"></div>
     <div class="thickness" data-thickness="128"></div>
   </nav>
-  <button id='addbm' type='button' onclick='addbookmark()'
-               style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크추가</button>
-  <button id='delbm' type='button' onclick='delbookmark()'
-               style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크취소</button>             
 </div>
 <script>
 var qno = location.href.split("=")[1];
 qno = +qno;
 loadQuestion();
-isBookmark();
-loadAnswer();
 function loadQuestion() {
     $.getJSON("../ajax/question/detail.do?no="+qno, function(data){
       $("#contents").append("<img id='question' src="+data.qpic+">");
-      
     })
 }
-
-function loadAnswer() {
-    $("#answers").empty();
-    $.getJSON("../ajax/answer/list.do?qno="+qno, function(data){
-      if (data.length == 0) {
-        $('#answers').append("<img id='default' src='img/board.jpg' width='260'>");
-      }
-      $.each(data, function(i,d) {        
-        $('#answers').append("<img class='answer' onclick='change(this)' data-ano='"+d.ano+"' src='img/thumb_"+d.acon+"' width='260'>");
-      })      
-    })
-}
-
-
-function isBookmark() {
-  console.log("??")
-  $.getJSON("../ajax/bookmark/isbookmark.do?qno="+qno, function(data){
-        if(data) {
-          $("#delbm").css("display","");
-        } else {
-          $("#addbm").css("display","");  
-        }
-      })  
-}
-
 
 var selectedColor = '#1abc9c';
 var selectedThickness = 4;
@@ -438,76 +364,6 @@ $('.thickness').on('click', function() {
 
     selectedThickness = $(this).data('thickness');
   });
-
-function newan() {
-	$("#contents").empty();
-	loadQuestion();
-	$("#contents").append("<img id='bg'  src='img/board.jpg' width='987' height='743.333'>");
-	resetCanvas();
-	//dellogfile();
-}
-
-function change(data) {
-    var acon = data.getAttribute('src').split('_');
-    $("#contents").empty();
-    $("#contents").append("<img id='bg' src='img/"+acon[1]+"' width='987' height='743.333'>"); 
-    resetCanvas();
-    //dellogfile();
-  };
-
-  document.querySelector("#capture").addEventListener("click", function() {
-      html2canvas($("#page"), {
-          //allowTaint: true,
-          //taintTest: false,
-          useCORS: true,
-          proxy: '/etc/proxy_image',
-          onrendered: function(canvas) {
-            var image = canvas.toDataURL();
-            $("#imgTarget").attr("src", image);
-            var dataURL = canvas.toDataURL('image/jpeg', 0.5);
-            var blob = dataURItoBlob(image);
-            var fd = new FormData(document.forms[0]);
-            
-            fd.append("image", blob);
-            fd.append("qno", qno);
-            $.ajax({
-              url: "../ajax/answer/update.do",
-              type: "POST",
-              data: fd,
-              async: false,
-              cache: false,
-              contentType: false,
-              processData: false,
-              success:  function(data){
-                loadAnswer();
-                alert("저장되었습니다.");
-              },
-              error: function(e){
-              }   
-            });    
-          }
-      });
-  }, false);
-
-  function dataURItoBlob(dataURI) {
-      // convert base64/URLEncoded data component to raw binary data held in a string
-      var byteString;
-      if (dataURI.split(',')[0].indexOf('base64') >= 0)
-          byteString = atob(dataURI.split(',')[1]);
-      else
-          byteString = unescape(dataURI.split(',')[1]);
-
-      // separate out the mime component
-      var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-      // write the bytes of the string to a typed array
-      var ia = new Uint8Array(byteString.length);
-      for (var i = 0; i < byteString.length; i++) {
-          ia[i] = byteString.charCodeAt(i);
-      }
-
-      return new Blob([ia], {type:mimeString});
-  }
 
 $(window).parallaxmouse({
     invert: true,
@@ -526,42 +382,82 @@ $(window).parallaxmouse({
     ]
 });
 
-function addbookmark() {
-  $.getJSON("../ajax/bookmark/add.do?qno="+qno, function(data){
-      if(data.status == "success") {
-      alert("북마크에 추가되었습니다.");
-      location.href = location.href; 
-     } else {
-       alert("오류발생..다시 시도해주세요.");
-     }
-    })  
-}
-
-function delbookmark() {  
-   $.getJSON("../ajax/bookmark/delete.do?qno="+qno, function(data){
-        if(data.status == "success") {
-        alert("북마크에서 제거되었습니다.");
-        location.href = location.href; 
-       } else {
-         alert("오류발생..다시 시도해주세요.");
-       }
-      })  
-}
-
-function dellogfile() {
-	   $.getJSON("../ajax/answer/deletelog.do?qno="+qno, function(data){
-	        if(data.status == "success") {
-	       } else {
-	         alert("오류발생..다시 시도해주세요.");
-	       }
-	      })  	
-}
-
-function resetCanvas() {
-	 var canvas = $("canvas").get(0);
-	  var context = canvas.getContext('2d');
-	  context.clearRect(0, 0, canvas.width, canvas.height);	
-}
+/*/////////////////////////////////////////////////////////////////////////////////////////////
+(function() {
+  var App;
+  App = {};
+  
+  /*
+    Init 
+  *       /
+  App.init = function() {
+    App.canvas = document.createElement('canvas');
+//    App.canvas.height = window.innerHeight;
+//    App.canvas.width = window.innerWidth;
+    App.canvas.height = 705;
+    App.canvas.width = 915;
+    document.getElementsByTagName('article')[0].appendChild(App.canvas);
+/*    App.ctx = App.canvas.getContext("2d");
+    App.ctx.fillStyle = "rgba(0,0,0,0)";
+    App.ctx.fillRect(0,0,App.canvas.width,App.canvas.height);
+    App.ctx.strokeStyle = selectedColor;
+    console.log("script"+selectedColor);
+    App.ctx.lineWidth = 5;
+    App.ctx.lineCap = "round";*  /
+    App.socket = io.connect('http://192.168.0.54:4000');
+    App.socket.on('connect', function () {      
+      App.socket.emit('joinRoom', qno);
+      App.socket.on('msgAlert',function(data){
+            alert(data);
+        });
+    });
+    App.socket.on('draw', function(data) {
+      return App.draw(data.x, data.y, data.type);
+    });
+    App.draw = function(x, y, type) {
+      if (type === "dragstart") {
+        App.ctx.beginPath();
+        return App.ctx.moveTo(x, y);
+      } else if (type === "drag") {
+        App.ctx.lineTo(x, y);
+        return App.ctx.stroke();
+      } else {
+        return App.ctx.closePath();
+      }
+    };
+  };
+  
+  /*
+    Draw Events
+  * /
+  $(document).on('drag dragstart dragend', 'canvas',function(e) {
+    var offset, type, x, y;
+    type = e.handleObj.type;
+    offset = $(this).offset();
+    App.ctx = App.canvas.getContext("2d");
+    App.ctx.fillStyle = "rgba(0,0,0,0)";
+    App.ctx.fillRect(0,0,App.canvas.width,App.canvas.height);
+    App.ctx.strokeStyle = selectedColor;
+    App.ctx.lineWidth = selectedThickness;
+    App.ctx.lineCap = "round";
+//    e.offsetX = e.layerX - offset.left;
+//    e.offsetY = e.layerY - offset.top;
+    e.offsetX = e.layerX;
+    e.offsetY = e.layerY;
+    x = e.offsetX;
+    y = e.offsetY;
+    App.draw(x, y, type);
+    App.socket.broadcast.to(qno).emit('drawClick', {    	
+      x: x,
+      y: y,
+      type: type
+    });
+  });
+  $(function() {
+    return App.init();
+  });
+}).call(this);
+*/
 
 </script>
 </body>
