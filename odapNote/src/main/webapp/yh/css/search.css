@@ -1,0 +1,84 @@
+table {
+  background-color: #FFF;
+  color: #333;
+  font-family: sans-serif;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: left;
+  line-height: 40px;
+  border-spacing: 0;
+  border: 1px solid #428bca;
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+thead tr:first-child {
+  background: #428bca;
+  color: #fff;
+  border: none;
+}
+
+th {
+
+  text-align: center;
+  font-weight: bold;  
+}
+
+th:first-child,
+td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+thead tr:last-child th {
+  border-bottom: 2px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f0fbff;
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+font-family:Nanum Pen Script;
+font-size: 25px;
+text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td:last-child {
+  text-align: right;
+  padding-right: 1px;
+}
+
+.button {
+  float: left;
+  min-width: 100px;
+  max-width: 200px;
+  margin: 8px;
+  padding: 8px 1em;
+  border: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+button:active, input:active  {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+button:disabled, input:disabled {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
