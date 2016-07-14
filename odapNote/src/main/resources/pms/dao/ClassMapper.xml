@@ -42,14 +42,16 @@
   </select>
   
   <select id="mylist" resultType="Class" parameterType="int">
-    select CLASS.CNO, CNM, CCD, CSUB, CLASS.MNO
+    select CLASS.CNO, CNM, CCD, CSUB
     from CMEMBER
     inner join CLASS
     on CMEMBER.MNO=#{mno} and CMEMBER.CNO=CLASS.CNO and CMEMBER.CMST=1;
   </select>
-   <select id="search" resultType="Class" parameterType="map">
-    SELECT CNM, CCD, CDES, CSUB
+  
+  <select id="search" resultType="Class" parameterType="map">
+    SELECT CNO, CNM 
     FROM CLASS 
-    WHERE CNM LIKE CONCAT('%',#{key},'%')
+    WHERE CNM LIKE CONCAT('%',#{key},'%') or CSUB LIKE CONCAT('%',#{key},'%')
   </select>
+  
 </mapper>
