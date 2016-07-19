@@ -91,7 +91,16 @@
         contentType: false,
         processData: false,
         success:  function(data){
-          alert("저장되었습니다.");
+            $(document).ready(function() {
+                  swal({ 
+                    title: "변경 완료",
+                     text: "",
+                      type: "" 
+                    },
+                    function(){
+                      window.location.href =location.href;
+                  });
+                  });
         }
       });   
       return false;   
@@ -172,30 +181,105 @@
   
   </c:when>
   <c:when test="${param.menu == 2}"> 
-     <div class="profile-header">CLASS</div>
-              <table id="classlist" cellpadding="10px">
+     <div class="profile-header" style="display:inline-block">CLASS</div>
+     <div id="zzazza">
+              <table id="myClasslist" class="table table-hover" cellpadding="10px">
+
+              <h3>관리중 Class</h3>
+                   <!-- <input type='button' style="display:inline-block; height:30px;" class='button button--border-medium button button--nina joinbtn' id="newClass" value='클래스생성' data-toggle="modal" data-target="#myModal"/> -->
+              <tr>
+              <th>강사</th><th>과목</th><th>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
+              </tr>   
+              </table><br>
+              
+              <table id="classlist" class="table table-hover" cellpadding="10px">
+               <h3>가입 된 Class</h3>
               <tr>
               <th>강사</th><th>과목</th><th>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
               </tr>   
               </table>
-              
+       </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">새로운 클래스 만들기</h4>
+      </div>
+        <form id="addc" name="addc" method="POST">
+      <div class="modal-body">
+        <br>
+          <label>클래스명</label><br>
+          <input id="cnm" type="text" class="form-control" placeholder="클래스명을 입력해주세요." name="cnm"><br>           
+          <label>과목</label><br>
+          <input id="csub" type="text" class="form-control" placeholder="과목을 입력해주세요." name="csub"><br> 
+          <label>설명</label><br>
+          <textarea id="cdes" class="form-control" rows="5" placeholder="설명을 입력해주세요." name="cdes"></textarea><br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-primary" id="newClassSave" >저장</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>          
   <script>
-
+  loadMyClass();
   loadClassList();
   
-
-  function loadClassList() {   
-      $.getJSON("../ajax/class/list.do", function(result) {  
+  function loadMyClass() {   
+      $.getJSON("../ajax/class/myClass.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'>☎</a></td></tr>"); 
+              $("#myClasslist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterC.png'></a></td></tr>"); 
         });
     })
   }
+
+  
+  function loadClassList() {   
+      $.getJSON("../ajax/class/myclasslist.do", function(result) {  
+        $.each(result, function(i,d){                
+              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterC.png'></a></td></tr>"); 
+        });
+    })
+  }
+  
+  
+  
+  $("#addc").submit(function(event){    
+      var fd = new FormData($("#addc")[0]);  
+      console.log("1");
+      console.log(fd);
+      $.ajax({
+        url: "../ajax/class/add.do",
+        type: "POST",
+        data: fd, 
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:  function(data){
+            $(document).ready(function() {
+                swal({ 
+                  title: "클래스 생성 완료!",
+                   text: "",
+                    type: "success" 
+                  },
+                  function(){
+                    window.location.href =location.href;
+                });
+                });
+        }
+      });   
+      return false;   
+  });
+  
   $("#m1").removeClass('selectmenu');
   $("#m2").attr('class','menu selectmenu');
   $("#m3").removeClass('selectmenu');
   $("#m4").removeClass('selectmenu');
-
+    
   </script>
   </c:when>
   <c:when test="${param.menu == 3}"> 
