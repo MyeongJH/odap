@@ -83,26 +83,26 @@
       var fd = new FormData($(this)[0]);  
       
       $.ajax({
-        url: "../ajax/member/upload.do",
-        type: "POST",
-        data: fd, 
-        async: false,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success:  function(data){
-            $(document).ready(function() {
-                  swal({ 
-                    title: "변경 완료",
-                     text: "",
-                      type: "" 
-                    },
-                    function(){
-                      window.location.href =location.href;
-                  });
-                  });
-        }
-      });   
+          url: "../ajax/member/upload.do",
+          type: "POST",
+          data: fd, 
+          async: false,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success:  function(data){
+              $(document).ready(function() {
+                    swal({ 
+                      title: "변경 완료",
+                       text: "",
+                        type: "" 
+                      },
+                      function(){
+                        window.location.href =location.href;
+                    });
+                    });
+          }
+        }); 
       return false;   
   });
 
@@ -186,7 +186,7 @@
               <table id="myClasslist" class="table table-hover" cellpadding="10px">
 
               <h3>관리중 Class</h3>
-                   <!-- <input type='button' style="display:inline-block; height:30px;" class='button button--border-medium button button--nina joinbtn' id="newClass" value='클래스생성' data-toggle="modal" data-target="#myModal"/> -->
+                   <input type='button' style="display:inline-block; height:30px;" class='button button--border-medium button button--nina joinbtn' id="newClass" value='클래스생성' data-toggle="modal" data-target="#myModal"/>
               <tr>
               <th>강사</th><th>과목</th><th>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
               </tr>   
@@ -231,7 +231,7 @@
   function loadMyClass() {   
       $.getJSON("../ajax/class/myClass.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#myClasslist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterC.png'></a></td></tr>"); 
+              $("#myClasslist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
         });
     })
   }
@@ -240,7 +240,7 @@
   function loadClassList() {   
       $.getJSON("../ajax/class/myclasslist.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterC.png'></a></td></tr>"); 
+              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
         });
     })
   }
@@ -284,10 +284,11 @@
   </c:when>
   <c:when test="${param.menu == 3}"> 
     <div class="profile-header">MY QUESTION</div>
+    <div id="zza">
               <article id="wrapper">
               <nav id="columns"></nav>
               </article>
-              
+     </div>
   <script>
 loadQuestions();
   
@@ -313,9 +314,11 @@ loadQuestions();
   </c:when>
   <c:when test="${param.menu == 4}"> 
   <div class="profile-header">BOOKMARK</div>
+  <div id="zza">
                <article id="wrapper">
               <nav id="columns"></nav>
               </article>
+  </div>
   <script>
 loadQuestions();
   function loadQuestions() {
