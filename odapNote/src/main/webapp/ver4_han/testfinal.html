@@ -677,17 +677,40 @@ figure {
   }
   
   #zzazza {
-    padding: 20px 0 20px 130px;
+    padding: 20px 0 20px 80px;
     border-bottom: 1px solid gray; 
     border-top: 1px solid gray;
     font-family: hoon;
   }
   
-    #zzazza h3 {
+
+  
+  #zzazza h3 {
     display: inline-block;
     font-family: Hanna;
   }
+
+  #zzazza table{
+     table-layout:fixed; 
+     text-align: center;
+  }
   
+  #zzazza table td,#zzazza table th {
+     min-width: 100px;
+     max-width: 100px;  
+     text-overflow: ellipsis; 
+     overflow: hidden; 
+     white-space: nowrap;
+  }
+  
+  .tableCnm {
+      min-width: 150px !important;
+      max-width: 150px !important;
+      text-overflow: ellipsis; 
+      overflow: hidden; 
+      white-space: nowrap;
+  }
+
     
   #zza {
     padding: 20px 0 20px 10px;

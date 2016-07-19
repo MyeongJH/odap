@@ -183,19 +183,19 @@
   <c:when test="${param.menu == 2}"> 
      <div class="profile-header" style="display:inline-block">CLASS</div>
      <div id="zzazza">
-              <table id="myClasslist" class="table table-hover" cellpadding="10px">
+              <table id="myClasslist" class="table table-hover" cellpadding="10px" style="table-layout:fixed">
 
               <h3>관리중 Class</h3>
                    <input type='button' style="display:inline-block; height:30px;" class='button button--border-medium button button--nina joinbtn' id="newClass" value='클래스생성' data-toggle="modal" data-target="#myModal"/>
               <tr>
-              <th>강사</th><th>과목</th><th>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
+              <th>강사</th><th>과목</th><th class='tableCnm'>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
               </tr>   
               </table><br>
               
               <table id="classlist" class="table table-hover" cellpadding="10px">
                <h3>가입 된 Class</h3>
               <tr>
-              <th>강사</th><th>과목</th><th>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
+              <th>강사</th><th>과목</th><th class='tableCnm'>클래스명</th><th>회원수</th><th>질문수</th><th>입장</th>
               </tr>   
               </table>
        </div>
@@ -231,7 +231,7 @@
   function loadMyClass() {   
       $.getJSON("../ajax/class/myClass.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#myClasslist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
+              $("#myClasslist").append("<tr><td>"+d.mnm+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
         });
     })
   }
@@ -240,7 +240,7 @@
   function loadClassList() {   
       $.getJSON("../ajax/class/myclasslist.do", function(result) {  
         $.each(result, function(i,d){                
-              $("#classlist").append("<tr><td>"+d.mno+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
+              $("#classlist").append("<tr><td>"+d.mnm+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
         });
     })
   }
