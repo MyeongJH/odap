@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>냉장고를 가져와</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+   rel="stylesheet">
+<link href="css/jquery-ui.css" rel="stylesheet">
+<link href="css/mypage.css" rel="stylesheet">
+<link href="css/sweetalert.css" rel="stylesheet">
+<link href="css/font.css" rel="stylesheet">
+<link href="css/w3.css" rel="stylesheet">
+<link href="css/summernote.css" rel="stylesheet">
+<link href="css/insert.css" rel="stylesheet">
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/handlebars/handlebars.min.js"></script>
+<script src="js/sweetalert.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/summernote.js"></script>
+<style>
+#delob {
+   margin-bottom: 10px;
+}
+
+.delbtn {
+   position: absolute;
+   float: right;
+   height: 40px;
+   margin-top: -110px;
+   margin-left: 59px;
+   background: inherit;
+   background-color: rgba( 255, 255, 255, 0.5 );
+   outline: aqua;
+}
+
+.delbtn_png {
+  margin-top: -5px;   
+}
+
+.addbtn {
+   width: 154px; 
+   height: 154px;
+   border-radius: 10px;
+   opacity: 0.2;
+   outline: none;
+}
+
+.addbtn:hover {
+   opacity: 0.5;
+}
+
+.plusbtn {
+   width: 50px;
+   height: 50px;
+}
+
+.option {
+   opacity: 0.5;
+   filter: alpha(opacity = 50); /* For IE8 and earlier */
+   text-align: right;
+}
+
+.option:hover {
+   opacity: 1.0;
+   filter: alpha(opacity = 100); For IE8 and earlier
+}
+
+#mytitle {
+   margin-bottom: 20px;
+}
+
+.frypan {
+   float: right;
+   position: absolute;
+   margin-left: 660px;
+   margin-top: -100px;
+   width: 110px;
+   height: 100px;
+}
+
+.summernote {
+   margin-left: 0;
+}
+
+.note-editor.note-frame {
+   border: 1px solid lightgray;
+   margin-left: 15px;
+}
+
+.img_con {
+   border: 1px solid lightgray;
+   border-radius:10px; 
+   width: 630px;
+   height:520px;  
+   margin-right: -17px;
+}
+
+.file-upload {
+   width: 630px;
+  height: 520px;
+  margin-left: -16px;
+}
+
+.file-upload-image {
+  height: 100%;
+  width: 100%;
+  max-height: 480px;
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.image-upload-wrap {
+   height: 520px;
+  position: relative;
+}
+
+.file-upload-content {
+   display: none;
+   text-align: center;
+}
+
+.file-upload-input {
+ border: 1px solid red;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ outline: none;
+ opacity: 0;
+ cursor: pointer;
+}
+
+.image-dropping, .image-upload-wrap:hover {
+   opacity: 0.5;
+}
+
+.image-title-wrap {
+   padding: 0 15px 15px 15px;
+   color: #222;
+}
+
+.drag-text {
+   text-align: center;
+   height: 520px;
+   margin-top: -20px;
+}
+
+.camera {
+   width: 400px;
+  height: 400px;
+  margin-top: 70px;
+}
+
+.panel-group {
+   margin-left: -30px;
+}
+
+.mar {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 69px;
+  font-size: 21px;
+}
+
+.time {
+   border: 1px solid gray;
+  border-radius: 10px;
+  width: 104px;
+  font-size: 21px;
+  margin-top: 17px;
+}
+
+.radio>label {
+   margin-right: 30px;
+}
+
+.level {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 87px;
+  font-size: 21px;
+  margin-top: 10px;
+}
+
+.stars {
+   width: 160px;
+  margin-top: 11px;
+}
+
+.insert_btn {
+   margin-top: 12px;
+  margin-left: -15px;
+  border: 3px solid gray;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.insert_btn:hover {
+   color: black;
+}
+
+.cancel_btn {
+   margin-top: 12px;
+  margin-left: -15px;
+  border: 3px solid gray;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.cancel_btn:hover {
+  color: red;
+}
+
+.radio {
+   margin-top: 20px;
+}
+
+.star1 {
+   position: absolute;
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin-top: -24px;
+}
+
+.star2 {
+  position: absolute;
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin-top: -24px;
+  margin-left: 32px;
+}
+
+.star3 {
+  position: absolute;
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin-top: -24px;
+  margin-left: 64px;
+}
+
+.star4 {
+  position: absolute;
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin-top: -24px;
+  margin-left: 96px;
+}
+
+.star5 {
+  position: absolute;
+  float: left;
+  width: 34px;
+  height: 32px;
+  margin-top: -24px;
+  margin-left: 126px;
+}
+
+</style>
+</head>
+
+<body>
+   <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+               data-toggle="collapse" data-target="#defaultNavbar1">
+               <span class="sr-only">Toggle navigation</span> <span
+                  class="icon-bar"></span> <span class="icon-bar"></span> <span
+                  class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img id="titleimg"
+               src="img/title.PNG" /></a>
+         </div>
+         <div class="collapse navbar-collapse" id="defaultNavbar1">
+            <form class="navbar-form navbar-left" role="search">
+               <div class="form-group">
+                  <input type="text" class="form-control" placeholder="예) 김치 볶음밥">
+               </div>
+               <a href="search.html" class="btn btn-default">검색</a>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="#">로그아웃</a></li>
+               <li><a href="./member/myPage.html">마이페이지</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+
+   <div class="container">
+      <!-- 큰틀 -->
+      <div class="row">
+
+         <div class="col-sm-2 col-lg-2"
+            style="overflow: scroll; height: 793px; overflow-x: hidden;">
+            <form id="fm" class="grid" method="post"
+               enctype="multipart/form-data" name="fm"></form>
+
+
+            <script id="pinput" type="text/x-handlebars-template">         
+          <div class="option" id="delob">
+            <a href="#" id="onclc"> <img id="imgc" src="img/noimages.png" alt="your image" style="width: 154px; height: 154px; margin-bottom: 10px; border-radius:10px;" /></a>
+            <button type="button" class="delbtn" id="delbutton"><img src="./img/trash-can.png" class="delbtn_png"></button>
+            <p id="textc" style="display: none;"></p>        
+          </div>
+        </script>
+
+            <button type="button" class="addbtn">
+               <img src="./img/plus.png" class="plusbtn">
+            </button>
+
+            <script>
+          var curindex = 1;
+          var slideIndex = 1;
+          
+          // sortable 기능
+          $(function () {
+            $(".grid").sortable({
+              tolerance: 'pointer',
+              revert: 'invalid',
+              forceHelperSize: true
+            });
+          });
+          
+          // 시작하자마자 ppt 1개 생성
+
+          $(function () {
+            $(".addbtn").click();
+          });
+
+          
+          // ppt 생성 handlebars code
+          $(document).on("click", ".addbtn", function() {
+            if(curindex > 10) {
+               swal("추가 실패", "폼의 전체 갯수는 10개를 넘을 수 없습니다.", "warning")
+              curindex = 11;
+            } else if (curindex < 11 && curindex > 0) {
+              $("#fm").append(Handlebars.compile($('#pinput').html())),
+              $("#delob").attr('id', $("#delob").attr('id') + curindex),
+              $("#textc").attr('id', $("#textc").attr('id') + curindex),
+              $("#imgc").attr('id', $("#imgc").attr('id') + curindex),
+              $("#onclc").attr('id', $("#onclc").attr('id') + curindex),
+              $("#delbutton").attr('id', $("#delbutton").attr('id') + curindex),
+              $("#delbutton"+curindex).hide(),
+              $('#onclc'+curindex).attr('onclick','currentDiv(' + curindex + ')');
+              curindex++;
+            }
+          });
+          
+          // ppt 제거 handlebars code
+          $(document).on("click", ".delbtn", function() {    
+          if (curindex < 3) {
+             swal("삭제 실패", "최소 1개이상의 폼이 필요합니다", "warning")
+            curindex = 2;
+          } else if (curindex < 12 && curindex > 1) {
+            $("#delob" + slideIndex).remove();
+            for(var i = slideIndex + 1; i < curindex + 1; i++) {
+              $("#delob"+ i ).attr("id","delob"+(i - 1));
+              $("#textc"+ i ).attr("id","textc"+(i - 1));               
+              $("#imgc"+ i ).attr("id","imgc"+(i - 1));               
+              $("#onclc"+ i ).attr("id","onclc"+(i - 1));
+              $("#delbutton"+ i ).attr("id","delbutton"+(i - 1)); 
+              $('#onclc'+(i-1)).attr('onclick','currentDiv(' + ( i - 1 ) + ')');
+            }
+              showDivs(slideIndex);
+              $('.image-upload-wrap').hide();
+              $('.file-upload-image').attr('src', $('#imgc' + slideIndex).attr("src"));
+              $('.file-upload-content').show();
+              curindex--;
+            }
+          });
+
+          
+          function currentDiv(n) {
+            $('#textc' + slideIndex).html($('#summertext').summernote('code'));
+            // summernot.js 1425번째 줄 수정했다...!!!
+                        
+            /* // Read image path, convert to base64 encoding
+            $image = 'http://images.itracki.com/2011/06/favicon.png';
+            $imageData = base64_encode(decodedCode);
+            // $imageData = encodedCode;
+            // Format the image SRC:  data:{mime};base64,{data};
+            $src = 'data:'.mime_content_type($image).';base64,'.$imageData; */
+
+            removeUploadOnly();
+            $(".delbtn").hide();
+            showDivs(slideIndex = n);
+            $("#delbutton" + slideIndex).show();
+            if ($('#imgc' + slideIndex).attr("src") != "img/noimages.png") {
+              $('.image-upload-wrap').hide();
+              $('.file-upload-image').attr('src', $('#imgc' + slideIndex).attr("src"));
+              $('.file-upload-content').show();
+            }
+            /* console.log($('#textc' + slideIndex).html()); */
+          }
+
+          function showDivs(n) {
+            $("#imgc" + n).attr("src", $("imgc" + n).attr("src"));
+            $('.summernote').summernote('code',$("#textc" + n).html());
+          }
+        </script>
+         </div>
+
+
+         <div class="col-sm-10 col-lg-10"
+            style="border-left: 2px solid lightgray">
+            <!-- 우측메인 -->
+            <div class="col-sm-12 col-lg-12">
+               <!-- 제목 -->
+               <input type="text" class="form-control" id="mytitle"
+                  style="margin-left: -15px; width: 630px;" placeholder="제목을 입력하세요">
+                  <img src="./img/frypan.png" class="frypan">
+            </div>
+            <form id="fd" method="post" enctype="multipart/form-data" name="fd">
+               <div class="img_con col-sm-8 col-lg-8">
+                  <!-- 사진 -->
+                  <div class="file-upload">
+                     <div class="image-upload-wrap">
+                        <input class="file-upload-input" type='file'
+                           onchange="readURL(this);" accept="image/*" name="uploadFile"
+                           id="uploadFile" />
+                        <div class="drag-text">
+                           <img src="./img/camera.png" class="camera">
+                        </div>
+                     </div>
+                     <div class="file-upload-content">
+                        <img class="file-upload-image" onclick="removeUpload()" src="#" alt="your image" />
+                        <div class="image-title-wrap"></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-lg-4">
+                  <!-- 내용 -->
+
+                  <div class="summernote" id="summertext"></div>
+               </div>
+            </form>
+            <div class="col-sm-12 col-lg-12">
+               <!-- 하단부 -->
+               <div class="col-sm-2 col-lg-2">
+                  <!-- 아코디언 -->
+                  <div class="panel-group" id="accordion" role="tab"
+                     aria-multiselectable="true">
+                     <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                           <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion"
+                                 href="#collapseOne" aria-expanded="false"
+                                 aria-controls="collapseOne"> 상황별 요리 </a>
+                           </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse"
+                           role="tabpanel" aria-labelledby="headingOne">
+                           <div class="panel-body">
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios"
+                                    id="optionsRadios1on1" value="간식/야식" checked> 간식/야식
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios"
+                                    id="optionsRadios1on2" value="술안주"> 술안주
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios"
+                                    id="optionsRadios1on3" value="나들이 요리"> 나들이 요리
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios"
+                                    id="optionsRadios1on4" value="브런치 요리"> 브런치 요리
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                           <h4 class="panel-title">
+                              <a class="collapsed" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapseTwo"
+                                 aria-expanded="false" aria-controls="collapseTwo"> 나라별 요리
+                              </a>
+                           </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse"
+                           role="tabpanel" aria-labelledby="headingTwo">
+                           <div class="panel-body">
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios2"
+                                    id="optionsRadios2on1" value="1" checked> 한식
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios2"
+                                    id="optionsRadios2on2" value="2"> 일식/중식
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios2"
+                                    id="optionsRadios2on3" value="3"> 양식
+
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios2"
+                                    id="optionsRadios2on4" value="4"> 기타
+
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                           <h4 class="panel-title">
+                              <a class="collapsed" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapseThree"
+                                 aria-expanded="false" aria-controls="collapseThree"> 재료별
+                                 요리 </a>
+                           </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse"
+                           role="tabpanel" aria-labelledby="headingThree">
+                           <div class="panel-body">
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios3"
+                                    id="optionsRadios3on1" value="1" checked> 육류
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios3"
+                                    id="optionsRadios3on2" value="2"> 해산물
+
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios3"
+                                    id="optionsRadios3on3" value="3"> 채소
+
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios3"
+                                    id="optionsRadios3on4" value="4"> 과일
+
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                           <h4 class="panel-title">
+                              <a class="collapsed" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapseFour"
+                                 aria-expanded="false" aria-controls="collapseFour"> 조리법별
+                                 요리 </a>
+                           </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse"
+                           role="tabpanel" aria-labelledby="headingThree">
+                           <div class="panel-body">
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios4"
+                                    id="optionsRadios4on1" value="1"> 밥요리
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios4"
+                                    id="optionsRadios4on2" value="2"> 밀가루요리
+
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios4"
+                                    id="optionsRadios4on3" value="3" checked> 국물요리
+
+                                 </label>
+                              </div>
+                              <div class="radio">
+                                 <label> <input type="radio" name="optionsRadios4"
+                                    id="optionsRadios4on4" value="4"> 찜/조림/구이
+
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+          <div class="col-sm-10 col-lg-10">
+            <!-- 태크와 저장취소 -->
+            <div class="col-sm-12 col-lg-12">
+              <!-- 태그 -->
+              <div class="mar col-lg-2 col-sm-2">재료</div>
+              <div class="col-lg-10 col-sm-10">
+                <input type="text" id="tag" class="form-control"
+                  placeholder="#닭, #당근, #양파, #감자 ...">
+              </div>
+            </div>
+            <div class="col-sm-12 col-lg-12">
+              <div class="time col-lg-2 col-sm-2">조리시간</div>
+              <div class="col-lg-10 col-sm-10">
+                <div class="radio">
+                  <label> <input type="radio" class="makeTime" name="time_" value="5" checked="checked"> 5분 이내 </label>
+                  <label> <input type="radio" class="makeTime" name="time_" value="10"> ~ 10분 </label>
+                  <label> <input type="radio" class="makeTime" name="time_" value="30"> ~ 30분 </label>
+                  <label> <input type="radio" class="makeTime" name="time_" value="60"> ~ 1시간 이상 </label>
+                </div>
+              </div>
+            </div>
+                  <div class="col-sm-12 col-lg-12">
+              <div class="level col-lg-2 col-sm-2">난이도</div>
+              <div class="col-lg-10 col-sm-10">
+                <img src="./img/1star.png" class="stars">
+                <input id="lev" type='hidden' name='lev' value='14'>
+                <div class="star1" onclick="stars(1)"></div>
+                <div class="star2" onclick="stars(2)"></div>
+                <div class="star3" onclick="stars(3)"></div>
+                <div class="star4" onclick="stars(4)"></div>
+                <div class="star5" onclick="stars(5)"></div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-lg-12">
+              <!-- 저장/취소 -->
+              <div class="col-lg-2 col-sm-2">
+                <button class="insert_btn btn-default" id="inserted">등록하기</button>
+              </div>
+              <div class="col-lg-10 col-sm-10">
+                <button class="cancel_btn btn-default" onclick="index.html">취소</button>
+              </div>
+                        <button class="btn btn-default" id="concon">콘솔찍기</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+   <footer>
+      <div class="text-center col-md-6 col-md-offset-3">
+         <p>
+            Copyright &copy; 2016 &middot; All Rights Reserved &middot; <a
+               href="http://127.0.0.1:8080/index.html">냉장고를 가져와</a>
+         </p>
+      </div>
+   </footer>
+
+   <script>
+   <script id="pinput" type="text/x-handlebars-template">         
+   <div class="option" id="delob">
+     <a href="#" id="onclc"> <img id="imgc" src="img/noimages.png" alt="your image" style="width: 154px; height: 154px; margin-bottom: 10px; border-radius:10px;" /></a>
+     <button type="button" class="delbtn" id="delbutton"><img src="./img/trash-can.png" class="delbtn_png"></button>
+     <p id="textc" style="display: none;"></p>        
+   </div>
+ </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

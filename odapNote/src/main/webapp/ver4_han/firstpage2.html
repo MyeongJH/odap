@@ -292,7 +292,7 @@
     
     */
     #search input[type="text"] {
-    background: lavenderblush;
+    background: darkslategray;
     border: 0 none;
     font: bold 12px Arial,Helvetica,Sans-serif;
     color: black;
@@ -313,7 +313,7 @@
     }
 
 #search input[type="text"]:focus {
-    background-color: #fcfcfc;
+    background-color: #fff;
     color: black;    
     width: 700px;
     height: 50px;
@@ -438,7 +438,7 @@
  #removeim {
   width: 15px;
  }
- 
+
 
     </style>
   </head>
@@ -536,38 +536,11 @@
         });
     })
   }
-  // Plugin Test
-  $(window).parallaxmouse({
-      invert: true,
-      range: 400,
-      elms: [
-          {el: $('#warpbg'), rate: 0.1},
-          {el: $('#star1'), rate: 0.2},
-          {el: $('#star2'), rate: 0.2},
-          {el: $('#star3'), rate: 0.2},
-          {el: $('#star4'), rate: 0.2},
-          {el: $('#star5'), rate: 0.2},
-          {el: $('#star6'), rate: 0.3},
-          {el: $('#star7'), rate: 0.4},
-          {el: $('#star8'), rate: 0.48},
-          {el: $('#star9'), rate: 0.7}
-      ]
-  });
 
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36251023-1']);
-_gaq.push(['_setDomainName', 'jqueryscript.net']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-////////modal page//////////////////////////////////////////////////////////////////////////
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
+
 $('.dropdown-toggle').dropdown()
 var imgpath;
 function readURL(input) {

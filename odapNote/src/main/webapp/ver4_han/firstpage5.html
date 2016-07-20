@@ -72,9 +72,10 @@
    
       #content {
         width: 900px;
+        height: 500px;
+        padding-top: 70px;
        float: right; /*위치변경가능*/
        text-align: center;
-        padding: 10px;
         margin-bottom: 20px;
         margin-right: 20px;
         border-radius: 4px;
@@ -82,32 +83,52 @@
         font-family: 'Convergence';
         font-size: 20px;
         /*line-height: 140%;*/        
-        background-color: rgba(50,50,50,0.87);
+        /*background-color: rgba(50,50,50,0.87);*/
         padding-bottom: 40px;
       } 
       
       #content p {
-      margin: 15px; 
+      margin: 20px; 
       }
       
     
       #sidebar { 
-        width: 240px;        
+        width: 240px;   
+        height: 500px;
+        padding: 20px 0 0 20px;     
         min-height:350px;
         margin-left: 40px;
         float: left; /*위치변경가능*/      
         border-radius: 4px;
         box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2); 
-        text-align: center;
-        padding: 20px;
-        line-height: 150%;
+        line-height: 200%;
+        font-size: 20px;
       }
       
-      #sidebar img {
-        border-radius: 60px;
-        width: 185px;
-        height:
+      #itme {
+        background-color: blue;
       }
+      
+      #sidebar h1 {
+       font-size: 30px;
+       display: inline-block;
+      }
+      
+      #sidebar p {
+       font-size: 20px;
+       display: block;
+       margin-left: 50px;
+      }
+  
+      
+      #sidebar img {
+        border-radius: 100px;
+        margin: 0 15px 50px 0;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+      }
+      
       /*
         #search {
         border-radius: 10px;
@@ -230,6 +251,7 @@
      height: 80px;
      width: 920px;
      font-size: 20px;
+     margin-bottom: 20px;
 }
 /*
 #search input[type="text"] {
@@ -448,8 +470,9 @@
         <div id="mypage"><a href="./testfinal.html""><img class="innerimg" src="img/user.png"></a><p>mypage</p></div>
         <div id="class"><a id="addques"  data-toggle="modal" data-target="#myModal"><img class="innerimg" src="img/anf.png"></a><p>Question</p></div>
       </div>
+      <!-- 
         <div id="sidebar"></div>
-
+ -->
       <div id="footer">
         <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
        
@@ -512,7 +535,7 @@
 	     console.log($("#sidebar"))
 	     $("#sidebar").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
          $("#sidebar").append("<h1>"+result.mnm+"</h1>");
-         $("#sidebar").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);        
+         $("#sidebar").append("<p>email:"+result.mem + "</p><br><p>tel:" + result.mtel + "</p><br><p>job:" +result.mjob+"</p>");        
 	   });
 	}
   

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>OdapNote</title>
     <link rel="stylesheet" type="text/css" href="css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="css/input-style.css">    
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -55,7 +56,7 @@
       word-spacing: 20px;
       text-align: right;
       font-size: 20px;   
-      background-color: #523d1e;       
+      background-color: #523d1e;     
       }
              
        #topmenu a {
@@ -74,41 +75,18 @@
        }
           
       #content {
-        width: 870px;
-        padding: 10px;
+        width: 1175px;
         margin-bottom: 20px;
-        margin-right: 20px;
-        float: right; /*위치변경가능*/
-         border-radius: 4px;
+        padding: 50px;
+        border-radius: 4px;
         box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
         font-family: 'Hanna';
         font-size: 20px;
-        line-height: 140%;        
+        /*line-height: 140%;*/        
         background-color:white;
         padding-bottom: 40px;
       }
-   
-		 #sidebar {
-			  width: 230px;
-			  margin-left: 40px;
-			  float: left; /*위치변경가능*/
-			  border-radius: 4px;
-			  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2);
-			  text-align: center;
-			  padding: 20px;
-			  line-height: 150%;
-		}
-		
-		#sidebar h1 {
-		  font-size: 30px;
-		  font-family: 'Nanum Pen Script';
-		}
-				
-		#mypic {
-		  width: 200px;
-		  border-radius: 16px;
-		}
-      
+
       #footer {
         clear: both;
         padding: 20px;
@@ -127,6 +105,7 @@
 
 
 #columns {
+  padding-left: 10px;
   -webkit-column-count: 2;
   -webkit-column-gap: 10px;
   -webkit-column-fill: auto;
@@ -136,7 +115,7 @@
   column-count: 3;
   column-gap: 15px;
   column-fill: auto;
- margin-top:100px;
+ margin-top:50px; 
   
 }
 
@@ -274,7 +253,7 @@
   overflow: hidden;
   text-align: center;
   background: rgba(87, 73, 81, 0.3);
-  line-height: 20px;
+  /*line-height: 20px;*/
   font-size: 18px;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -436,33 +415,64 @@ figure {
   margin-top: 20px;
 }
 
-#className {
-  width: 1200px;
-  display: inline-block;
-  float: right;
-  font-size: 20px;
-  padding-right: 50px;
-  font-family: 'Hanna', serif;
-  text-align: right;
-  margin: 10px;
+#class-list {
+  max-width: 800px;
+  min-height: 100px;
+  font-size: 35px;
+  margin-left: 100px;
+  overflow: auto;
+  white-space:nowrap;
+  overflow-y:hidden;
+  padding:10px;
 }
 
-#className a {
+#class-list::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+  height:5px;
+}
+
+#class-list::-webkit-scrollbar
+{
+  width: 20px;
+  background-color: #F5F5F5;
+}
+
+#class-list::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+   min-width: 10px;
+}
+
+
+#class-list a{
   text-decoration: none;
-  color:black;
-  font-family: 'Hanna', serif;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
+  color: gray;
+  border: 5px solid #a8e4d8;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#search-ques, #search-class {
+  /*width: 1280px;*/
+  padding: 30px 50px 0;
+  display: block;  
 }
 
 #search {
      margin-top: 10px;        
      margin-left: 40px;
-     height: 40px;
+     height: 80px;
      width: 920px;
      font-size: 20px;
 }
+
 
  #search input[type="text"] {
     background: #444;
@@ -470,7 +480,7 @@ figure {
     font: bold 12px Arial,Helvetica,Sans-serif;
     color: #d7d7d7;
     width: 500px;
-    height: 35px;
+    height: 50px;
     padding: 6px 15px 6px 35px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -485,15 +495,24 @@ figure {
     transition: all 0.7s ease 0s;
     }
 
-#search input[type="text"]:focus { 
+#search input[type="text"]:focus {
     background-color: #fcfcfc;
     color: #6a6f75;    
     width: 500px;
-    height: 35px;
+    height: 50px;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    #more {
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      font-size: 15px;
+           display: inline-block;
+      
     }
 
  </style>
@@ -523,68 +542,78 @@ figure {
       <div id="topmenu">
       <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a href="./testfinal.html">MYPAGE </a><a href="#">SEARCH </a> 
       </div>
-      <div id="className"></div>
       <div id="content">
-        <form method="get" action="./searchInClass.html?" id="search">
-		      <input name="search" type="text" size="40"
-		        placeholder="Searching here" /> <img src="img/enter.png"
-		        width="15px">
-		      <input id="searchcno" name="cno" type="hidden"/>  
-		    </form>
-              <div id="scon" class="profile-header"></div>           
+              <form method="get" action="./search.html" id="search">
+              <input name="search" type="text" size="40" placeholder="Searching here" />
+              <img src="img/enter.png" width="15px">
+              </form> 
+              <div id="scon" class="profile-header"></div>
+              <div id="search-class">
+              <h2>Class</h2>
+              <div class="scrollbar" id="class-list"></div>
+              </div>  
+              <div id="search-ques">
+              <h2>Question</h2>  
               <article id="wrapper">
               <nav id="columns"></nav>
-              </article> 
+              </article>
+              </div>
       </div>
-        <div id="sidebar">
-      <h1>CLASS MASTER</h1>
-      <div id="myinf"></div>
-      <button id="subtn"
-        class="mon button button--border-medium button button--nina"
-        style="display: none;" onclick="join_click();">가입신청</button>
-      <button id="qbtn"
-        class="mon button button--border-medium button button--nina"
-        style="display: none;" data-toggle="modal" data-target="#myModal">질문하기</button>
-      <button id="exibtn"
-        class="mon button button--border-medium button button--nina"
-        style="display: none;" onclick="exit_click();">탈퇴하기</button>
-    <button id="mset"
-      class="mon button button--border-medium button button--nina"
-      style="display: none;" onclick="mset_click();">멤버관리</button>
-    </div>
       <div id="footer">
         <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
        
       </div>
     </div>   
   <script>
-  var get = getRequest();
-  var cno = +get['cno'];
-  cno = +cno;
-  $('#searchcno').val(cno);
+  loadClassList();
   loadQueList();
-  loadClassName();
-  loadMasterInfo();
-  
-  function loadQueList() {       
+  function loadQueList() {   
+    var get = getRequest();
     if(!get){
-    	return;
+      return;
     }
     var wr_id = get['search'];
     $("#scon").append('<p>searching for " '+decodeURI(wr_id)+' "...');
-    $.getJSON("../ajax/question/searchInclass.do?key="+wr_id+"&cno="+cno, function(result) {
-    	if(Object.keys(result).length==0) { $("#wrapper").append("<p style='margin-left:100px;font-size:25px;'>검색 결과가 없습니다...</p>");}  
-    	$.each(result, function(i,d){                
-        	var jbSplit = d.qpic.split('/');
+    $.getJSON("../ajax/question/search.do?key="+wr_id, function(result) {
+    	if(Object.keys(result).length==0) { $("#wrapper").append("<p style='margin-left:100px;font-size:25px;'>검색 결과가 없습니다...</p>");}
+        $.each(result, function(i,d){                
+          var jbSplit = d.qpic.split('/');
             $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+d.qno+"'/>" + "<p>" 
                   + d.qtit + "</p><br>" + "<p>" + d.qcnt + "</p>").appendTo($("#columns"));
         });
     })
   }
   
-  function onclickDetail(event) {
-      location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
-  } 
+  function loadClassList(){
+	  var get = getRequest();
+	    if(!get){
+	      return;
+	    }
+	    var wr_id = get['search'];
+	    $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {
+	        if(Object.keys(result).length==0) { $("#class-list").append("<p style='font-size:25px;'>검색 결과가 없습니다...</p>");}
+	        for(var i=0; i<2; i++){   
+	            $("#class-list").append("<a href='./javapage5.html?cno="+result[i].cno+"'>&nbsp;    &nbsp;"+result[i].cnm+"&nbsp;    &nbsp;</a>");        
+	            if(i==1) {$("#class-list").append("<h2 id='more'onclick='clickMore()' style='cursor: pointer;'>...more</h2>");}      
+	        };
+	        });
+	  }
+  
+  function clickMore() {
+	  var get = getRequest();
+      if(!get){
+        return;
+      }
+      var wr_id = get['search'];
+	  $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {
+		     $("#more").detach();
+          if(Object.keys(result).length==0) { $("#class-list").append("<p style='font-size:25px;'>검색 결과가 없습니다...</p>");}
+          for(var i=2; i<Object.keys(result).length; i++){   
+              $("#class-list").append("<a href='./javapage5.html?cno="+result[i].cno+"'>&nbsp;    &nbsp;"+result[i].cnm+"&nbsp;    &nbsp;</a>");        
+          };
+          });
+	  
+  }
   
   function getRequest() {
       if(location.search.length > 1) {
@@ -600,18 +629,10 @@ figure {
       }
   }
   
-  function loadMasterInfo() {   
-	    $.getJSON("../ajax/class/classmaster.do?cno="+ cno, function(result) {  
-	      $.getJSON("../ajax/member/classmaster.do?mno="+result, function(result) {
-	        if(!result.mpic) {
-	             result.mpic = "./img/noimage.jpg" ;
-	           }
-	         $("#myinf").append("<img src='"+result.mpic+"' id='mypic'>");
-	            $("#myinf").append("<h1>"+result.mnm+"</h1>");
-	            $("#myinf").append("email:"+result.mem + "<br>tel:" + result.mtel + "<br>job:" +result.mjob);         
-	       });
-	    });
-	  }
+  function onclickDetail(event) {
+      location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
+  } 
+
   
   // Plugin Test
   $(window).parallaxmouse({
@@ -631,13 +652,6 @@ figure {
       ]
   });
 
-  function loadClassName() {
-	    $.getJSON("../ajax/class/detail.do?no="+cno, function(data){
-	      $("#className").append("<a href='./javapage5.html?cno="+data.cno+"'><div id='cnm'><h2>ㅣ"+data.cnm+"</h2></div></a>");
-	    })
-	  }
-</script><script type="text/javascript">
-
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36251023-1']);
 _gaq.push(['_setDomainName', 'jqueryscript.net']);
@@ -648,6 +662,10 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+  
+  
+  
   </script>
   </body>
 </html>

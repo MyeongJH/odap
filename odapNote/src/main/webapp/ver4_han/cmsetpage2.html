@@ -118,14 +118,14 @@
       }
       
       #topmenu {
-      height: 30px;
-      padding-right: 50px;
-      margin-bottom: 20px;
-      word-spacing: 20px;
-      text-align: right;
-      font-size: 20px;   
-      /*background-color: #288c28;*/
-      background-color: #523d1e;        
+	      height: 30px;
+	      padding-right: 50px;
+	      margin-bottom: 20px;
+	      word-spacing: 20px;
+	      text-align: right;
+	      font-size: 20px;   
+	      /*background-color: #288c28;*/
+	      background-color: #523d1e;
       }
              
        #topmenu a {
@@ -182,15 +182,25 @@
       }
       */
       
-      #className {
-        width: 1200px;
-        font-size: 30px;
-        padding-right: 50px;
-        font-family: 'Nanum Pen Script'; ;
-        text-align: right;
-        margin: 5px;
-      }
-        
+		#className {
+			  width: 1200px;
+			  display: inline-block;
+			  float: right;
+			  font-size: 20px;
+			  padding-right: 50px;
+			  font-family: 'Hanna', serif;
+			  text-align: right;
+			  margin: 10px;
+		}
+		
+		#className a {
+		  text-decoration: none;
+		  color:#333;
+		  font-family: 'Hanna', serif;
+		  font-weight: 500;
+		  line-height: 1.1;
+		  color: inherit;
+		}
    
       #sidebar {         
         width: 230px;       
@@ -419,10 +429,11 @@ function getQuerystring(paramName){
 	}
 
 function loadClassName() {
-  $.getJSON("../ajax/class/detail.do?no="+cno, function(data){
-    $("#className").append("<div id='cnm'><h2>ㅣ"+data.cnm+"</h2></div>");
-  })
-}
+	  $.getJSON("../ajax/class/detail.do?no="+cno, function(data){
+	    $("#className").append("<a href='./javapage5.html?cno="+data.cno+"'><div id='cnm'><h2>ㅣ"+data.cnm+"</h2></div></a>");
+	    $("#join_cnm").append(data.cnm);
+	  })
+	}
 
 function loadmember() {
     $.getJSON("../ajax/cmember/list.do?cno="+cno,function(data) {

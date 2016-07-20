@@ -14,14 +14,12 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.parallaxmouse.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.han2.css">
+    <link rel="stylesheet" href="css/bootstrap.han.css">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">        
-        
         
     <style>
     @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -29,11 +27,6 @@
     @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
     @import url('https://fonts.googleapis.com/css?family=Convergence');
     @import url('https://fonts.googleapis.com/css?family=Righteous');
-    @import url('https://fonts.googleapis.com/css?family=Cormorant Upright');    
-    @import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-    @font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
-
-    
     /*
     body {
        background-color: #ebffeb;
@@ -53,12 +46,11 @@
       }
     
       #top {
-          font-size: 15px;
-          text-align: right;
-          letter-spacing: 2px;
-          word-spacing: 20px;
-          height: 25px;
-          padding-right: 50px;
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
       }
       
       .h1, h1 {
@@ -66,9 +58,9 @@
       }
       
       #top a {
-             font-family: 'Righteous', serif;
-             text-decoration: none;
-             color: black;
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: black;
         }
       
       #header {
@@ -80,10 +72,10 @@
       #topmenu {
       height: 30px;
       padding-right: 50px;
-      word-spacing: 15px;
+      margin-bottom: 20px;
+      word-spacing: 20px;
       text-align: right;
       font-size: 20px;   
-      margin-top: 20px;
       /* background-color: #523d1e;  */ 
       /* font-weight: bolder; */     
       }
@@ -99,19 +91,19 @@
        }
           
       #content {
-             padding-bottom: 20px;
-             width: 850px;
-             margin-bottom: 20px;
-             margin-top: 50px;
-             margin-right: 20px;
-             float: right;
-             border-radius: 4px;
-             /*box-shadow: 3px 3px 3px 3px rgba(0,0,0,.2);*/
-             
-             font-size: 20px;
-             line-height: 140%;
-             background-color: white;
-             padding-left: 50px;
+        padding-bottom: 20px;
+        width: 870px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        float: right; /*위치변경가능*/
+         border-radius: 4px;
+        box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
+        font-family: 'Hanna';
+        font-size: 20px;
+        line-height: 140%;        
+        background-color:white;
+        padding-left: 50px;
+        
       }
  
   /*     
@@ -139,11 +131,10 @@
       */
       
       #sidebar {
-          width: 230px;
-          margin-left: 80px;
-          margin-top: 18px;
-          float: left;
-          color: #888888;
+        width: 230px;
+        margin-left: 40px;
+        float: left; /*위치변경가능*/     
+        color: #888888;  
       }
       
       #sidebar .menu {
@@ -197,7 +188,7 @@
 
 .profile-panel {
  /* background-color: LightGrey;*/
-     padding-left: 160px;
+ padding-left: 30px;
 }
 
 .linkedin-container {
@@ -206,14 +197,12 @@
 
 
 .profile-header {
-    width: 700px;
-    padding: 20px 0 10px 50px;
-    margin: 20px 0 0 30px;
-    color: DimGray;
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 5px;
-    font-family: 'Cormorant Upright';
+  padding-left: 50px;
+  padding-top: 20px;
+  color: DimGray;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 5px;
 }
 
 .edit-container {
@@ -227,11 +216,13 @@
   width: 70px;
   height: 30px;
   color: gray;
+  font-size: 100%;
   text-align: center;
+  font-family: 'Jeju Hallasan', serif;
+  background-color: #a8e4d8;
   border: 1px solid LightGrey;
   border-radius: 15px;
   cursor: pointer;
-  margin-top: 450px;
 }
 
 .label {
@@ -267,8 +258,8 @@
     display: block;
     width: 200px;
     height: 200px;
-    margin: 50px auto;   
-    border: 2px solid gray;
+    margin: 50px auto;    
+    border: 2px solid rgb(33, 122, 105);
     border-radius: 50%;
     overflow: hidden;
 }
@@ -279,8 +270,11 @@
     display: block;
     width: 250px;
     height: 30px;
-    margin: 20px auto;
-    border: 2px solid gray;   
+    margin: 50px auto;
+    border-top: 2px solid rgb(33, 122, 105);
+    border-right: 2px solid rgb(33, 122, 105);
+    border-bottom: 2px solid rgb(33, 122, 105);
+    border-left: 2px solid rgb(33, 122, 105);
 }
 
 .file-upload-native,
@@ -327,11 +321,7 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 #frm {
-     padding-left: 40px;
-     border-bottom: 1px solid gray;
-     border-top: 1px solid gray;
-     padding-bottom: 80px;
-     width: 800px;
+  padding-left: 40px;
 }
 
 /********************************************************header****************************************/
@@ -395,13 +385,15 @@ input[type="file"]::-webkit-file-upload-button {
     left: 100px;
 }
 
-#classlist th, #myClasslist th{
+#classlist {
   margin-left: 50px;
   margin-top: 20px;
-   font-family: 'hoon';
 }
 
-
+#myClasslist {
+  margin-left: 50px;
+  margin-top: 20px;
+}
 
 #columns {
   -webkit-column-count: 2;
@@ -652,113 +644,49 @@ figure {
 
 #addc {
   padding-left: 50px;
+  background-color: #f5ffff;
 }
 
 #addc input {
-  width:100%;
+  width:60%;
   height: 30px;
+  margin-bottom: 10px;
+  border: 2px solid gray;
 }
 
 #addc textarea {
-  width: 85%;
-  border: 1px solid #ccc;
-  resize:none;
-  margin-top: 10px;
+  width: 80%;
+  margin-bottom: 5px;
+  border: 2px solid gray;
  } 
- #odapLogo {
-    float: left;
-    margin-left: 85px;
- }
- 
- .col-sm-12 input {
-  padding-left: 30px;
-  }
-  
-  #zzazza {
-    padding: 20px 0 20px 50px;
-    border-bottom: 1px solid gray; 
-    border-top: 1px solid gray;
-    font-family: hoon;
-  }
-  
 
-  
-  #zzazza h3 {
-    display: inline-block;
-    font-family: Hanna;
-  }
 
-  #zzazza table{
-     table-layout:fixed; 
-     text-align: center;
-  }
-  
-  #zzazza table td,#zzazza table th {
-     min-width: 100px;
-     max-width: 100px;  
-     text-overflow: ellipsis; 
-     overflow: hidden; 
-     white-space: nowrap;
-  }
-  
-  .tableCnm {
-      min-width: 150px !important;
-      max-width: 150px !important;
-      text-overflow: ellipsis; 
-      overflow: hidden; 
-      white-space: nowrap;
-  }
-
-    
-  #zza {
-    padding: 20px 0 20px 10px;
-    border-bottom: 1px solid gray; 
-    border-top: 1px solid gray;
-    font-family: hoon;
-  }
-  
-  
-  #newClass {
-    display: inline-block;
-    float: right;
-    margin-top: 30px;
-    margin-right: 55px;
-    /* font-family: Cormorant Upright; */
-    font-size: 13px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 2px 4px 6px 2px rgba(0, 0, 0, .2);
-    
-  }
-  
-  #myModalLabel {
-    font-family: hoon;
-    font-size: 25px;
-    color: gray;
-  }
-  .mlabel {
-    font-family: hoon;
-    font-weight: bold;
-    font-size: 25px;
-    color: gray;
-  }
-
-  
-  
-  
-  
     </style>
   </head>
   <body>
     <div id="container">
     <div id="top">
-        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
+        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
       </div>
       <div class="line"></div>
-
-      <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
+      <div id="header">
+        <div id="pheader">
+    <img id="warpbg" class="parallax left top" src="">
+    <img id="star1" class="parallax top" src="img/cle.png">
+    <img id="star2" class="parallax top" src="img/clo.png">
+    <img id="star3" class="parallax" src="img/mo.png">
+    <img id="star4" class="parallax left top" src="img/mu.png">
+    <img id="star5" class="parallax left" src="img/pe.png">
+    <img id="star6" class="parallax left top" src="img/ph.png">
+    <img id="star7" class="parallax top" src="img/tr.png">
+    <img id="star8" class="parallax top" src="img/fi.png">
+    <img id="star9" class="parallax" src="img/pr.png">
+    
+    <a class="navbar-brand page-scroll" href="mypage.html" >Odap note</a>     
+</div>
+      </div>
       <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="#">MYPAGE </a>· <a href="./search.html">SEARCH </a>
+      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="#">MYPAGE </a>· <a href="./search.html">SEARCH </a> 
       </div>
       <div id="content">      
       <div class="profile-header">PROFILE</div>
@@ -804,7 +732,7 @@ figure {
         <a onclick="onclickMenu(this)" data-menu="4"><div id="m4" class="menu">BookMark</div></a>
       </div>
       <div id="footer">
-       
+        <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
        
       </div>
     </div>   
@@ -860,7 +788,7 @@ figure {
         contentType: false,
         processData: false,
         success:  function(data){
-             $(document).ready(function() {
+        	  $(document).ready(function() {
                   swal({ 
                     title: "변경 완료",
                      text: "",
@@ -954,7 +882,7 @@ figure {
       xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
     if(event.getAttribute("data-menu") == null) {
-       xhr.open("GET", "menuselect.jsp?menu=1", false);
+    	xhr.open("GET", "menuselect.jsp?menu=1", false);
     } else {
     xhr.open("GET", "menuselect.jsp?menu=" + event.getAttribute("data-menu"), false);
     }
@@ -993,6 +921,9 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+  
+  
   
   </script>
   </body>

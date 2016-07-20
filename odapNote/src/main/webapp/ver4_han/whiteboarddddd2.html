@@ -9,19 +9,13 @@
 <script type="text/javascript" src="js/scripts.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery.parallaxmouse.min.js"></script>
-<link rel="stylesheet" href="css/loading.css" />
 <link rel="stylesheet" href="css/whiteboard.css" />
+<link rel="stylesheet" href="css/loading.css" />
 <link rel="stylesheet" type="text/css" href="css/buttons.css" />
 <script src="js/html2canvas.js"></script>
-<script src="js/sweetalert.min.js"></script> 
-<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
-
 
 
 <style>
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-@import url('https://fonts.googleapis.com/css?family=Righteous');
-
 nav#logo {
   display: inline;
   position: relative;
@@ -34,59 +28,14 @@ nav#logo {
    float: right;
    top: 10px;
 }
- a {
-    text-decoration: none;
-  }
-     a:hover {
-    text-decoration: none;
-  }
-      #container {
-        width: 1280px;
-        margin: 0px auto;
-        padding-left: 20px;
-        padding-right: 20px;       
-      }
-     
-      #top {
-        font-size: 15px;
-        text-align: right;
-        letter-spacing: 2px;
-        word-spacing: 20px;
-        height: 25px;
-        padding-right: 50px;
-      }
-      
-      .h1, h1 {
-        font-size: 15px;
-      }
-      
-      #top a {
-          font-family: 'Righteous', serif;
-          text-decoration: none;
-          color: black;
-        }
-      
-      #topmenu {
-      height: 30px;
-      padding-right: 50px;
-      word-spacing: 15px;
-      text-align: right;
-      font-size: 20px;   
-      margin-top: 20px;
-      /* background-color: #523d1e;  */ 
-      /* font-weight: bolder; */     
-      }
-             
-       #topmenu a {
-        font-family: 'Righteous', serif;
-        text-decoration: none;
-        color: dimgray;
-       }
-                              
-       #topmenu a:hover {
-        color: black;
-       }
-       
+
+header {
+  background-color: white; 
+  border: 1px solid white;
+  margin: 0px auto;
+  width: 1280px;
+}
+
 #search-line { 
   height: 5px;
   background-color: gray;
@@ -97,8 +46,50 @@ nav#logo {
      a:hover {
     text-decoration: none;
   }
-
-
+      #container {
+        width: 1280px;
+        margin: 0px auto;
+        padding: 20px;       
+      }
+    
+      #top {
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
+      }
+      
+      #header {
+        height: 200px;
+        margin-bottom: 10px;
+        border-bottom: 3px solid gray;       
+      }
+      
+      #topmenu {
+      height: 30px;
+      padding-right: 50px;
+      margin-bottom: 20px;
+      word-spacing: 20px;
+      text-align: right;
+      font-size: 20px;   
+      background-color: #288c28;        
+      }
+             
+       #topmenu a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: white;
+       }
+        #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
+        color: black;
+        }
+                        
+       #topmenu a:hover {
+        color: gray;
+       }
 /*************************************************************************/
 #contents {
    display: inline;
@@ -120,40 +111,14 @@ nav#logo {
   width: 400px;
 }
 
-#className {
-  display: inline-block;
-  float: right;
-  font-size: 20px;
-  padding-right: 50px;
-  font-family: 'Hanna', serif;
-  text-align: right;
-  height: 60px;
-  margin-top: 40px;
-}
-
-#menubar {
-  margin-top: 30px;
-  display: inline-block;
-}
-
-#className a {
-  text-decoration: none;
-  color:black;
-  font-family: 'Hanna', serif;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
-}
-
 #side {
   display: inline-block;
-  width: 270px;
+  width: 280px;
   height: 813px;
   /* border: 3px solid red; */
   float: left;
-  margin-top: 20px; 
+  
 }
-
 
 #question {
   margin-left: 5%;
@@ -167,6 +132,72 @@ nav#logo {
 article {
   width: 987px;
   height: 743.333px;
+}
+
+/*************************************************************************/
+#pheader .navbar-brand {
+    color: black;
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    font-size: 50px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+#pheader {         
+   width: 100%;
+   height: 200px;
+   max-height: 200px;
+   position: relative;
+   background: #a8e4d8;
+   overflow: hidden;
+}
+.parallax {
+   position: absolute;
+}
+#warpbg {
+   top: -200px;
+   left: -350px;
+}
+#star1 {
+    top: 150px;
+    right: 200px;
+}
+#star2 {
+    top: 220px;
+    right: 500px;
+}
+#star3 {
+    bottom: 20px;
+    right: 320px;
+}
+#star4 {
+    top: 40px;
+    left: 290px;
+}
+#star5 {
+    bottom: -38px;
+    left: 170px;
+}
+#star6 {
+     bottom: 0px;
+    right: 0px;
+}
+#star7 {
+    bottom: 0px;
+    right: 0px;
+}
+#star8 {
+    top: 100px;
+    right: 100px;
+}
+#star9 {
+    bottom: -50px;
+    left: 100px;
+}
+#container {
+    width: 1280px;
+    margin: 0px auto;
+    padding: 20px;
 }
 
 .color-bar {
@@ -233,14 +264,16 @@ article {
   text-align: center;
 }
 
-.button {
+#addbm {
  width: 150px;
  height: 40px;
  display: inline-block;
 }
 
 #delbm {
- background-color: red;
+ width: 150px;
+ height: 40px;
+ display: inline-block;
 }
 .thickness-bar .thickness {
   width: 40px;
@@ -295,86 +328,46 @@ article {
   width: 25px;
   height: 25px;
 }
-
-#answers {
-  overflow: scroll;
-  overflow-x:hidden;
-  height: 703px;
-}
-
-#answers::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  border-radius: 10px;
-  background-color: #F5F5F5;
-  height:5px;
-}
-
-#answers::-webkit-scrollbar
-{
-  width: 15px;
-  background-color: #F5F5F5;
-}
-
-#answers::-webkit-scrollbar-thumb
-{
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: #555;
-   min-width: 10px;
-}
-
-.answer {
-  opacity: 0.5;
-}
-
-.answer:hover {
-  opacity: 1;
-}
-
- #odapLogo {
-    float: left;
-    margin-left: 85px;
- }
-
 </style>
 
 </head>
 <body>
 <div id="container">
   <div id="top">
-        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
-      </div>
-      <div class="line"></div>
-
-      <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
-      <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
-      </div>
-  <div id="className"></div>
-  <div id="menubar">
-    <input type='button' class='button button--border-medium button button--nina joinbtn' onclick='newan();' id='newAnswer' value='newAnswer'/>
-    <input type="button" class='button button--border-medium button button--nina joinbtn' value="Capture" id="capture" />
-    <input type="button" class='button button--border-medium button button--nina joinbtn' onclick='dellogfile();' value="log삭제" id="dellog" />
-    <input type="button" class='button button--border-medium button button--nina joinbtn' onclick='ingpage();' value="작성중페이지" id="dellog" />
-    <button id='addbm' type='button' onclick='addbookmark()'
-               style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크추가</button>
-  <button id='delbm' type='button' onclick='delbookmark()'
-               style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크취소</button>
+    <h1>
+      <a href="#">문의하기 </a><a href="#">로그아웃</a>
+    </h1>
+  </div>
+  <div class="line"></div>
+  <div id="header">
+    <div id="pheader">
+      <img id="warpbg" class="parallax left top" src=""> <img
+        id="star1" class="parallax top" src="img/cle.png"> <img
+        id="star2" class="parallax top" src="img/clo.png"> <img
+        id="star3" class="parallax" src="img/mo.png"> <img id="star4"
+        class="parallax left top" src="img/mu.png"> <img id="star5"
+        class="parallax left" src="img/pe.png"> <img id="star6"
+        class="parallax left top" src="img/ph.png"> <img id="star7"
+        class="parallax top" src="img/tr.png"> <img id="star8"
+        class="parallax top" src="img/fi.png"> <img id="star9"
+        class="parallax" src="img/pr.png"> <a
+        class="navbar-brand page-scroll" href="firstpage2.html">Odap note</a>
+    </div>
   </div>
   <div id="side">
-    <div id="answers" dir="rtl"></div>
-  </div>
-  <div id="andel">
+    <input type='button' onclick='newan();' id='newAnswer' value='newAnswer'/>
+    <input type="button" value="Capture" id="capture" />
+    <input type="button" onclick='dellogfile();' value="log삭제" id="dellog" />
+    <div id="answers"></div>
   </div>
   <div id="page">
-    <div id="ssi">
+  <div id="ssi">
   <section id="contents">
     <img id="bg" src="img/board.jpg" width='987' height='743.333'>
   </section>
   </div>
   <div class='loading' style='display:none'><div><div class='c1' ></div><div class='c2'></div><div class='c3'></div><div class='c4'></div></div><span>loading</span></div>
-  <article id="sketch"><!-- our canvas will be inserted here--></article>
+  <article><!-- our canvas will be inserted here--></article>
   </div>
   <nav class="color-bar">
     <div class="color" data-color="#9b59b6"></div>
@@ -391,29 +384,22 @@ article {
     <div class="thickness" data-thickness="24"></div>
     <div class="thickness" data-thickness="48"></div>
     <div class="thickness" data-thickness="128"></div>
-  </nav>               
+  </nav>
+  <button id='addbm' type='button' onclick='addbookmark()'
+               style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크추가</button>
+  <button id='delbm' type='button' onclick='delbookmark()'
+               style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크취소</button>             
 </div>
 <script>
 var qno = location.href.split("=")[1];
-var cno;
 qno = +qno;
-loadClassName();
 loadQuestion();
 isBookmark();
 loadAnswer();
-
-function loadClassName() {
-    $.getJSON("../ajax/question/classname.do?qno="+qno, function(data){
-    	cno=data.cno;
-      $("#className").append("<a href='./javapage5.html?cno="+data.cno+"'><div id='cnm'><h2>"+data.cnm+" >></h2></div></a>");
-    })
-  }
-  
 function loadQuestion() {
     $.getJSON("../ajax/question/detail.do?no="+qno, function(data){
-    	if(typeof(data.qpic) != 'undefined'){ 
       $("#contents").append("<img id='question' src="+data.qpic+">");
-    	}
+      
     })
 }
 
@@ -424,13 +410,14 @@ function loadAnswer() {
         $('#answers').append("<img id='default' src='img/board.jpg' width='260'>");
       }
       $.each(data, function(i,d) {        
-        $('#answers').append("<img class='answer' onclick='change(this)' data-ano='"+d.ano+"' src='img/thumb_"+d.acon+"' width='260' style='cursor:pointer;position:inline-block'><img onclick='delAnswer(this);' style='cursor:pointer;z-index:15;position:inline-block' data-img='"+d.acon+"' data-ano='"+d.ano+"' src='img/tr.png' width='10'>");
+        $('#answers').append("<img class='answer' onclick='change(this)' data-ano='"+d.ano+"' src='img/thumb_"+d.acon+"' width='260'>");
       })      
     })
 }
 
 
 function isBookmark() {
+  console.log("??")
   $.getJSON("../ajax/bookmark/isbookmark.do?qno="+qno, function(data){
         if(data) {
           $("#delbm").css("display","");
@@ -457,41 +444,33 @@ $('.thickness').on('click', function() {
   });
 
 function newan() {
-	$(".answer").css("opacity","0.5");
-  $("#contents").empty();
-  loadQuestion();
-  $("#contents").append("<img id='bg'  src='img/board.jpg' width='987' height='743.333'>");
-  resetCanvas();
-  //dellogfile();
+	$("#ssi").empty();
+	$("#ssi").append("<img id='bg'  src='img/board.jpg' width='987' height='743.333'>");
+	resetCanvas();
+	//dellogfile();
 }
 
 function change(data) {
-	  $(".answer").css("opacity","0.5");
-	  data.style.opacity ="1";
     var acon = data.getAttribute('src').split('_');       
-    resetCanvas();        
+    resetCanvas();
+    $("#contents").empty();    
     $.ajax({
         url:"./img/"+acon[1],
         type:'HEAD',
         error: function()
         {
-          $(".loading").css("display","");
-          setTimeout(change(data),1000*20);
+        	$(".loading").css("display","");
+        	setTimeout(change(data),1000*20);
         },
         success: function()
         {
-        	$("#contents").empty();
-          $(".loading").css("display","none");
-          $("#contents").append("<img id='bg' src='img/"+acon[1]+"' width='987' height='743.333'>");
+        	$(".loading").css("display","none");
+        	$("#ssi").append("<img id='bg' src='img/"+acon[1]+"' width='987' height='743.333'>");
         }
-    }); 
+    });    
+   
   };
 
-  function ingpage() {
-	  $(".answer").css("opacity","0.5");
-    location.href=location.href;    
-  }
-  
   document.querySelector("#capture").addEventListener("click", function() {
       html2canvas($("#page"), {
           //allowTaint: true,
@@ -517,7 +496,7 @@ function change(data) {
               processData: false,
               success:  function(data){
                 loadAnswer();
-                swal("저장되었습니다.");
+                alert("저장되었습니다.");
               },
               error: function(e){
               }   
@@ -566,18 +545,10 @@ $(window).parallaxmouse({
 function addbookmark() {
   $.getJSON("../ajax/bookmark/add.do?qno="+qno, function(data){
       if(data.status == "success") {
-    	  $(document).ready(function() {
-              swal({ 
-                title: "북마크 추가",
-                 text: "",
-                  type: "" 
-                },
-                function(){
-                  window.location.href =location.href;
-              });
-              });
+      alert("북마크에 추가되었습니다.");
+      location.href = location.href; 
      } else {
-    	 swal("오류발생..다시 시도해주세요.");
+       alert("오류발생..다시 시도해주세요.");
      }
     })  
 }
@@ -585,72 +556,27 @@ function addbookmark() {
 function delbookmark() {  
    $.getJSON("../ajax/bookmark/delete.do?qno="+qno, function(data){
         if(data.status == "success") {
-        	 $(document).ready(function() {
-        		 swal({ 
-        		   title: "북마크 제거",
-        		    text: "",
-        		     type: "" 
-        		   },
-        		   function(){
-        		     window.location.href =location.href;
-        		 });
-        		 });
-       	
+        alert("북마크에서 제거되었습니다.");
+        location.href = location.href; 
        } else {
-    	   swal("오류발생..다시 시도해주세요.");
+         alert("오류발생..다시 시도해주세요.");
        }
       })  
 }
 
 function dellogfile() {
-     $.getJSON("../ajax/answer/deletelog.do?qno="+qno, function(data){
-          if(data.status == "success") {
-         } else {
-        	 swal("오류발생..다시 시도해주세요.");
-         }
-        })    
-}
-
-function delAnswer(data) {
-	var ano = data.getAttribute('data-ano');       
-	var acon = data.getAttribute('data-img'); 
-	$.get("../ajax/cmember/ismaster.do?cno="+cno,
-		      function(d) {
-		           if(d) {
-		        	   if(confirm("삭제하시겠습니까?")) {   
-		        		    $.getJSON("../ajax/answer/delete.do?no="+ano+"&img="+acon, function(data){
-		        		        if(data.status == "success") {
-		        		          location.href = location.href;
-		        		       } else {
-		        		    	   swal("답변삭제에 실패하였습니다.","다시 시도해주세요.");
-		        		       }
-		        		      });
-		        		  }
-		             } else {
-		                $.get("../ajax/cmember/memorn.do?cno="+cno,   
-		                      function(data) {  
-		                            if(data) {
-		                            	 $.getJSON("../ajax/answer/delete.do?no="+ano+"&img="+acon, function(data){
-		                                     if(data.status == "success") {
-		                                       location.href = location.href;
-		                                    } else {
-		                                    	swal("답변을 삭제하는데 오류 발생.");
-		                                    }
-		                                   });
-		                            } else {     
-		                            	swal("클래스 멤버만 삭제가 가능합니다.")             
-		                            }
-		                });  
-		             }
-		  })
-		  
-
+	   $.getJSON("../ajax/answer/deletelog.do?qno="+qno, function(data){
+	        if(data.status == "success") {
+	       } else {
+	         alert("오류발생..다시 시도해주세요.");
+	       }
+	      })  	
 }
 
 function resetCanvas() {
-   var canvas = $("canvas").get(0);
-    var context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height); 
+	 var canvas = $("canvas").get(0);
+	  var context = canvas.getContext('2d');
+	  context.clearRect(0, 0, canvas.width, canvas.height);	
 }
 
 </script>
