@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="utf-8">
+      <meta charset="utf-8">
     <title>OdapNote</title>
     <link rel="stylesheet" type="text/css" href="css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="css/input-style.css">    
@@ -9,13 +9,16 @@
     
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
+     <link rel="stylesheet" href="css/bootstrap.han2.css">
+  
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    
     <style>
     @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+    @import url('https://fonts.googleapis.com/css?family=Righteous');
     @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
     @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
     /*
@@ -32,16 +35,32 @@
       #container {
         width: 1280px;
         margin: 0px auto;
-        padding: 20px;       
+        padding-left: 20px;
+        padding-right: 20px;   
       }
     
-     #top {
-        font-size: 8px;
+  #odapLogo {
+    float: left;
+    margin-left: 85px;
+  }  
+    #top {
+        font-size: 15px;
         text-align: right;
         letter-spacing: 2px;
         word-spacing: 20px;
-        height: 25px;        
+        height: 25px;
+        padding-right: 50px;
       }
+      
+      .h1, h1 {
+        font-size: 15px;
+      }
+      
+      #top a {
+          font-family: 'Righteous', serif;
+          text-decoration: none;
+          color: black;
+        }
       
       #header {
         height: 200px;
@@ -49,86 +68,46 @@
         border-bottom: 3px solid gray;       
       }
       
-      #topmenu {
+     #topmenu {
       height: 30px;
       padding-right: 50px;
-      margin-bottom: 20px;
-      word-spacing: 20px;
+      word-spacing: 15px;
       text-align: right;
       font-size: 20px;   
-      background-color: #288c28;        
+      margin-top: 20px;
+      /* background-color: #523d1e;  */ 
+      /* font-weight: bolder; */     
       }
              
        #topmenu a {
-        font-family: 'Hanna', serif;
+        font-family: 'Righteous', serif;
         text-decoration: none;
-        color: white;
+        color: dimgray;
        }
+                              
+       #topmenu a:hover {
+        color: black;
+       }
+       
         #top a {
         font-family: 'Hanna', serif;
         text-decoration: none;
         color: black;
         }
-                        
-       #topmenu a:hover {
-        color: gray;
-       }
-          
+
       #content {
-        width: 870px;
-        padding: 10px;
+        width: 1175px;
         margin-bottom: 20px;
-        margin-right: 20px;
-        float: right; /*위치변경가능*/
-         border-radius: 4px;
+        padding: 50px;
+        border-radius: 4px;
         box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
         font-family: 'Hanna';
         font-size: 20px;
-        line-height: 140%;        
+        /*line-height: 140%;*/        
         background-color:white;
         padding-bottom: 40px;
       }
-   
-      #sidebar {
-        width: 230px;
-        margin-left: 40px;
-        float: left; /*위치변경가능*/       
-      }
-      
-      #sidebar .menu {
-        height: 40px;
-        padding-left: 30px;
-        font-family: 'Nanum Pen Script';
-        color: #888888;
-        font-size: 30px;
-        border-bottom: 1px solid LightGray;        
-      }
-      
-      .selectmenu {
-        height: 40px;
-        padding-left: 30px;
-        font-family: 'Nanum Pen Script';
-        background-color: LightGray;
-        font-size: 30px;
-        color: white;
-      }
-      
-       #sidebar .menu:hover {
-       /*background-color: #7fffd4;*/
-       background-color: LightGray;
-       color:white;
-       }
 
-      #sidebar h2{
-        font-family: 'Nanum Pen Script';
-        font-size: 40px;
-        text-align: center;
-        /*text-decoration: underline;*/
-        padding-bottom: 15px;
-        border-bottom: 3px solid gray;
-        margin-bottom: 0px;
-      }
-      
       #footer {
         clear: both;
         padding: 20px;
@@ -137,16 +116,16 @@
 
 
 .profile-header {
-  padding-left: 50px;
   padding-top: 20px;
-  color: DimGray;
+  color: #87d3b7;
   font-size: 24px;
   font-weight: 900;
   margin-bottom: 5px;
 }
 
 
-#columns {
+.columns {
+  padding-left: 10px;
   -webkit-column-count: 2;
   -webkit-column-gap: 10px;
   -webkit-column-fill: auto;
@@ -156,7 +135,7 @@
   column-count: 3;
   column-gap: 15px;
   column-fill: auto;
- margin-top:100px;
+ margin-top:50px; 
   
 }
 
@@ -196,7 +175,7 @@
 
 
 @media (min-width: 1100px) {
-  #columns {
+  .columns {
     -webkit-column-count: 5;
     -moz-column-count: 5;
     column-count: 4;
@@ -294,7 +273,7 @@
   overflow: hidden;
   text-align: center;
   background: rgba(87, 73, 81, 0.3);
-  line-height: 20px;
+  /*line-height: 20px;*/
   font-size: 18px;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -390,128 +369,371 @@ figure {
 }
 
 
-/********************************************************header****************************************/
-#pheader .navbar-brand {
-    color: black;
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    font-size: 50px;
-    z-index: 1000;
-    text-decoration: none;
-}
-
-#pheader {         
-   width: 100%;
-   height: 200px;
-   max-height: 200px;
-   position: relative;
-   background: #a8e4d8;
-   overflow: hidden;
-}
-.parallax {
-   position: absolute;
-}
-#warpbg {
-   top: -200px;
-   left: -350px;
-}
-#star1 {
-    top: 150px;
-    right: 200px;
-}
-#star2 {
-    top: 220px;
-    right: 500px;
-}
-#star3 {
-    bottom: 20px;
-    right: 320px;
-}
-#star4 {
-    top: 40px;
-    left: 290px;
-}
-#star5 {
-    bottom: -38px;
-    left: 170px;
-}
-#star6 {
-     bottom: 0px;
-    right: 0px;
-}
-#star7 {
-    bottom: 0px;
-    right: 0px;
-}
-#star8 {
-    top: 100px;
-    right: 100px;
-}
-#star9 {
-    bottom: -50px;
-    left: 100px;
-}
-
 #classlist {
   margin-left: 50px;
   margin-top: 20px;
 }
+
+.class-list {
+  max-width: 800px;
+  min-height: 100px;
+  font-size: 35px;
+  margin-left: 100px;
+  overflow: auto;
+  white-space:nowrap;
+  overflow-y:hidden;
+  padding:10px;
+}
+
+.class-list::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+  height:5px;
+}
+
+.class-list::-webkit-scrollbar
+{
+  width: 20px;
+  background-color: #F5F5F5;
+}
+
+.class-list::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+   min-width: 10px;
+}
+
+
+.class-list a{
+  text-decoration: none;
+  color: gray;
+  border: 5px solid #a8e4d8;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#search-ques, #search-class {
+  /*width: 1280px;*/
+  display: block;  
+}
+/*
+#search {
+    display: block;
+    margin-top: 70px;
+    margin-left: 40px;
+    height: 80px;
+    width: 930px;
+}
+*/
+#search {
+    display: inline;
+    position: absolute;
+    margin-top: 96px;
+    margin-left: 95px;
+    height: 80px;
+    width: 930px;
+    z-index: 15;
+}
+#search input[type="text"] {
+    background: gainsboro;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: black;
+    width: 800px; 
+    height: 50px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    /*text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);*/ 
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    }
+
+#search input[type="text"]:focus {
+    background-color: #fff;
+    color: black;    
+    width: 800px;
+    height: 50px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    }
+    #more {
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      font-size: 15px;
+           display: inline-block;
+      
+    }
+/*******************************************************/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+.tab {
+  margin-bottom: 20px;
+  margin-top: 100px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #888;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabs {
+  display: table;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+}
+.tabs li {
+  float: left;
+  line-height: 38px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+.tabs a {
+  background-color: #eff0f2;
+  border-bottom: 1px solid #fff;
+  color: #888;
+  font-weight: 500;
+  display: block;
+  letter-spacing: 0;
+  outline: none;
+  padding: 0 20px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid #87d3b7;
+  
+}
+
+.tabs_item {
+  display: none;
+  padding: 30px 0 0 50px;
+}
+.tabs_item h4 {
+  font-weight: bold;
+  color: #87d3b7;
+  font-size: 20px;
+}
+.tabs_item img {
+  width: 200px;
+  float: left;
+  margin-right: 30px;
+}
+.tabs_item:first-child {
+  display: block;
+} 
+.current a {
+  color: #fff;
+  background: #87d3b7;
+}
+
+#myClasslist {
+     table-layout:fixed; 
+     text-align: center;
+     margin-left: 100px;
+  }
+  
+#myClasslist td, #myClasslist th {
+     min-width: 100px;
+     max-width: 100px;  
+     text-overflow: ellipsis; 
+     overflow: hidden; 
+     white-space: nowrap;
+  }
+
+#myClasslist td img {
+     width: 25px;
+     margin-left: 25px;
+  }
+
+  
+  .tableCnm {
+      min-width: 150px !important;
+      max-width: 150px !important;
+      text-overflow: ellipsis; 
+      overflow: hidden; 
+      white-space: nowrap;
+  }
+  
+    .tableCdes {
+      min-width: 150px !important;
+      max-width: 150px !important;
+      text-overflow: ellipsis; 
+      overflow: hidden; 
+      white-space: nowrap;
+  }
+
 
  </style>
   </head>
   <body>
     <div id="container">
     <div id="top">
-        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
+        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
       </div>
       <div class="line"></div>
-      <div id="header">
-        <div id="pheader">
-    <img id="warpbg" class="parallax left top" src="">
-    <img id="star1" class="parallax top" src="img/cle.png">
-    <img id="star2" class="parallax top" src="img/clo.png">
-    <img id="star3" class="parallax" src="img/mo.png">
-    <img id="star4" class="parallax left top" src="img/mu.png">
-    <img id="star5" class="parallax left" src="img/pe.png">
-    <img id="star6" class="parallax left top" src="img/ph.png">
-    <img id="star7" class="parallax top" src="img/tr.png">
-    <img id="star8" class="parallax top" src="img/fi.png">
-    <img id="star9" class="parallax" src="img/pr.png">
-    
-    <a class="navbar-brand page-scroll" href="mypage.html" >Odap note</a>     
-</div>
-      </div>
+      <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
       <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a href="./testfinal.html">MYPAGE </a><a href="#">SEARCH </a> 
+      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
       </div>
-      <div id="content">
-              <div id="scon" class="profile-header"></div>           
-              <article id="wrapper">
-              <nav id="columns"></nav>
-              </article> 
-      </div>
+              <form method="get" action="./search.html" id="search">
+              <input name="search" type="text" size="40" placeholder="Searching here" />
+              </form> 
+              <div class="tab">
+  <ul class="tabs">
+    <li><a href="#">전체</a></li>
+    <li><a href="#">CLASS</a></li>
+    <li><a href="#">Question</a></li>
+  </ul>
+  <!-- / tabs -->
+
+  <div class="tab_content">
+
+    <div class="tabs_item">     
+              <div class="profile-header"></div>
+              <div id="search-class">
+              <h2>Class</h2>
+              <div class="scrollbar class-list"></div>
+              </div>  
+              <div id="search-ques">
+              <h2>Question</h2>  
+              <article class="wrapper">
+              <nav class="columns"></nav>
+              </article>
+              </div>
+    </div>
+    <!-- / tabs_item -->
+
+    <div class="tabs_item">
+      <div class="profile-header"></div>
+      <table id="myClasslist" class="table table-hover" cellpadding="10px" style="table-layout:fixed">
+              <tr>
+              <th class='tableCnm'>클래스명</th><th>과목</th><th class='tableCdes'>소개</th><th>입장</th>
+              </tr>   
+              </table>
+    </div>
+    <!-- / tabs_item -->
+
+    <div class="tabs_item tabmargin" >
+      <div class="profile-header"></div>
+     <article class="wrapper">
+              <nav class="columns"></nav>
+     </article>
+
+    </div>
+    <!-- / tabs_item -->
+
+  </div>
+  <!-- / tab_content -->
+</div>
       <div id="footer">
-        <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
        
       </div>
     </div>   
   <script>
-  loadClassList();
   
-  function loadClassList() {   
+
+  $(document).ready(function() { 
+
+      (function ($) { 
+        $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+        
+        $('.tab ul.tabs li a').click(function (g) { 
+          var tab = $(this).closest('.tab'), 
+            index = $(this).closest('li').index();
+          
+          tab.find('ul.tabs > li').removeClass('current');
+          $(this).closest('li').addClass('current');
+          
+          tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp();
+          tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown();
+          
+          g.preventDefault();
+        } );
+      })(jQuery);
+
+    });
+  
+  
+  loadClassList();
+  loadQueList();
+  
+  function loadQueList() {   
     var get = getRequest();
     if(!get){
-    	return;
+      return;
     }
     var wr_id = get['search'];
-    $("#scon").append('<p>searching for " '+decodeURI(wr_id)+' "...');
+    $(".profile-header").append('<p>searching for " '+decodeURI(wr_id)+' "...');
     $.getJSON("../ajax/question/search.do?key="+wr_id, function(result) {
-        $.each(result, function(i,d){                
-        	var jbSplit = d.qpic.split('/');
+      if(Object.keys(result).length==0) { $(".wrapper").append("<p style='margin-left:100px;font-size:25px;'>검색 결과가 없습니다...</p>");}
+        $.each(result, function(i,d){     
+        	console.log(typeof d.qpic)
+        	if(typeof(d.qpic) == 'undefined') {d.qpic = 'img/noqimg.png';console.log("1")}
+          var jbSplit = d.qpic.split('/');
             $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+d.qno+"'/>" + "<p>" 
-                  + d.qtit + "</p><br>" + "<p>" + d.qcnt + "</p>").appendTo($("#columns"));
+                  + d.qtit + "</p><br>" + "<p>" + d.qcnt + "</p>").appendTo($(".columns"));
         });
     })
   }
+  
+  function loadClassList(){
+    var get = getRequest();
+      if(!get){
+        return;
+      }
+      var wr_id = get['search'];
+      $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {
+          if(Object.keys(result).length==0) { $(".class-list").append("<p style='font-size:25px;'>검색 결과가 없습니다...</p>");}
+          for(var i=0; i<2; i++){   
+              $(".class-list").append("<a href='./javapage5.html?cno="+result[i].cno+"'>&nbsp;    &nbsp;"+result[i].cnm+"&nbsp;    &nbsp;</a>");        
+              if(i==1) {$(".class-list").append("<h2 id='more'onclick='clickMore()' style='cursor: pointer;'>...more</h2>");}      
+          };
+          });
+      
+      
+      $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {  
+          $.each(result, function(i,d){                
+                $("#myClasslist").append("<tr><td>"+d.cnm+"</td><td>"+d.csub+"</td><td>"+d.cdes+"</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png'></a></td></tr>"); 
+          });
+      })
+      
+    }
+  
+  function clickMore() {
+    var get = getRequest();
+      if(!get){
+        return;
+      }
+      var wr_id = get['search'];
+    $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {
+         $("#more").detach();
+          if(Object.keys(result).length==0) { $(".class-list").append("<p style='font-size:25px;'>검색 결과가 없습니다...</p>");}
+          for(var i=2; i<Object.keys(result).length; i++){   
+              $(".class-list").append("<a href='./javapage5.html?cno="+result[i].cno+"'>&nbsp;    &nbsp;"+result[i].cnm+"&nbsp;    &nbsp;</a>");        
+          };
+          });
+  }
+
   
   function getRequest() {
       if(location.search.length > 1) {
@@ -526,6 +748,11 @@ figure {
           return false;
       }
   }
+  
+  function onclickDetail(event) {
+      location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
+  } 
+
   
   // Plugin Test
   $(window).parallaxmouse({
@@ -544,7 +771,6 @@ figure {
           {el: $('#star9'), rate: 0.7}
       ]
   });
-</script><script type="text/javascript">
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36251023-1']);
@@ -557,9 +783,6 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
-  
-  
-  
   </script>
   </body>
 </html>
