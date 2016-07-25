@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>OdapNote</title>
+    <link rel="stylesheet" type="text/css" href="css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="css/input-style.css">    
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/sweetalert.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+   
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+        
+    <style>
+    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+    @import url('https://fonts.googleapis.com/css?family=Righteous');  
+    @import url('https://fonts.googleapis.com/css?family=Convergence');
+    @font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
+
+		body {
+		    display: block;
+		    margin: 8px;
+		}
+		
+  a {
+    text-decoration: none;
+    
+  }
+     a:hover {
+    text-decoration: none;
+  }
+   #container {
+        width: 1280px;
+        margin: 0px auto;
+        padding-left: 20px;
+        padding-right: 20px;       
+      }
+    
+     #top {
+          font-size: 15px;
+          text-align: right;
+          letter-spacing: 2px;
+          word-spacing: 20px;
+          height: 25px;
+          padding-right: 50px;
+      }
+      
+      .h1, h1 {
+        font-size: 15px;
+      }
+      
+      h4 {
+        font-size: 35px;
+      }
+      
+      #top a {
+             font-family: 'Righteous', serif;
+             text-decoration: none;
+             color: black;
+        }
+      #content {
+        width: 900px;
+        height: 700px;
+        padding-top: 70px;
+       text-align: center;
+        margin: 0 auto;
+        margin-top: 100px;
+        border-radius: 4px;
+        font-family: 'hoon';
+        padding-bottom: 40px;
+      } 
+       
+       #startOdapNote {
+        padding: 10px;
+        font-family: hoon;
+        color: gray;
+        font-size: 50px;
+        border-radius: 15px;        
+       }
+       
+       #startOdapNote:hover {
+          color:white;
+          background-color: rgba(0, 0, 255, 0.3);  
+       }       
+            
+      #odapLogo {
+		    margin-top: 22px;
+		    margin-right: 23px;
+		    margin-bottom: 80px;
+      }
+
+
+            
+            
+      #footer {
+        clear: both;
+        padding: 20px;
+        background-color:white;
+      }
+      
+      .innerimg {
+        width: 80%;        
+        border-radius: 60px;
+        margin-top: 5px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+    <div id="top">
+        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
+      </div>
+      <div class="line"></div>
+      
+  
+      <div id="content">
+      <img id="odapLogo" src="img/logo3.PNG" width="400" height="100"><br>
+          <h4 id="myname"></h4>
+          <a href="./firstpage2.html" id="startOdapNote">OdapNote 시작하기</a> 
+     
+      </div>
+      <!-- 
+        <div id="sidebar"></div>
+ -->
+      <div id="footer">        
+      </div>
+    </div>  
+  <script>
+  loadMyInfo();
+
+  
+  function loadMyInfo() {	  
+	   $.getJSON("../ajax/member/detail.do", function(result) {
+	     $("#myname").append(result.mnm);
+	     $("#myname").append("("+result.mid+")님의 가입이 완료되었습니다!");
+	   });
+	} 
+  </script>
+  </body>
+</html>

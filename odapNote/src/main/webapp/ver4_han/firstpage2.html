@@ -9,13 +9,11 @@
     
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery.parallaxmouse.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
-    
-
+   
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -25,12 +23,14 @@
     @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
     @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
     @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+    @import url('https://fonts.googleapis.com/css?family=Righteous');  
     @import url('https://fonts.googleapis.com/css?family=Convergence');
-    /*
+
     body {
-       background-color: #ebffeb;
+        display: block;
+        margin: 8px;
     }
-    */
+    
   a {
     text-decoration: none;
     
@@ -38,39 +38,31 @@
      a:hover {
     text-decoration: none;
   }
-      #container {
+   #container {
         width: 1280px;
         margin: 0px auto;
         padding-left: 20px;
-        padding-right: 20px;      
-        text-align: center; 
+        padding-right: 20px;       
       }
     
-      #top {
-        font-size: 8px;
-        text-align: right;
-        letter-spacing: 2px;
-        word-spacing: 20px;
-        height: 25px;        
+     #top {
+          font-size: 15px;
+          text-align: right;
+          letter-spacing: 2px;
+          word-spacing: 20px;
+          height: 25px;
+          padding-right: 50px;
       }
-      
-         #top a {
-        font-family: 'Hanna', serif;
-        text-decoration: none;
-        color: black;
-        }
       
       .h1, h1 {
         font-size: 15px;
-        font-weight: bold;
       }
       
-      #header {
-        height: 200px;
-        margin-bottom: 10px;
-        border-bottom: 3px solid gray;       
-      }
-   
+      #top a {
+             font-family: 'Righteous', serif;
+             text-decoration: none;
+             color: black;
+        }
       #content {
         width: 900px;
         height: 700px;
@@ -163,19 +155,6 @@
       #mypage:hover, #class:hover {
         box-shadow: 2px 5px 10px 5px rgba(0,0,0,.8);
         cursor: pointer;
-      }
-      
-      #topmenu {
-      height: 30px;
-      padding-top: 4px;
-      padding-right: 50px;
-      margin-bottom: 20px;
-      text-align: right;
-      font-size: 22px;   
-      background-color: #523d1e;
-      font-family: 'Hanna', serif;
-      text-decoration: none;
-      color: white;      
       }
       
       #footer {
@@ -445,7 +424,7 @@
   <body>
     <div id="container">
     <div id="top">
-        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
+        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
       </div>
       <div class="line"></div>
       
@@ -464,8 +443,7 @@
         <div id="sidebar"></div>
  -->
       <div id="footer">
-        <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
-       
+        
       </div>
     </div>  
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -475,8 +453,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Class Name</h4>
       </div>
-      <div class="modal-body">
        <form id ="qfrm" name ="qfrm" method="POST">
+      <div class="modal-body">
         <div class="form-group">
           <label for="exampleInputEmail1">Question</label>
           <center><input name="qtit" type="title" class="form-control" id="Qtitle" placeholder="제목을 입력해주세요."></center>
@@ -517,17 +495,17 @@
   loadMyInfo();
   loadClassList();
   
-  function loadMyInfo() {	  
-	   $.getJSON("../ajax/member/detail.do", function(result) {      
-	     if(!result.mpic) {
-	       result.mpic = "./img/noimage.jpg" ;
-	     }
-	     console.log($("#sidebar"))
-	     $("#sidebar").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
+  function loadMyInfo() {   
+     $.getJSON("../ajax/member/detail.do", function(result) {      
+       if(!result.mpic) {
+         result.mpic = "./img/noimage.jpg" ;
+       }
+       console.log($("#sidebar"))
+       $("#sidebar").append("<img src='"+result.mpic+"' class='img-circle' id='mypic'>");
          $("#sidebar").append("<h1>"+result.mnm+"</h1>");
          $("#sidebar").append("<p>email:"+result.mem + "</p><br><p>tel:" + result.mtel + "</p><br><p>job:" +result.mjob+"</p>");        
-	   });
-	}
+     });
+  }
   
   function loadClassList() {   
       $.getJSON("../ajax/class/myclasslist.do", function(result) {  
@@ -594,7 +572,7 @@ function removeUpload() {
           contentType: false,
           processData: false,
           success:  function(data){
-        	   $(document).ready(function() {
+             $(document).ready(function() {
                    swal({ 
                      title: "질문이 등록되었습니다",
                       text: "",
@@ -611,4 +589,4 @@ function removeUpload() {
   
   </script>
   </body>
-</html>
+</html> 

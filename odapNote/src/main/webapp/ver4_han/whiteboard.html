@@ -21,7 +21,7 @@
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url('https://fonts.googleapis.com/css?family=Righteous');
-
+@font-face{font-family:hard; src:url(fonts/hard.ttf)};
 nav#logo {
   display: inline;
   position: relative;
@@ -125,7 +125,7 @@ nav#logo {
   float: right;
   font-size: 20px;
   padding-right: 50px;
-  font-family: 'Hanna', serif;
+  font-family: 'hard', serif;
   text-align: right;
   height: 60px;
   margin-top: 40px;
@@ -134,12 +134,13 @@ nav#logo {
 #menubar {
   margin-top: 30px;
   display: inline-block;
+  width: 100%;
 }
 
 #className a {
   text-decoration: none;
   color:black;
-  font-family: 'Hanna', serif;
+  font-family: 'hard', serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -162,6 +163,7 @@ nav#logo {
 }
 #page {
   display: inline-block;
+  margin-left: 15px;
   /* border: 3px solid red; */
 }
 article {
@@ -300,6 +302,7 @@ article {
   overflow: scroll;
   overflow-x:hidden;
   height: 703px;
+  min-width: 279px;
 }
 
 #answers::-webkit-scrollbar-track
@@ -353,10 +356,10 @@ article {
       </div>
   <div id="className"></div>
   <div id="menubar">
-    <input type='button' class='button button--border-medium button button--nina joinbtn' onclick='newan();' id='newAnswer' value='newAnswer'/>
-    <input type="button" class='button button--border-medium button button--nina joinbtn' value="Capture" id="capture" />
-    <input type="button" class='button button--border-medium button button--nina joinbtn' onclick='dellogfile();' value="log삭제" id="dellog" />
-    <input type="button" class='button button--border-medium button button--nina joinbtn' onclick='ingpage();' value="작성중페이지" id="dellog" />
+    <input type='button' class='button button--border-medium button button--nina joinbtn nove' onclick='newan();' id='newAnswer' value='newAnswer'/>
+    <input type="button" class='button button--border-medium button button--nina joinbtn nove' value="Capture" id="capture" />
+    <input type="button" class='button button--border-medium button button--nina joinbtn nove' onclick='dellogfile();' value="log삭제" id="dellog" />
+    <input type="button" class='button button--border-medium button button--nina joinbtn nove' onclick='ingpage();' value="작성중페이지" id="ingpage" />
     <button id='addbm' type='button' onclick='addbookmark()'
                style="display: none;" class='button button--border-medium button button--nina joinbtn' >북마크추가</button>
   <button id='delbm' type='button' onclick='delbookmark()'
@@ -404,10 +407,28 @@ loadAnswer();
 
 function loadClassName() {
     $.getJSON("../ajax/question/classname.do?qno="+qno, function(data){
-    	cno=data.cno;
+      cno=data.cno;
       $("#className").append("<a href='./javapage5.html?cno="+data.cno+"'><div id='cnm'><h2>"+data.cnm+" >></h2></div></a>");
+    isCMember(cno);
     })
+    console.log(cno);
   }
+  
+function isCMember(bno) {
+	console.log(bno)
+	 $.get("../ajax/cmember/ismaster.do?cno="+bno,
+	       function(d) {
+	               if(!d) {  
+	            	   $.get("../ajax/cmember/memorn.do?cno="+bno,   
+	                       function(data) {  
+	            		         if(!data) {
+	            		        	  console.log("why??");
+	            		        	  $(".nove").css("display","none");
+	            		         } else {console.log("nn")}
+	            		       })
+	               } else {console.log("???")}
+	       })
+	 }            
   
 function loadQuestion() {
     $.getJSON("../ajax/question/detail.do?no="+qno, function(data){
@@ -424,7 +445,7 @@ function loadAnswer() {
         $('#answers').append("<img id='default' src='img/board.jpg' width='260'>");
       }
       $.each(data, function(i,d) {        
-        $('#answers').append("<img class='answer' onclick='change(this)' data-ano='"+d.ano+"' src='img/thumb_"+d.acon+"' width='260' style='cursor:pointer;position:inline-block'><img onclick='delAnswer(this);' style='cursor:pointer;z-index:15;position:inline-block' data-img='"+d.acon+"' data-ano='"+d.ano+"' src='img/tr.png' width='10'>");
+        $('#answers').append("<img class='answer' onclick='change(this)' data-ano='"+d.ano+"' src='img/thumb_"+d.acon+"' width='260' style='cursor:pointer;position:inline-block'><img onclick='delAnswer(this);' style='cursor:pointer;z-index:15;position:inline-block' data-img='"+d.acon+"' data-ano='"+d.ano+"' src='img/tr.png' width='15'>");
       })      
     })
 }
@@ -546,22 +567,6 @@ function change(data) {
       return new Blob([ia], {type:mimeString});
   }
 
-$(window).parallaxmouse({
-    invert: true,
-    range: 400,
-    elms: [
-        {el: $('#warpbg'), rate: 0.1},
-        {el: $('#star1'), rate: 0.2},
-        {el: $('#star2'), rate: 0.2},
-        {el: $('#star3'), rate: 0.2},
-        {el: $('#star4'), rate: 0.2},
-        {el: $('#star5'), rate: 0.2},
-        {el: $('#star6'), rate: 0.3},
-        {el: $('#star7'), rate: 0.4},
-        {el: $('#star8'), rate: 0.48},
-        {el: $('#star9'), rate: 0.7}
-    ]
-});
 
 function addbookmark() {
   $.getJSON("../ajax/bookmark/add.do?qno="+qno, function(data){
@@ -616,25 +621,37 @@ function delAnswer(data) {
 	var acon = data.getAttribute('data-img'); 
 	$.get("../ajax/cmember/ismaster.do?cno="+cno,
 		      function(d) {
-		           if(d) {
-		        	   if(confirm("삭제하시겠습니까?")) {   
+		           if(d) {		        	  
 		        		    $.getJSON("../ajax/answer/delete.do?no="+ano+"&img="+acon, function(data){
 		        		        if(data.status == "success") {
-		        		          location.href = location.href;
+		        		        	swal({ 
+		        		        		        title: "삭제완료!",
+		        	                      text: "",
+		        	                       type: "success" 
+		        	                     },
+		        	                     function(){
+		        	                       window.location.href =location.href;
+		        	                   });
 		        		       } else {
 		        		    	   swal("답변삭제에 실패하였습니다.","다시 시도해주세요.");
 		        		       }
-		        		      });
-		        		  }
+		        		      });		        	
 		             } else {
 		                $.get("../ajax/cmember/memorn.do?cno="+cno,   
 		                      function(data) {  
 		                            if(data) {
 		                            	 $.getJSON("../ajax/answer/delete.do?no="+ano+"&img="+acon, function(data){
 		                                     if(data.status == "success") {
-		                                       location.href = location.href;
+		                                    	    swal({ 
+		                                                title: "삭제완료!",
+		                                                text: "",
+		                                                 type: "success" 
+		                                               },
+		                                               function(){
+		                                                 window.location.href =location.href;
+		                                             });
 		                                    } else {
-		                                    	swal("답변을 삭제하는데 오류 발생.");
+		                                    	swal("답변삭제에 실패하였습니다.","다시 시도해주세요.");
 		                                    }
 		                                   });
 		                            } else {     

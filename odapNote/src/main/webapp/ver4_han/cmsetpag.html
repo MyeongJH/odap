@@ -31,10 +31,8 @@
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
 @import url('https://fonts.googleapis.com/css?family=Cormorant Upright');
-@import url('https://fonts.googleapis.com/css?family=Righteous');  
-@font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
-@font-face{font-family:hard; src:url(fonts/hard.ttf)};
-
+@import url('https://fonts.googleapis.com/css?family=Righteous'); 
+@font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)};
 /*
     body {
        background-color: #ebffeb;
@@ -63,12 +61,7 @@
       }
       
       .h1, h1 {
-        font-size: 15px; 
-      }
-      
-      .h4, h4 {
-          font-size: 26px;
-          color:white;
+        font-size: 15px;
       }
       
       #top a {
@@ -142,14 +135,15 @@
   float: right;
   font-size: 20px;
   padding-right: 50px;
-  font-family: 'hard', serif;
+  font-family: 'Hanna', serif;
   text-align: right;
+  margin-top: 23px;
 }
 
 #className a {
   text-decoration: none;
-  font-weight: bold;
-  font-family: hard;
+  color:black;
+  font-family: 'Hanna', serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -177,33 +171,24 @@
 }
 
 #join {
-    width: 272px;
-    margin-left: 40px;
-    margin-top: 10px;
-    float: left;
-    border-radius: 4px;
-    text-align: center;
-    line-height: 150%;
-    background-color: #ccc;
-    font-family: hoon;
-    font-size: 21px;
+  width: 230px;
+  margin-left: 40px;
+  margin-top: 10px;
+  float: left; /*위치변경가능*/
+  border-radius: 4px;
+  text-align: center;
+  line-height: 150%;
+  background-color: #66ddc0;
 }
 
 .joinbtn {
-    background-color: #a8a8a8;
-    width: 82px; 
-    font-size: 13px;
-    margin-left: 32px;
-    margin-bottom: 19px;
-}
-
-.joinbtn:hover {
-    background-color: gray;
+  width: 90px;
+  margin-left: 11px;
 }
 
 #cmitr {
   width: 210px;
-  border: 2px solid darkgray;
+  border: 2px solid gray;
   border-radius: 15px;
   padding: 10px;
 }
@@ -402,26 +387,27 @@
 }
 
 #search {
-    margin-top: 22px;
+    margin-top: 38px;
     display: inline-block;
     float: left;
-    margin-left: 27px;
+    margin-left: 39px;
+    margin-right: 353px;
     height: 80px;
     font-size: 20px;
 }
 
 #search input[type="text"] {
-  background: gainsboro;
+  background: #444;
   border: 0 none;
   font: bold 12px Arial, Helvetica, Sans-serif;
   padding: 6px 15px 6px 15px;
   color: #777;
-  width: 271px;
+  width: 600px;
   height: 40px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  /*text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);*/
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 1px 2px 1px rgba(255, 255, 255, 0.1), 0 2px 4px
     rgba(0, 0, 0, 0.2) inset;
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px
@@ -436,7 +422,7 @@
 
 #search input[type="text"]:focus {
   padding: 6px 15px 6px 35px;
-  width: 450px;
+  width: 700px;
   background-color: white;
 }
 
@@ -456,12 +442,7 @@
 	    height: 40px;
 	    font-size: 14px;
  }
- #serNm {
-    height: 100px;
-    margin-top: 49px;
-    vertical-align: middle;
-    padding: 10px;
- }
+ 
 
 
 </style>
@@ -476,14 +457,12 @@
       <div id="topmenu">
       <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
       </div>
-      <div id="serNm">
     <form method="get" action="./searchInClass.html?" id="search">
       <input name="search" type="text" size="40"
         placeholder="Searching here" />
       <input id="searchcno" name="cno" type="hidden"/>  
     </form>
     <div id="className"></div>
-    </div>
     <div id="content">
       <nav id="columns"></nav>
     </div>
@@ -527,12 +506,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" 
+          <button type="button" class="close" data-dismiss="modal"
             aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="myModalLabel" style="color:black;">Class Name</h4>
-        </div> 
+          <h4 class="modal-title" id="myModalLabel">Class Name</h4>
+        </div>
           <form id="qfrm" name="qfrm" method="POST">
         <div class="modal-body">
             <div class="form-group">

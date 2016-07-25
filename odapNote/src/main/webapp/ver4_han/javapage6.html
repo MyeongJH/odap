@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>OdapNote</title>
+<link rel="stylesheet" type="text/css" href="css/buttons.css" />
 <link rel="stylesheet" type="text/css" href="css/input-style.css">
 <script
   src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -13,9 +14,10 @@
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css"
   rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.parallaxmouse.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.my.css">
-<!-- 
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
   rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Kaushan+Script'
@@ -26,93 +28,97 @@
 <link
   href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
   rel='stylesheet' type='text/css'>
-  -->
-  
-<style>
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css); 
-@import url('https://fonts.googleapis.com/css?family=Cormorant Upright');
-@import url('https://fonts.googleapis.com/css?family=Righteous');  
-@font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
-@font-face{font-family:hard; src:url(fonts/hard.ttf)};
 
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 /*
     body {
        background-color: #ebffeb;
     }
     */
- a {
-    text-decoration: none;
-  }
-     a:hover {
-    text-decoration: none;
-  }
-      #container {
-        width: 1280px;
-        margin: 0px auto;
-        padding-left: 20px;
-        padding-right: 20px;       
-      }
-    
-      #top {
-          font-size: 15px;
-          text-align: right;
-          letter-spacing: 2px;
-          word-spacing: 20px;
-          height: 25px;
-          padding-right: 50px;
-      }
-      
-      .h1, h1 {
-        font-size: 15px; 
-      }
-      
-      .h4, h4 {
-          font-size: 26px;
-          color:white;
-      }
-      
-      #top a {
-             font-family: 'Righteous', serif;
-             text-decoration: none;
-             color: black;
-        }
-        
-  #topmenu {
-      height: 30px;
-      padding-right: 50px;
-      word-spacing: 15px;
-      text-align: right;
-      font-size: 20px;   
-      margin-top: 20px;
-      /* background-color: #523d1e;  */ 
-      /* font-weight: bolder; */     
-      }
-             
-       #topmenu a {
-        font-family: 'Righteous', serif;
-        text-decoration: none;
-        color: dimgray;
-       }
-                              
-       #topmenu a:hover {
-        color: black;
-       }
-       
-			#content {
-				  width: 870px;
-				  padding: 10px;
-				  margin-bottom: 20px;
-				  margin-right: 20px;
-				  float: right; /*위치변경가능*/
-				  border-radius: 4px;
-				  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2);
-				  font-family: 'Hanna';
-				  font-size: 20px;
-				  line-height: 140%;
-				  background-color: white;
-				  padding-bottom: 40px;
-		      min-height: 516px;
-			}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#container {
+  width: 1280px;
+  margin: 0px auto;
+  padding: 20px;
+}
+
+#top {
+  font-size: 8px;
+  text-align: right;
+  letter-spacing: 2px;
+  word-spacing: 20px;
+  height: 25px;
+}
+
+#top a {
+  font-family: 'Hanna', serif;
+  text-decoration: none;
+  color: black;
+}
+
+.h1, h1 {
+  font-size: 15px;
+}
+
+#header {
+  height: 200px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid gray;
+}
+
+#topmenu {
+  height: 30px;
+  padding-right: 50px;
+  margin-bottom: 20px;
+  word-spacing: 20px;
+  text-align: right;
+  font-size: 20px;
+  /*background-color: #288c28;*/
+  background-color: #523d1e;
+}
+
+#topmenu a {
+  font-family: 'Hanna', serif;
+  text-decoration: none;
+  color: white;
+}
+
+#top a {
+  font-family: 'Hanna', serif;
+  text-decoration: none;
+  color: black;
+}
+
+#topmenu a:hover {
+  color: gray;
+}
+
+#content {
+  width: 870px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  float: right; /*위치변경가능*/
+  border-radius: 4px;
+  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2);
+  font-family: 'Hanna';
+  font-size: 20px;
+  line-height: 140%;
+  background-color: white;
+  padding-bottom: 40px;
+}
 
 /*     
       #content h2 {
@@ -142,14 +148,15 @@
   float: right;
   font-size: 20px;
   padding-right: 50px;
-  font-family: 'hard', serif;
+  font-family: 'Hanna', serif;
   text-align: right;
+  margin: 10px;
 }
 
 #className a {
   text-decoration: none;
-  font-weight: bold;
-  font-family: hard;
+  color:black;
+  font-family: 'Hanna', serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -160,8 +167,6 @@
   margin-left: 40px;
   float: left; /*위치변경가능*/
   border-radius: 4px;
-  font-family: hoon;
-  font-size: 20px;
   box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2);
   text-align: center;
   padding: 20px;
@@ -172,48 +177,38 @@
 
 #mypic {
   width: 200px;
-  height: 200px;
   border-radius: 16px;
 }
 
 #join {
-    width: 272px;
-    margin-left: 40px;
-    margin-top: 10px;
-    float: left;
-    border-radius: 4px;
-    text-align: center;
-    line-height: 150%;
-    background-color: #ccc;
-    font-family: hoon;
-    font-size: 21px;
+  width: 230px;
+  margin-left: 40px;
+  margin-top: 10px;
+  float: left; /*위치변경가능*/
+  border-radius: 4px;
+  text-align: center;
+  line-height: 150%;
+  background-color: #66ddc0;
 }
 
 .joinbtn {
-    background-color: #a8a8a8;
-    width: 82px; 
-    font-size: 13px;
-    margin-left: 32px;
-    margin-bottom: 19px;
-}
-
-.joinbtn:hover {
-    background-color: gray;
+  width: 90px;
+  margin-left: 11px;
 }
 
 #cmitr {
   width: 210px;
-  border: 2px solid darkgray;
+  border: 2px solid gray;
   border-radius: 15px;
   padding: 10px;
 }
 
 #sidebar h1 {
   font-size: 30px;
-  font-size: 40px;
+  font-family: 'Nanum Pen Script';
 }
 
-#footer { 
+#footer {
   clear: both;
   padding: 20px;
   background-color: white;
@@ -226,6 +221,79 @@
   font-size: 24px;
   font-weight: 900;
   margin-bottom: 5px;
+}
+
+/********************************************************header****************************************/
+#pheader .navbar-brand {
+  color: black;
+  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial,
+    cursive;
+  font-size: 50px;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+#pheader {
+  width: 100%;
+  height: 200px;
+  max-height: 200px;
+  position: relative;
+  background: #a8e4d8;
+  overflow: hidden;
+}
+
+.parallax {
+  position: absolute;
+}
+
+#warpbg {
+  top: -200px;
+  left: -350px;
+}
+
+#star1 {
+  top: 150px;
+  right: 200px;
+}
+
+#star2 {
+  top: 220px;
+  right: 500px;
+}
+
+#star3 {
+  bottom: 20px;
+  right: 320px;
+}
+
+#star4 {
+  top: 40px;
+  left: 290px;
+}
+
+#star5 {
+  bottom: -38px;
+  left: 170px;
+}
+
+#star6 {
+  bottom: 0px;
+  right: 0px;
+}
+
+#star7 {
+  bottom: 0px;
+  right: 0px;
+}
+
+#star8 {
+  top: 100px;
+  right: 100px;
+}
+
+#star9 {
+  bottom: -50px;
+  left: 100px;
 }
 
 #columns {
@@ -244,10 +312,10 @@
   display: inline-block;
   background: #FEFEFE;
   /*border: 2px solid #FAFAFA;*/
-  border-right: 6px solid #87d3b7;
+  border-right: 6px solid green;
   text-align: center;
-  font-family: 'hoon';
-  font-size: 25px;
+  font-family: 'Nanum Pen Script';
+  font-size: 20px;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   margin: 0 2px 15px;
   -webkit-column-break-inside: avoid;
@@ -297,14 +365,12 @@
 }
 
 .mon {
-    margin-top: 35px;
-    font-size: 11px;
-    height: 30px;
-    min-width: 93px;
-    width: 17px;
-    cursor: pointer;
-    box-shadow: 2px 4px 6px 2px rgba(0, 0, 0, .2);
-    font-family: sans-serif;
+  margin-left: 20px;
+  height: 50px;
+  min-width: 150px;
+  width: 70px;
+  cursor: pointer;
+  box-shadow: 2px 4px 6px 2px rgba(0, 0, 0, .2);
 }
 
 .file-upload {
@@ -402,26 +468,26 @@
 }
 
 #search {
-    margin-top: 22px;
-    display: inline-block;
-    float: left;
-    margin-left: 27px;
-    height: 80px;
-    font-size: 20px;
+  margin-top: 29px;
+  float: left;
+  margin-left: 50px;
+  display: inline-block;
+  height: 80px;
+  font-size: 20px;
 }
 
 #search input[type="text"] {
-  background: gainsboro;
+  background: #444;
   border: 0 none;
   font: bold 12px Arial, Helvetica, Sans-serif;
   padding: 6px 15px 6px 15px;
   color: #777;
-  width: 271px;
+  width: 200px;
   height: 40px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  /*text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);*/
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 1px 2px 1px rgba(255, 255, 255, 0.1), 0 2px 4px
     rgba(0, 0, 0, 0.2) inset;
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px
@@ -436,7 +502,7 @@
 
 #search input[type="text"]:focus {
   padding: 6px 15px 6px 35px;
-  width: 450px;
+  width: 700px;
   background-color: white;
 }
 
@@ -444,46 +510,42 @@
   margin-top: 7px;
   width: 15px;
 }
-
- #odapLogo {
-    float: left;
-    margin-left: 85px;
- }
- 
- .onebtn {
-      margin-left: 40px;
-	    width: 150px;
-	    height: 40px;
-	    font-size: 14px;
- }
- #serNm {
-    height: 100px;
-    margin-top: 49px;
-    vertical-align: middle;
-    padding: 10px;
- }
-
-
 </style>
 </head>
 <body>
   <div id="container">
     <div id="top">
-        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
-      </div>
+      <h1>
+        <a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a>
+      </h1>
+    </div>
     <div class="line"></div>
-      <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
-      <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
+    <div id="header">
+      <div id="pheader">
+        <img id="warpbg" class="parallax left top" src=""> <img
+          id="star1" class="parallax top" src="img/cle.png"> <img
+          id="star2" class="parallax top" src="img/clo.png"> <img
+          id="star3" class="parallax" src="img/mo.png"> <img id="star4"
+          class="parallax left top" src="img/mu.png"> <img id="star5"
+          class="parallax left" src="img/pe.png"> <img id="star6"
+          class="parallax left top" src="img/ph.png"> <img id="star7"
+          class="parallax top" src="img/tr.png"> <img id="star8"
+          class="parallax top" src="img/fi.png"> <img id="star9"
+          class="parallax" src="img/pr.png"> <a
+          class="navbar-brand page-scroll" href="mypage.html">Odap note</a>
       </div>
-      <div id="serNm">
+    </div>
+    <div id="topmenu">
+      <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a
+        href="./testfinal.html">MYPAGE </a><a href="./search.html">SEARCH </a>
+    </div>
     <form method="get" action="./searchInClass.html?" id="search">
       <input name="search" type="text" size="40"
-        placeholder="Searching here" />
+        placeholder="Searching here" /> <img src="img/enter.png"
+        width="15px">
       <input id="searchcno" name="cno" type="hidden"/>  
     </form>
     <div id="className"></div>
-    </div>
     <div id="content">
       <nav id="columns"></nav>
     </div>
@@ -491,7 +553,7 @@
       <h1>CLASS MASTER</h1>
       <div id="myinf"></div>
       <button id="subtn"
-        class="mon button button--border-medium button button--nina onebtn"
+        class="mon button button--border-medium button button--nina"
         style="display: none;" onclick="join_click();">가입신청</button>
       <button id="qbtn"
         class="mon button button--border-medium button button--nina"
@@ -500,7 +562,7 @@
         class="mon button button--border-medium button button--nina"
         style="display: none;" onclick="exit_click();">탈퇴하기</button>
     <button id="mset"
-      class="mon button button--border-medium button button--nina onebtn"
+      class="mon button button--border-medium button button--nina"
       style="display: none;" onclick="mset_click();">멤버관리</button>
     </div>
   <div id="join" style="display: none;">
@@ -517,8 +579,10 @@
         onclick='join_close();'>닫기</button>
     </form>
   </div>
-
+  </div>
   <div id="footer">
+    <p>---------------------------------------------------------------------------이야
+      케이크먹고싶다아---------------------------------------------------------------------------------------</p>
 
   </div>
 
@@ -527,12 +591,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" 
+          <button type="button" class="close" data-dismiss="modal"
             aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="myModalLabel" style="color:black;">Class Name</h4>
-        </div> 
+          <h4 class="modal-title" id="myModalLabel">Class Name</h4>
+        </div>
           <form id="qfrm" name="qfrm" method="POST">
         <div class="modal-body">
             <div class="form-group">
@@ -573,7 +637,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
   <script>
 var cno = getQuerystring("cno");
@@ -643,6 +707,26 @@ function loadClassName() {
       location.href = "whiteboard.html?qno=" + event.target.getAttribute('data-qno');
   } 
 
+  
+  // Plugin Test
+  $(window).parallaxmouse({
+      invert: true,
+      range: 400,
+      elms: [
+          {el: $('#warpbg'), rate: 0.1},
+          {el: $('#star1'), rate: 0.2},
+          {el: $('#star2'), rate: 0.2},
+          {el: $('#star3'), rate: 0.2},
+          {el: $('#star4'), rate: 0.2},
+          {el: $('#star5'), rate: 0.2},
+          {el: $('#star6'), rate: 0.3},
+          {el: $('#star7'), rate: 0.4},
+          {el: $('#star8'), rate: 0.48},
+          {el: $('#star9'), rate: 0.7}
+      ]
+  });
+</script>
+  <script type="text/javascript">
 
 (function() {
   $.get("../ajax/cmember/ismaster.do?cno="+cno,
@@ -663,6 +747,16 @@ function loadClassName() {
   })
   })();
 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 
 function join_click() {   
    $("#join").css("display","");   

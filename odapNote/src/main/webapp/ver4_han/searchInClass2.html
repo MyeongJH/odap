@@ -17,67 +17,62 @@
     @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
     @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
     @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-    @import url('https://fonts.googleapis.com/css?family=Righteous');  
-    @font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
-    @font-face{font-family:hard; src:url(fonts/hard.ttf)};
     /*
     body {
        background-color: #ebffeb;
     }
     */
-a {
+  a {
     text-decoration: none;
   }
-     a:hover {
+   a:hover {
     text-decoration: none;
   }
       #container {
         width: 1280px;
         margin: 0px auto;
-        padding-left: 20px;
-        padding-right: 20px;       
+        padding: 20px;       
       }
     
-      #top {
-          font-size: 15px;
-          text-align: right;
-          letter-spacing: 2px;
-          word-spacing: 20px;
-          height: 25px;
-          padding-right: 50px;
+     #top {
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
       }
       
-     .h1, h1 {
-        font-size: 15px;
+      #header {
+        height: 200px;
+        margin-bottom: 10px;
+        border-bottom: 3px solid gray;       
       }
       
-      #top a {
-             font-family: 'Righteous', serif;
-             text-decoration: none;
-             color: black;
-        }
-      
-    #topmenu {
-	      height: 30px;
-	      padding-right: 50px;
-	      word-spacing: 15px;
-	      text-align: right;
-	      font-size: 20px;   
-	      margin-top: 20px;
-	      /* background-color: #523d1e;  */ 
-	      /* font-weight: bolder; */     
+      #topmenu {
+      height: 30px;
+      padding-right: 50px;
+      margin-bottom: 20px;
+      word-spacing: 20px;
+      text-align: right;
+      font-size: 20px;   
+      background-color: #523d1e;       
       }
              
        #topmenu a {
-        font-family: 'Righteous', serif;
+        font-family: 'Hanna', serif;
         text-decoration: none;
-        color: dimgray;
+        color: white;
        }
-                              
-       #topmenu a:hover {
+        #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
         color: black;
+        }
+                        
+       #topmenu a:hover {
+        color: gray;
        }
-       
+          
       #content {
         width: 870px;
         padding: 10px;
@@ -86,30 +81,28 @@ a {
         float: right; /*위치변경가능*/
          border-radius: 4px;
         box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
-        font-family: 'hoon';
+        font-family: 'Hanna';
         font-size: 20px;
         line-height: 140%;        
         background-color:white;
         padding-bottom: 40px;
       }
    
-			#sidebar {
+		 #sidebar {
 			  width: 230px;
 			  margin-left: 40px;
 			  float: left; /*위치변경가능*/
 			  border-radius: 4px;
-			  font-family: hoon;
-			  font-size: 20px;
 			  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2);
 			  text-align: center;
 			  padding: 20px;
 			  line-height: 150%;
-			}
-			
-				#sidebar h1 {
-			  font-size: 30px;
-			  font-size: 40px;
-			}
+		}
+		
+		#sidebar h1 {
+		  font-size: 30px;
+		  font-family: 'Nanum Pen Script';
+		}
 				
 		#mypic {
 		  width: 200px;
@@ -376,6 +369,68 @@ figure {
   -webkit-margin-end: 0;
 }
 
+
+/********************************************************header****************************************/
+#pheader .navbar-brand {
+    color: black;
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    font-size: 50px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+#pheader {         
+   width: 100%;
+   height: 200px;
+   max-height: 200px;
+   position: relative;
+   background: #a8e4d8;
+   overflow: hidden;
+}
+.parallax {
+   position: absolute;
+}
+#warpbg {
+   top: -200px;
+   left: -350px;
+}
+#star1 {
+    top: 150px;
+    right: 200px;
+}
+#star2 {
+    top: 220px;
+    right: 500px;
+}
+#star3 {
+    bottom: 20px;
+    right: 320px;
+}
+#star4 {
+    top: 40px;
+    left: 290px;
+}
+#star5 {
+    bottom: -38px;
+    left: 170px;
+}
+#star6 {
+     bottom: 0px;
+    right: 0px;
+}
+#star7 {
+    bottom: 0px;
+    right: 0px;
+}
+#star8 {
+    top: 100px;
+    right: 100px;
+}
+#star9 {
+    bottom: -50px;
+    left: 100px;
+}
+
 #classlist {
   margin-left: 50px;
   margin-top: 20px;
@@ -387,15 +442,15 @@ figure {
   float: right;
   font-size: 20px;
   padding-right: 50px;
-  font-family: 'hard', serif;
+  font-family: 'Hanna', serif;
   text-align: right;
-  margin: 34px 10px;
+  margin: 10px;
 }
 
 #className a {
   text-decoration: none;
-  font-weight: bold;
-  font-family: hard;
+  color:black;
+  font-family: 'Hanna', serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -440,23 +495,33 @@ figure {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     }
-    
-     #odapLogo {
-    float: left;
-    margin-left: 85px;
- }
 
  </style>
   </head>
   <body>
-   <div id="container">
+    <div id="container">
     <div id="top">
-        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
+        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
       </div>
-    <div class="line"></div>
-      <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
+      <div class="line"></div>
+      <div id="header">
+        <div id="pheader">
+    <img id="warpbg" class="parallax left top" src="">
+    <img id="star1" class="parallax top" src="img/cle.png">
+    <img id="star2" class="parallax top" src="img/clo.png">
+    <img id="star3" class="parallax" src="img/mo.png">
+    <img id="star4" class="parallax left top" src="img/mu.png">
+    <img id="star5" class="parallax left" src="img/pe.png">
+    <img id="star6" class="parallax left top" src="img/ph.png">
+    <img id="star7" class="parallax top" src="img/tr.png">
+    <img id="star8" class="parallax top" src="img/fi.png">
+    <img id="star9" class="parallax" src="img/pr.png">
+    
+    <a class="navbar-brand page-scroll" href="mypage.html" >Odap note</a>     
+</div>
+      </div>
       <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
+      <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a href="./testfinal.html">MYPAGE </a><a href="#">SEARCH </a> 
       </div>
       <div id="className"></div>
       <div id="content">
@@ -488,6 +553,7 @@ figure {
       style="display: none;" onclick="mset_click();">멤버관리</button>
     </div>
       <div id="footer">
+        <p>---------------------------------------------------------------------------이야 케이크먹고싶다아---------------------------------------------------------------------------------------</p>
        
       </div>
     </div>   

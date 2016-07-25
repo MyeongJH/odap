@@ -229,10 +229,10 @@
   loadClassList();
   
   function loadMyClass() {   
-      $.getJSON("../ajax/class/myClass.do", function(result) {
-    	  console.log(result[1]);
+      $.getJSON("../ajax/class/myClass.do", function(result) {  
         $.each(result, function(i,d){     
-              $("#myClasslist").append("<tr><td>"+d.classwithName.mnm+"</td><td>"+d.classwithName.csub+"</td><td>"+d.classwithName.cnm+"</td><td>"+d.membercount+"</td><td>"+d.questioncount+"</td><td><a href='./javapage5.html?cno="+d.classwithName.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
+        	console.log("관리클래스:"+d.classwithName.cno);
+              $("#myClasslist").append("<tr><td>"+d.mnm+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
         });
     })
   }
@@ -241,7 +241,8 @@
   function loadClassList() {   
       $.getJSON("../ajax/class/myclasslist.do", function(result) {  
         $.each(result, function(i,d){
-              $("#classlist").append("<tr><td>"+d.classwithName.mnm+"</td><td>"+d.classwithName.csub+"</td><td>"+d.classwithName.cnm+"</td><td>"+d.membercount+"</td><td>"+d.questioncount+"</td><td><a href='./javapage5.html?cno="+d.classwithName.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
+        	console.log("가입클래스:"+d);
+              $("#classlist").append("<tr><td>"+d.mnm+"</td><td>"+d.csub+"</td><td>"+d.cnm+"</td><td>180</td><td>41564</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
         });
     })
   }

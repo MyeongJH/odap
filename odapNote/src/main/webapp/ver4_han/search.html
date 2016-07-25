@@ -21,6 +21,8 @@
     @import url('https://fonts.googleapis.com/css?family=Righteous');
     @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
     @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+    @import url('https://fonts.googleapis.com/css?family=Cormorant Upright');    
+    @font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
     /*
     body {
        background-color: #ebffeb;
@@ -89,12 +91,6 @@
         color: black;
        }
        
-        #top a {
-        font-family: 'Hanna', serif;
-        text-decoration: none;
-        color: black;
-        }
-
       #content {
         width: 1175px;
         margin-bottom: 20px;
@@ -135,7 +131,6 @@
   column-count: 3;
   column-gap: 15px;
   column-fill: auto;
- margin-top:50px; 
   
 }
 
@@ -179,7 +174,6 @@
     -webkit-column-count: 5;
     -moz-column-count: 5;
     column-count: 4;
-    margin: 100px 25px 0 25px;
   }
 }
  
@@ -375,9 +369,9 @@ figure {
 }
 
 .class-list {
-  max-width: 800px;
-  min-height: 100px;
-  font-size: 35px;
+  max-width: 900px;
+  min-height: 55px;
+  font-size: 27px;
   margin-left: 100px;
   overflow: auto;
   white-space:nowrap;
@@ -411,7 +405,9 @@ figure {
 .class-list a{
   text-decoration: none;
   color: gray;
-  border: 5px solid #a8e4d8;
+  border-width: 1px 3px 3px 1px;
+  border-style: solid;
+  border-color: #a8e4d8;
   border-radius: 10px;
   margin-left: 5px;
   margin-right: 5px;
@@ -422,6 +418,11 @@ figure {
   /*width: 1280px;*/
   display: block;  
 }
+h2 {
+  border-bottom: 1px solid #a8e4d8;
+  width: 1160px;
+}
+
 /*
 #search {
     display: block;
@@ -474,8 +475,8 @@ figure {
       text-decoration: none;
       border: none;
       font-size: 15px;
-           display: inline-block;
-      
+      display: inline-block;
+      width: 50px;
     }
 /*******************************************************/
 
@@ -486,7 +487,8 @@ figure {
   position: relative;
   overflow: hidden;
   background: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'hoon', sans-serif;
+  font-size: 20px;
   line-height: 1.5;
   font-weight: 300;
   color: #888;
@@ -549,7 +551,7 @@ figure {
 #myClasslist {
      table-layout:fixed; 
      text-align: center;
-     margin-left: 100px;
+     margin-left: 200px;
   }
   
 #myClasslist td, #myClasslist th {
@@ -561,9 +563,9 @@ figure {
   }
 
 #myClasslist td img {
-     width: 25px;
-     margin-left: 25px;
-  }
+    width: 25px;
+    margin-left: 36px;
+}
 
   
   .tableCnm {
@@ -627,8 +629,8 @@ figure {
       <div class="profile-header"></div>
       <table id="myClasslist" class="table table-hover" cellpadding="10px" style="table-layout:fixed">
               <tr>
-              <th class='tableCnm'>클래스명</th><th>과목</th><th class='tableCdes'>소개</th><th>입장</th>
-              </tr>   
+              <th class='tableCnm'>클래스명</th><th>강사</th><th>과목</th><th>회원수</th><th>질문수</th><th>입장</th>
+              </tr>    
               </table>
     </div>
     <!-- / tabs_item -->
@@ -685,10 +687,10 @@ figure {
     var wr_id = get['search'];
     $(".profile-header").append('<p>searching for " '+decodeURI(wr_id)+' "...');
     $.getJSON("../ajax/question/search.do?key="+wr_id, function(result) {
-      if(Object.keys(result).length==0) { $(".wrapper").append("<p style='margin-left:100px;font-size:25px;'>검색 결과가 없습니다...</p>");}
+      if(Object.keys(result).length==0) { $(".wrapper").append("<p style='margin-left:210px;font-size:25px;margin-top:10px;'>검색 결과가 없습니다...</p>");}
         $.each(result, function(i,d){     
-        	console.log(typeof d.qpic)
-        	if(typeof(d.qpic) == 'undefined') {d.qpic = 'img/noqimg.png';console.log("1")}
+           console.log(typeof d.qpic)
+           if(typeof(d.qpic) == 'undefined') {d.qpic = 'img/noqimg.png';}
           var jbSplit = d.qpic.split('/');
             $("<div class='pin'>").html("<img onclick='onclickDetail(event)' src='" + jbSplit[0]+"/thumb_"+jbSplit[1] +"' data-qno='"+d.qno+"'/>" + "<p>" 
                   + d.qtit + "</p><br>" + "<p>" + d.qcnt + "</p>").appendTo($(".columns"));
@@ -703,17 +705,18 @@ figure {
       }
       var wr_id = get['search'];
       $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {
-          if(Object.keys(result).length==0) { $(".class-list").append("<p style='font-size:25px;'>검색 결과가 없습니다...</p>");}
+          if(Object.keys(result).length==0) { $(".class-list").append("<p style='margin-left:100px;font-size:25px;margin-top:0;'>검색 결과가 없습니다...</p>");} else{
           for(var i=0; i<2; i++){   
-              $(".class-list").append("<a href='./javapage5.html?cno="+result[i].cno+"'>&nbsp;    &nbsp;"+result[i].cnm+"&nbsp;    &nbsp;</a>");        
-              if(i==1) {$(".class-list").append("<h2 id='more'onclick='clickMore()' style='cursor: pointer;'>...more</h2>");}      
+              $(".class-list").append("<a href='./javapage5.html?cno="+result[i].classwithName.cno+"'>&nbsp;    &nbsp;"+result[i].classwithName.cnm+"&nbsp;    &nbsp;</a>");        
+              if(i==1) {$(".class-list").append("<h2 id='more'onclick='clickMore()' style='cursor: pointer;'>&nbsp;    &nbsp;&nbsp;...more</h2>");}      
           };
+          }
           });
       
       
       $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {  
           $.each(result, function(i,d){                
-                $("#myClasslist").append("<tr><td>"+d.cnm+"</td><td>"+d.csub+"</td><td>"+d.cdes+"</td><td><a href='./javapage5.html?cno="+d.cno+"'><img src='img/enterClass.png'></a></td></tr>"); 
+                $("#myClasslist").append("<tr><td>"+d.classwithName.cnm+"</td><td>"+d.classwithName.mnm+"</td><td>"+d.classwithName.csub+"</td><td>"+d.membercount+"</td><td>"+d.questioncount+"</td><td><a href='./javapage5.html?cno="+d.classwithName.cno+"'><img src='img/enterClass.png' width='25'></a></td></tr>"); 
           });
       })
       
@@ -727,9 +730,8 @@ figure {
       var wr_id = get['search'];
     $.getJSON("../ajax/class/search.do?key="+wr_id, function(result) {
          $("#more").detach();
-          if(Object.keys(result).length==0) { $(".class-list").append("<p style='font-size:25px;'>검색 결과가 없습니다...</p>");}
           for(var i=2; i<Object.keys(result).length; i++){   
-              $(".class-list").append("<a href='./javapage5.html?cno="+result[i].cno+"'>&nbsp;    &nbsp;"+result[i].cnm+"&nbsp;    &nbsp;</a>");        
+              $(".class-list").append("<a href='./javapage5.html?cno="+result[i].classwithName.cno+"'>&nbsp;    &nbsp;"+result[i].classwithName.cnm+"&nbsp;    &nbsp;</a>");        
           };
           });
   }

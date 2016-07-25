@@ -8,8 +8,10 @@
     
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.parallaxmouse.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pheader.css" />
+    
     <link rel="stylesheet" type="text/css" href="css/confirmbtn.css" />
-    <link rel="stylesheet" href="css/bootstrap.han2.css">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -19,18 +21,16 @@
     <style>
     @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
     @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-    @import url('https://fonts.googleapis.com/css?family=Righteous');  
-    @font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
-    @font-face{font-family:hard; src:url(fonts/hard.ttf)};
+    @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
     /*
     body {
        background-color: #ebffeb;
     }
     */
- a {
+  a {
     text-decoration: none;
   }
-     a:hover {
+   a:hover {
     text-decoration: none;
   }
   .box-left {
@@ -100,53 +100,48 @@
       #container {
         width: 1280px;
         margin: 0px auto;
+        padding: 20px;       
       }
     
-  #top {
-          font-size: 15px;
-          text-align: right;
-          letter-spacing: 2px;
-          word-spacing: 20px;
-          height: 25px;
-          padding-right: 50px;
+      #top {
+        font-size: 8px;
+        text-align: right;
+        letter-spacing: 2px;
+        word-spacing: 20px;
+        height: 25px;        
       }
       
-      .h1, h1 {
-        font-size: 15px;
+      #header {
+        height: 200px;
+        margin-bottom: 10px;
+        border-bottom: 3px solid gray;       
       }
       
-      .h4, h4 {
-          font-size: 26px;
-          color:white;
-      }
-      
-      #top a {
-             font-family: 'Righteous', serif;
-             text-decoration: none;
-             color: black;
-        }
-             
-  #topmenu {
-      height: 30px;
-      padding-right: 50px;
-      word-spacing: 15px;
-      text-align: right;
-      font-size: 20px;   
-      margin-top: 20px;
-      /* background-color: #523d1e;  */ 
-      /* font-weight: bolder; */     
+      #topmenu {
+	      height: 30px;
+	      padding-right: 50px;
+	      margin-bottom: 20px;
+	      word-spacing: 20px;
+	      text-align: right;
+	      font-size: 20px;   
+	      /*background-color: #288c28;*/
+	      background-color: #523d1e;
       }
              
        #topmenu a {
-        font-family: 'Righteous', serif;
+        font-family: 'Hanna', serif;
         text-decoration: none;
-        color: dimgray;
+        color: white;
        }
-                              
-       #topmenu a:hover {
+        #top a {
+        font-family: 'Hanna', serif;
+        text-decoration: none;
         color: black;
-       }       
-                      
+        }
+                        
+       #topmenu a:hover {
+        color: gray;
+       }
           
       #content {
         width: 870px;
@@ -161,30 +156,52 @@
         line-height: 140%;        
         background-color:white;
         padding-bottom: 40px;
-        min-height: 400px;
       }
  
-			#className {
-		    display: inline-block;
-		    float: right;
-		    width: 100%;
-		    font-size: 20px;
-		    margin-top: 34px;
-		    margin-right:10px;
-		    padding-right: 50px;
-		    font-family: 'hard', serif;
-		    text-align: right;
-			}
-			
-			#className a {
-			  text-decoration: none;
-			  font-weight: bold;
-			  font-family: hard;
-			  font-weight: 500;
-			  line-height: 1.1;
-			  color: inherit;
-			}
-			
+  /*     
+      #content h2 {
+         font-family: 'Hanna';
+         font-size: 35px;
+         text-align: left;
+         margin-left: 20px;
+      }
+    
+ 
+      #content #updateProfile {
+        border-radius: 15px;
+        border: 3px solid #7dffbd;
+        background-color: #afffed;
+        font-family: 'Nanum Pen Script';
+        font-size: 25px; 
+        float: right;
+        width: 80px;
+        height: 33px;
+        opacity:20;
+        margin-right:30px;
+        margin-bottom: 10px;
+      }
+      */
+      
+		#className {
+			  width: 1200px;
+			  display: inline-block;
+			  float: right;
+			  font-size: 20px;
+			  padding-right: 50px;
+			  font-family: 'Hanna', serif;
+			  text-align: right;
+			  margin: 10px;
+		}
+		
+		#className a {
+		  text-decoration: none;
+		  color:#333;
+		  font-family: 'Hanna', serif;
+		  font-weight: 500;
+		  line-height: 1.1;
+		  color: inherit;
+		}
+   
       #sidebar {         
         width: 230px;       
         margin-left: 40px;
@@ -196,7 +213,8 @@
         line-height: 150%;
       }
       
-      #sidebar h1 {    
+      #sidebar h1 {
+    
         font-size: 30px;
         font-family: 'Nanum Pen Script';
       }
@@ -219,6 +237,62 @@
 
 
 
+
+  /*************************회원 테이블******************************/
+table {
+  background-color: #FFF;
+  color: #333;
+  font-family: sans-serif;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: left;
+  line-height: 40px;
+  border-spacing: 0;
+  border: 1px solid #428bca;
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+thead tr:first-child {
+  background: #428bca;
+  color: #fff;
+  border: none;
+}
+
+th {
+
+  text-align: center;
+  font-weight: bold;  
+}
+
+th:first-child,
+td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+thead tr:last-child th {
+  border-bottom: 2px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f0fbff;
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+font-family:Nanum Pen Script;
+font-size: 25px;
+text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td:last-child {
+  text-align: right;
+  padding-right: 1px;
+}
 
 .button {
   float: left;
@@ -257,47 +331,42 @@ button:disabled, input:disabled {
 }
 
 
- #odapLogo {
-    float: left;
-    margin-left: 85px;
- }
- 
- .table {
-  margin-left: 20px;
- }
- 
- .table tr, .table td {
-      text-align: center;
- }
- 
- .tt {
-  font-family: hard;
-  font-size: 23px;
-  margin-left: 15px;
-  margin-top: 35px;
- }
-
     </style>
   </head>
   <body>
     <div id="container">
-        <div id="top">
-        <a href="#">FAQ </a><a href="../auth/logout.do">LOGOUT</a> 
+    <div id="top">
+        <h1><a href="#">문의하기 </a><a href="../auth/logout.do">로그아웃</a></h1>
       </div>
-    <div class="line"></div>
-      <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
+      <div class="line"></div>
+      <div id="header">
+          <div id="pheader">
+              <img id="warpbg" class="parallax left top" src="">
+              <img id="star1" class="parallax top" src="img/ta.png">
+              <img id="star2" class="parallax top" src="img/clo.png">
+              <img id="star3" class="parallax" src="img/mo.png">
+              <img id="star4" class="parallax left top" src="img/mu.png">
+              <img id="star5" class="parallax left" src="img/pe.png">
+              <img id="star6" class="parallax left top" src="img/usb.png">
+              <img id="star7" class="parallax top" src="img/tr.png">
+              <img id="star8" class="parallax top" src="img/ph.png">
+              <img id="star9" class="parallax top" src="img/cle.png">
+    
+              <a class="logo" href="mypage.html" ><img src="img/logo.png"></a>     
+          </div>
+      </div>
       <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
+      <a href="./firstpage2.html">HOME </a> <a href="#">ABOUT </a> <a href="#">MYPAGE </a><a href="./search.html">SEARCH </a> 
       </div>
       <div id = "className"></div>
       
       <div id="content">
-      <h1 class='tt'>기존 회원</h1>
-      <table class="table table-hover" cellpadding="10px" ><thead><tr><th style="width: 100px">이름</th><th style="width: 150px">ID</th><th style="width: 150px">E-mail</th><th style="width: 150px">Tel</th><th style="width: 50px">관리</th></tr></thead>
+      <h1>기존 회원</h1>
+      <table><thead><tr><th style="width: 120px">이름</th><th style="width: 150px">ID</th><th style="width: 150px">E-mail</th><th style="width: 150px">Tel</th><th style="width: 50px">관리</th></tr></thead>
         <tbody id="applied"></tbody>
       </table> 
-      <h1 class='tt'>가입요청 회원</h1>     
-      <table class="table table-hover" cellpadding="10px"><thead><tr><th style="width: 100px">이름</th><th style="width: 150px">E-mail</th><th style="width: 300px">소개</th><th style="width: 150px">가입 신청일</th><th style="width: 50px">승인</th><th style="width: 50px">거절</th></tr></thead>
+      <h1>가입요청 회원</h1>     
+      <table><thead><tr><th style="width: 120px">이름</th><th style="width: 150px">E-mail</th><th style="width: 300px">소개</th><th style="width: 150px">가입 신청일</th><th style="width: 50px">승인</th><th style="width: 50px">거절</th></tr></thead>
         <tbody id="apply"></tbody>
       </table>   
       </div>        
@@ -306,7 +375,32 @@ button:disabled, input:disabled {
           <h1>CLASS MASTER</h1>
           <div id="myinf"></div>     
       </div>
-      <div id="footer">      
+      <div id="footer">
+      
+      <!-- <div class="cbtn">
+         <div class="cbtn-back">
+           <p>Are you sure you want to do that?</p>
+            <button class="yes">Yes</button>
+            <button class="no">No</button>
+          </div>
+        <div class="cbtn-front">Delete</div>
+      </div>-->
+   <!-- 
+      <div class="pen-wrapper">
+        <div class="pen-wrapper__inner">    
+          <div class="cbutton-cover cbutton-slide-up">
+            <button class="cbtn cbtn--primary cbutton-slide-up__cbutton">Delete</button>
+            <div class="cbutton-set">
+              <button class="cbtn cbtn--gray">Cancel</button>
+              <button class="cbtn cbtn--gray-drk">Confirm</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+    -->     
+        <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+       
       </div>
     </div>   
   <script>
@@ -452,6 +546,39 @@ function loadmember() {
         location.href=location.href;
       }
     }
+
+  // Plugin Test
+  $(window).parallaxmouse({
+      invert: true,
+      range: 400,
+      elms: [
+          {el: $('#warpbg'), rate: 0.1},
+          {el: $('#star1'), rate: 0.2},
+          {el: $('#star2'), rate: 0.1},
+          {el: $('#star3'), rate: 0.2},
+          {el: $('#star4'), rate: 0.4},
+          {el: $('#star5'), rate: 0.9},
+          {el: $('#star6'), rate: 0.5},
+          {el: $('#star7'), rate: 0.15},
+          {el: $('#star8'), rate: 0.9},
+          {el: $('#star9'), rate: 0.1}
+      ]
+  });
+  
+</script><script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+  
   
   
   </script>

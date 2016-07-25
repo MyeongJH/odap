@@ -12,7 +12,6 @@
     
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery.parallaxmouse.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.han2.css">
 
@@ -32,6 +31,7 @@
     @import url('https://fonts.googleapis.com/css?family=Cormorant Upright');    
     @import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
     @font-face{font-family:hoon; src:url(fonts/210ChocolatteL.ttf)}
+    @font-face{font-family:hard; src:url(fonts/hard.ttf)};
 
     
     /*
@@ -69,14 +69,8 @@
              font-family: 'Righteous', serif;
              text-decoration: none;
              color: black;
-        }
-      
-      #header {
-        height: 200px;
-        margin-bottom: 10px;
-        border-bottom: 3px solid gray;       
-      }
-      
+        }      
+     
       #topmenu {
       height: 30px;
       padding-right: 50px;
@@ -685,7 +679,7 @@ figure {
   
   #zzazza h3 {
     display: inline-block;
-    font-family: Hanna;
+    font-family: hard;
   }
 
   #zzazza table{
@@ -758,7 +752,7 @@ figure {
 
       <img id="odapLogo" src="img/logo3.PNG" width="220" height="70">
       <div id="topmenu">
-      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="#">MYPAGE </a>· <a href="./search.html">SEARCH </a>
+      <a href="./firstpage2.html">HOME </a>· <a href="#">ABOUT </a>· <a href="./testfinal.html">MYPAGE </a>· <a href="./search.html">SEARCH </a>
       </div>
       <div id="content">      
       <div class="profile-header">PROFILE</div>
@@ -963,37 +957,7 @@ figure {
   }
   
 /*---------------------------------------------ajax사용---------------------------------------------*/
-
-// Plugin Test
-  $(window).parallaxmouse({
-      invert: true,
-      range: 400,
-      elms: [
-          {el: $('#warpbg'), rate: 0.1},
-          {el: $('#star1'), rate: 0.2},
-          {el: $('#star2'), rate: 0.2},
-          {el: $('#star3'), rate: 0.2},
-          {el: $('#star4'), rate: 0.2},
-          {el: $('#star5'), rate: 0.2},
-          {el: $('#star6'), rate: 0.3},
-          {el: $('#star7'), rate: 0.4},
-          {el: $('#star8'), rate: 0.48},
-          {el: $('#star9'), rate: 0.7}
-      ]
-  });
-</script><script type="text/javascript">
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36251023-1']);
-_gaq.push(['_setDomainName', 'jqueryscript.net']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-  
+ 
   </script>
   </body>
 </html>
