@@ -36,8 +36,11 @@ public class DefaultCmemberService implements CmemberService {
   public void apply(Map<String,Object> paramMap) {
     cmemberDao.apply(paramMap); 
   }
-  
-  public int cmemberNo(int no) {
-    return cmemberDao.cmemberNo(no);    
+
+  @Override
+  public int countAll(int cno) {    
+    return cmemberDao.countAll(cno);
   }
+
+
 }

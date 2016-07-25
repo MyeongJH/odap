@@ -3,6 +3,7 @@ package pms.service;
 import java.util.List;
 
 import pms.vo.Question;
+import pms.vo.Class;
 
 public interface QuestionService {
   void add(Question question);
@@ -15,5 +16,6 @@ public interface QuestionService {
   int countPage(int pageSize);
   List<Question> search(String key);
   List<Question> searchInclass(String key,int cno);
-  int questionNo(int no);
+  Class className(int qno);
+  int countInClass(int cno);
 }

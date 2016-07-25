@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import pms.vo.Question;
+import pms.vo.Class;
 
 public interface QuestionDao {
   List<Question> selectList();
@@ -16,5 +17,6 @@ public interface QuestionDao {
   int countAll();
   List<Question> search(Map<String,Object> paramMap);
   List<Question> searchInclass(Map<String,Object> paramMap);
-  int questionNo(int no);
+  Class className(int qno);
+  int countInClass(int cno);
 }

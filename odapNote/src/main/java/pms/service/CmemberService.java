@@ -12,5 +12,5 @@ public interface CmemberService {
   void delete(Map<String,Object> paramMap);
   void apply(Map<String,Object> paramMap);
   List<JoinCmember> list(int cno); 
-  int cmemberNo(int no);
+  int countAll(int cno);
 }

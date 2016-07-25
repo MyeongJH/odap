@@ -2,19 +2,18 @@ package pms.vo;
 
 import java.sql.Date;
 
-public class Class {
+public class ClassWithName {
   int cno;
-  int mno;
+  String mnm;
   String cnm;
   Date ccd;
   String cdes;
-  String csub;  
-  
-  
+  String csub;
+        
   @Override
   public String toString() {
-    return "Class [cno=" + cno + ", mno=" + mno + ", cnm=" + cnm + ", ccd=" + ccd + ", cdes=" + cdes + ", csub=" + csub
-        + "]";
+    return "ClassWithName [cno=" + cno + ", mnm=" + mnm + ", cnm=" + cnm + ", ccd=" + ccd + ", cdes=" + cdes + ", csub="
+        + csub + "]";
   }
   
   public int getCno() {
@@ -23,11 +22,11 @@ public class Class {
   public void setCno(int cno) {
     this.cno = cno;
   }
-  public int getMno() {
-    return mno;
+  public String getMnm() {
+    return mnm;
   }
-  public void setMno(int mno) {
-    this.mno = mno;
+  public void setMnm(String mnm) {
+    this.mnm = mnm;
   }
   public String getCnm() {
     return cnm;
@@ -52,7 +51,6 @@ public class Class {
   }
   public void setCsub(String csub) {
     this.csub = csub;
+  }  
+  
   }
-  
-  
-}

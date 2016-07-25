@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import pms.dao.ClassDao;
 import pms.service.ClassService;
 import pms.vo.Class;
-import pms.vo.Question;
+import pms.vo.ClassWithName;
 
 @Service
 public class DefaultClassService implements ClassService {
@@ -36,15 +36,20 @@ public class DefaultClassService implements ClassService {
     classDao.update(clazz);
   }
   
-  public List<Class> myclasslist(int mno) {
+  public List<ClassWithName> myclasslist(int mno) {
     return classDao.mylist(mno);
-  };
-  
+  }
+
   @Override
-  public List<Question> search(String key) {
-    System.out.println(key);
+  public List<ClassWithName> search(String key) {
     Map<String,Object> paramMap = new HashMap<>();
     paramMap.put("key", key);
     return classDao.search(paramMap);
   }
+
+  @Override
+  public List<ClassWithName> myClass(int mno) {
+      return classDao.myClass(mno);
+  };
+  
 }

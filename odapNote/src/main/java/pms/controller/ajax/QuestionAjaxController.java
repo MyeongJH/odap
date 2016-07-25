@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 import net.coobird.thumbnailator.Thumbnails;
 import pms.service.QuestionService;
 import pms.vo.Member;
+import pms.vo.Class;
 import pms.vo.Question;
 
 @Controller
@@ -72,6 +73,13 @@ public class QuestionAjaxController {
     Question question = questionService.retrieve(no);
     return new Gson().toJson(question);
   }
+  
+  @RequestMapping(value="classname", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String classname(int qno) throws ServletException, IOException {
+    Class clazz = questionService.className(qno);
+    return new Gson().toJson(clazz);
+  }  
   
   @RequestMapping(value="list", produces="application/json;charset=UTF-8")
   @ResponseBody

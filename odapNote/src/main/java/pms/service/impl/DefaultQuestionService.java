@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import pms.dao.QuestionDao;
 import pms.service.QuestionService;
+import pms.vo.Class;
 import pms.vo.Question;
 
 @Service
@@ -68,9 +69,15 @@ public class DefaultQuestionService implements QuestionService {
     paramMap.put("cno", cno);
     return questionDao.searchInclass(paramMap);
   }
-  
-  public int questionNo(int no) {
-    return questionDao.questionNo(no);    
+
+  @Override
+  public Class className(int qno) {
+    return questionDao.className(qno);
+  }
+
+  @Override
+  public int countInClass(int cno) { 
+    return questionDao.countInClass(cno);
   }
 }
 

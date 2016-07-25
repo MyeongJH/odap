@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import pms.vo.Class;
-import pms.vo.Question;
+import pms.vo.ClassWithName;
 
 public interface ClassDao {
   List<Class> selectList();
@@ -13,6 +13,7 @@ public interface ClassDao {
   int update(Class clazz);
   int delete(int no);
   int countAll();
-  List<Class> mylist(int mno);
-  List<Question> search(Map<String,Object> paramMap);
+  List<ClassWithName> mylist(int mno);
+  List<ClassWithName> search(Map<String,Object> paramMap);
+  List<ClassWithName> myClass(int mno);
 }

@@ -3,7 +3,7 @@ package pms.service;
 import java.util.List;
 
 import pms.vo.Class;
-import pms.vo.Question;
+import pms.vo.ClassWithName;
 
 public interface ClassService {
   void add(Class clazz);
@@ -11,6 +11,7 @@ public interface ClassService {
   Class retrieve(int no);
   List<Class> list();
   void change(Class clazz);
-  List<Class> myclasslist(int mno);
-  List<Question> search(String key);
+  List<ClassWithName> myclasslist(int mno);
+  List<ClassWithName> search(String key);
+  List<ClassWithName> myClass(int mno);
 }

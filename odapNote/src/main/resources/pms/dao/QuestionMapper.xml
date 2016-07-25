@@ -52,10 +52,16 @@
     where QNO=#{qno}
   </select>
   
-  <select id="questionNo" resultType="int" parameterType="int">
+  <select id="className" resultType="Class" parameterType="int">
+    select CLASS.CNO, CLASS.CNM  
+    from QUESTION
+    inner join CLASS 
+    on QUESTION.QNO=#{qno} and QUESTION.CNO = CLASS.CNO
+  </select>
+  
+  <select id="countAll" resultType="int">
     select count(*) 
     from QUESTION
-    where CNO=#{cno}
   </select>
   
     <select id="search" resultType="Question" parameterType="map">
@@ -69,6 +75,14 @@
     FROM QUESTION 
     WHERE (QTIT LIKE CONCAT('%',#{key},'%') OR QCNT LIKE CONCAT('%',#{key},'%')) and CNO=#{cno}
   </select>
+  
+    <select id="countInClass" parameterType="int" resultType="int">
+    select count(*) 
+    from QUESTION
+    where     
+    CNO=#{cno}
+  </select>
+  
   
 </mapper>
 

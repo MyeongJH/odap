@@ -21,47 +21,43 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
 
-import pms.service.MemberService;
+import pms.service.QuestionService;
 import pms.vo.Member;
+import pms.vo.Question;
 
 @Controller
-@RequestMapping("/ajax/member/")
-public class MemberAjaxController {
-  @Autowired
-  MemberService memberService;
-  @Autowired
-  ServletContext servletContext;
+@RequestMapping("/ajax/question2/")
+public class QuestionAjaxController2 {
+@Autowired QuestionService questionService;
+@Autowired ServletContext servletContext;
+  
+  @RequestMapping(value="add", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String add(String title, String content) throws ServletException, IOException {
 
-  @RequestMapping(value = "add", produces = "application/json;charset=UTF-8")
-  public String add(String id, String password, String name, String tel, String email, HttpSession session)
-      throws ServletException, IOException {
-
-    Member member = new Member();
-    member.setMid(id);
-    member.setMem(email);
-    member.setMpw(password);
-    member.setMnm(name);
-    member.setMtel(tel);
-
+    Question question = new Question();
+    question.setQtit(title);
+    question.setQcnt(content);
+    
+    HashMap<String,Object> result = new HashMap<>();
     try {
-      memberService.add(member);
-      Member member2 = memberService.retrieveById(id);
-      session.setAttribute("loginUser", member2);
-
+      questionService.add(question);
+      result.put("status", "success");
     } catch (Exception e) {
       e.printStackTrace();
+      result.put("status", "failure");
     }
-
-    return "redirect:../../ver4_han/rkdlq.html";
+    
+    return new Gson().toJson(result);
   }
-
+  
   @RequestMapping(value="delete", produces="application/json;charset=UTF-8")
   @ResponseBody
   public String delete(int no) 
       throws ServletException, IOException {
     HashMap<String,Object> result = new HashMap<>();
     try {
-      memberService.delete(no);
+      questionService.delete(no);
       result.put("status", "success");
     } catch (Exception e) {
       result.put("status", "failure");
@@ -71,27 +67,23 @@ public class MemberAjaxController {
   
   @RequestMapping(value="detail", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String detail(HttpSession session) throws ServletException, IOException {
-    Member member = (Member)session.getAttribute("loginUser");
-    Member member2 = memberService.retrieve(member.getMno());
-    return new Gson().toJson(member2);
-  }
-  
-  @RequestMapping(value="classmaster", produces="application/json;charset=UTF-8")
-  @ResponseBody
-  public String classmaster(int mno) throws ServletException, IOException {
-    Member member = memberService.retrieve(mno);
-    System.out.println(mno);
-    System.out.println(member);
-    return new Gson().toJson(member);
+  public String detail(int no) throws ServletException, IOException {
+    Question question = questionService.retrieve(no);
+    return new Gson().toJson(question);
   }
   
   @RequestMapping(value="list", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String list() 
-      throws ServletException, IOException {    
-    
-    List<Member> list = memberService.list();
+  public String list() throws ServletException, IOException {    
+    List<Question> list = questionService.list();
+    return new Gson().toJson(list);
+  }
+  
+  @RequestMapping(value="mylist", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String mylist(HttpSession session) throws ServletException, IOException {    
+    Member member = (Member)session.getAttribute("loginUser");
+    List<Question> list = questionService.mylist(member.getMno());
     return new Gson().toJson(list);
   }
   
@@ -99,32 +91,37 @@ public class MemberAjaxController {
       method=RequestMethod.POST,
       produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String update(int no, String pw, String name,String email, String tel, String adress, String job, String homepage) throws ServletException, IOException {
-    Member member = new Member();
-    member.setMno(no);
-    member.setMpw(pw);
-    member.setMnm(name);
-    member.setMem(email);
-    member.setMtel(tel);
-    member.setMadr(adress);
-    member.setMjob(job);
-    member.setMpg(homepage);
+  public String update(int no, String title, String content) throws ServletException, IOException {
+    
+    Question question = new Question();
+    question.setQno(no);
+    question.setQtit(title);
+    question.setQcnt(content);
     
     HashMap<String,Object> result = new HashMap<>();
     try {
-      memberService.change(member);
+      questionService.change(question);
       result.put("status", "success");
     } catch (Exception e) {
       result.put("status", "failure");
-      e.printStackTrace();
     }
     return new Gson().toJson(result);
   }
   
+  @RequestMapping(value="search",
+      method=RequestMethod.GET,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String search(String key) throws ServletException, IOException {
+      System.out.println(key);
+      List<Question> list = questionService.search(key);
+    return new Gson().toJson(list);
+  }
+  
   @RequestMapping(value = "upload", method = RequestMethod.POST)
-  public String insert(MultipartHttpServletRequest request,HttpSession session, String mpw,String mnm, String mtel, String mem, String mjob, String madr, String mpg){
+  public String insert(MultipartHttpServletRequest request,HttpSession session, String qtit, String qcnt){
     Member member = (Member)session.getAttribute("loginUser");
-    
+    Question question = new Question();
     Map<String, MultipartFile> files = request.getFileMap();
     CommonsMultipartFile cmf = (CommonsMultipartFile) files.get("uploadFile");
     int extPoint = cmf.getOriginalFilename().lastIndexOf(".");
@@ -136,27 +133,26 @@ public class MemberAjaxController {
       String realPath = servletContext.getRealPath("ver4_han/img/" + filename);
       System.out.printf("새 파일을 저장할 실제 경로=%s\n", realPath);
       try {
-        member.setMpic("img/"+filename);
+        question.setQpic("img/"+filename);
         cmf.transferTo(new File(realPath));
       } catch (Exception e) {
         e.printStackTrace();
       }
-    } else {
-      member.setMpic(member.getMpic());
     }
     
-    member.setMpw(mpw);
-    member.setMnm(mnm);
-    member.setMem(mem);
-    member.setMtel(mtel);
-    member.setMadr(madr);
-    member.setMjob(mjob);
-    member.setMpg(mpg);
+    question.setCno(10);
+    question.setQtit(qtit);
+    question.setQcnt(qcnt);
+    question.setQst(false);
+    question.setMno(member.getMno());
+   
     try {
-      memberService.change(member);
+      questionService.add(question);
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return "redirect:../../ver4_han/testfinal.html";
+    return "redirect:../../ver4_han/firstpage2.html";
   }
+  
+  
 }

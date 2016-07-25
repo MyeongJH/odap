@@ -10,5 +10,5 @@ public interface AnswerDao {
   List<Answer> selectList(int no);
   Answer selectOne(int no);
   void insert(Answer answer);
-  int count(int quno);
+  int count(int qno);
 }

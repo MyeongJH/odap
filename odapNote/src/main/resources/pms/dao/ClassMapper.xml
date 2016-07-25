@@ -41,17 +41,28 @@
     from CLASS
   </select>
   
-  <select id="mylist" resultType="Class" parameterType="int">
-    select CLASS.CNO, CNM, CCD, CSUB
+  <select id="mylist" resultType="ClassWithName" parameterType="int">
+    select CLASS.CNO, MEMBER.MNM, CNM, CCD, CDES, CSUB
     from CMEMBER
-    inner join CLASS
-    on CMEMBER.MNO=#{mno} and CMEMBER.CNO=CLASS.CNO and CMEMBER.CMST=1;
+    inner join CLASS 
+    on CMEMBER.MNO=#{mno} and CMEMBER.CNO=CLASS.CNO and CMEMBER.CMST=1 
+    inner join MEMBER
+    on CLASS.MNO=MEMBER.MNO
   </select>
   
-  <select id="search" resultType="Class" parameterType="map">
-    SELECT CNO, CNM 
-    FROM CLASS 
-    WHERE CNM LIKE CONCAT('%',#{key},'%') or CSUB LIKE CONCAT('%',#{key},'%')
+  <select id="myClass" resultType="ClassWithName" parameterType="int">
+    select CNO, MEMBER.MNM, CNM, CCD, CDES, CSUB 
+    from CLASS
+    inner join MEMBER
+    on CLASS.MNO=#{mno} and CLASS.MNO=MEMBER.MNO
+    order by CNO ASC 
   </select>
   
+  <select id="search" resultType="ClassWithName" parameterType="map">
+    select CNO, MEMBER.MNM, CNM, CCD, CDES, CSUB 
+    from CLASS
+    inner join MEMBER
+    on (CNM LIKE CONCAT('%',#{key},'%') or CSUB LIKE CONCAT('%',#{key},'%')) and CLASS.MNO=MEMBER.MNO
+  </select>
+ 
 </mapper>

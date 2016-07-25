@@ -1,6 +1,7 @@
 package pms.controller.ajax;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,11 +18,11 @@ import com.google.gson.Gson;
 
 import pms.service.ClassService;
 import pms.service.CmemberService;
-import pms.service.MemberService;
 import pms.service.QuestionService;
 import pms.vo.Class;
+import pms.vo.ClassList;
+import pms.vo.ClassWithName;
 import pms.vo.Member;
-import pms.vo.Question;
 
 @Controller
 @RequestMapping("/ajax/class/")
@@ -29,14 +30,17 @@ public class ClassAjaxController {
 @Autowired ClassService classService;
 @Autowired CmemberService cmemberService;
 @Autowired QuestionService questionService;
-@Autowired MemberService memberService;
   
-  @RequestMapping(value="add", produces="application/json;charset=UTF-8")
+  @RequestMapping(value="add", produces="application/json;charset=UTF-8", method = RequestMethod.POST)
   @ResponseBody
   public String add(String cnm, String csub, String cdes, HttpSession session) throws ServletException, IOException {
 
     Class clazz = new Class();
     clazz.setMno(((Member)session.getAttribute("loginUser")).getMno());
+    System.out.println(cnm);
+    System.out.println(csub);
+    System.out.println(cdes);
+
     clazz.setCnm(cnm);
     clazz.setCsub(csub);
     clazz.setCdes(cdes);
@@ -104,6 +108,22 @@ public class ClassAjaxController {
     return new Gson().toJson(result);
   }
   
+  @RequestMapping(value="search",
+      method=RequestMethod.GET,
+      produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String search(String key) throws ServletException, IOException {
+      List<ClassList> lists = new ArrayList<ClassList>();
+      List<ClassWithName> list2 = classService.search(key);  
+      for(int i=0; i<list2.size(); i++){
+        ClassList classList = new ClassList();
+        classList.setClasswithName(list2.get(i));
+        classList.setQuestioncount(questionService.countInClass(list2.get(i).getCno()));
+        classList.setMembercount(cmemberService.countAll(list2.get(i).getCno()));
+        lists.add(classList);
+      }
+      return new Gson().toJson(lists);
+  }
   
   @RequestMapping(value="classmaster", produces="application/json;charset=UTF-8")
   @ResponseBody
@@ -118,24 +138,46 @@ public class ClassAjaxController {
   public String myclasslist(HttpSession session) throws ServletException, IOException {
     Member member = (Member)session.getAttribute("loginUser");
     int mno = member.getMno();
-    List<Class> lists = classService.myclasslist(mno);
-    for (Class list : lists) {
-      list.setTeacherName(memberService.retrieve(list.getMno()).getMnm());
-      list.setCmemberNo(cmemberService.cmemberNo(list.getCno()));
-      list.setQuestionNo(questionService.questionNo(list.getCno()));
+    List<ClassList> lists = new ArrayList<ClassList>();
+    List<ClassWithName> list2 = classService.myclasslist(mno);  
+    for(int i=0; i<list2.size(); i++){
+      ClassList classList = new ClassList();
+      classList.setClasswithName(list2.get(i));
+      classList.setQuestioncount(questionService.countInClass(list2.get(i).getCno()));
+      classList.setMembercount(cmemberService.countAll(list2.get(i).getCno()));
+      lists.add(classList);
     }
-    
     return new Gson().toJson(lists);
   }
   
-  @RequestMapping(value="search",
-      method=RequestMethod.GET,
-      produces="application/json;charset=UTF-8")
+  @RequestMapping(value="myClass", produces="application/json;charset=UTF-8")
   @ResponseBody
-  public String search(String key) throws ServletException, IOException {
-      System.out.println(key);
-      List<Question> list = classService.search(key);
+  public String myClass(HttpSession session) throws ServletException, IOException {
+    Member member = (Member)session.getAttribute("loginUser");
+    int mno = member.getMno();
+    List<ClassList> lists = new ArrayList<ClassList>();
+    List<ClassWithName> list2 = classService.myClass(mno);  
+    for(int i=0; i<list2.size(); i++){
+      ClassList classList = new ClassList();
+      classList.setClasswithName(list2.get(i));
+      classList.setQuestioncount(questionService.countInClass(list2.get(i).getCno()));
+      classList.setMembercount(cmemberService.countAll(list2.get(i).getCno()));
+      lists.add(classList);
+    }
+    return new Gson().toJson(lists);
+  }
+  
+  
+  @RequestMapping(value="mememe", produces="application/json;charset=UTF-8")
+  @ResponseBody
+  public String mememe(HttpSession session) throws ServletException, IOException {
+    Member member = (Member)session.getAttribute("loginUser");
+    int mno = member.getMno();
+    List<ClassWithName> list = classService.myClass(mno);    
+    
     return new Gson().toJson(list);
   }
+  
+  
   
 }

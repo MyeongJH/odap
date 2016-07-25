@@ -153,9 +153,7 @@ public class CmemberAjaxController {
       produces="application/json;charset=UTF-8")
   @ResponseBody
   public boolean ismaster(HttpSession session, int cno) throws ServletException, IOException {    
-    System.out.println("1");
     int classmaster = classService.retrieve(cno).getMno();
-    System.out.println("2");
     Member member = (Member)session.getAttribute("loginUser");
     System.out.println(classmaster);
     System.out.println(member.getMno());

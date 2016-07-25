@@ -62,7 +62,8 @@
     where     
     CNO=#{cno} and MNO=#{mno} and CMST=1
   </select>
-  <select id="cmemberNo" parameterType="int" resultType="int">
+  
+  <select id="countAll" parameterType="int" resultType="int">
     select count(*) 
     from CMEMBER
     where     
